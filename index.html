@@ -367,9 +367,13 @@
 <p>看到这样的界面就成功设置ssh key了。<img src="/2019/04/19/创建自己的github-pages-hexo博客/SHH key.png" alt></p>
 <p>注意：如果你使用的是mac，需要在命令前加上sudo，详细可以看这篇文章<a href="http://idealife.github.io/2015/10/02/Hexo%E9%83%A8%E7%BD%B2%E6%97%B6%E6%8F%90%E7%A4%BAfatal-Could-not-read-from-remote-repository%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Hexo部署时提示Fatal： Could not read from remote repository的问题处理</a></p>
 <h3 id="将SSH-Key添加到Github上"><a href="#将SSH-Key添加到Github上" class="headerlink" title="将SSH Key添加到Github上"></a>将SSH Key添加到Github上</h3><ol>
-<li>打开本地C:\Documents and Settings\Administrator.ssh\id_rsa.pub文件（注意id_rsa.pub文件名是在生产SSH是设置）。路径也有可能是C:\Users\Administrator.ssh，你可以直接在C盘中查找id_rsa.pub文件。此文件里面内容为刚才生成的密钥。如果看不到这个文件，你需要设置显示隐藏文件。打开，准确的复制这个文件的内容。</li>
-<li>登陆github系统。点击右上角的图像—&gt;Settings —&gt; SSH and GPG keys。<br><img src="/2019/04/19/创建自己的github-pages-hexo博客/setting.png" alt></li>
-<li>点击右上角New SSH key，把你刚刚复制的本地生成的密钥文件内容黏贴到里面（Key文本框中）， 点击Add SSH key就ok了<br><a href="https://seminelee.github.io/static/2016/07/3.png" target="_blank" rel="noopener"><img src="https://seminelee.github.io/static/2016/07/3.png" alt="将SSH Key添加到Github上"></a></li>
+<li><p>打开本地C:\Documents and Settings\Administrator.ssh\id_rsa.pub文件（注意id_rsa.pub文件名是在生产SSH是设置）。路径也有可能是C:\Users\Administrator.ssh，你可以直接在C盘中查找id_rsa.pub文件。此文件里面内容为刚才生成的密钥。如果看不到这个文件，你需要设置显示隐藏文件。打开，准确的复制这个文件的内容。</p>
+</li>
+<li><p>登陆github系统。点击右上角的图像—&gt;Settings —&gt; SSH and GPG keys。<br><img src="/2019/04/19/创建自己的github-pages-hexo博客/setting.png" alt></p>
+</li>
+<li><p>点击右上角New SSH key，把你刚刚复制的本地生成的密钥文件内容黏贴到里面（Key文本框中）， 点击Add SSH key就ok了</p>
+<p><img src="/2019/04/19/创建自己的github-pages-hexo博客/SHH key1.png" alt></p>
+</li>
 </ol>
 <h3 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h3><p>可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
