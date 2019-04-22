@@ -364,12 +364,17 @@
 <p>然后回车</p>
 <p>然后系统会要你输入密码。这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。<br>（输入密码的时候没有*字样的，你直接输入就可以了）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase):&lt;输入加密串&gt;</span><br><span class="line">Enter same passphrase again:&lt;再次输入加密串&gt;</span><br></pre></td></tr></table></figure>
-<p>看到这样的界面就成功设置ssh key了。<img src="创建自己的github-pages-hexo博客/SHH key.png" alt></p>
+<p>看到这样的界面就成功设置ssh key了。</p>
+<p><img src="创建自己的github-pages-hexo博客/SHH key.png"></p>
 <p>注意：如果你使用的是mac，需要在命令前加上sudo，详细可以看这篇文章<a href="http://idealife.github.io/2015/10/02/Hexo%E9%83%A8%E7%BD%B2%E6%97%B6%E6%8F%90%E7%A4%BAfatal-Could-not-read-from-remote-repository%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Hexo部署时提示Fatal： Could not read from remote repository的问题处理</a></p>
 <h3 id="将SSH-Key添加到Github上"><a href="#将SSH-Key添加到Github上" class="headerlink" title="将SSH Key添加到Github上"></a>将SSH Key添加到Github上</h3><ol>
-<li>打开本地C:\Documents and Settings\Administrator.ssh\id_rsa.pub文件（注意id_rsa.pub文件名是在生产SSH是设置）。路径也有可能是C:\Users\Administrator.ssh，你可以直接在C盘中查找id_rsa.pub文件。此文件里面内容为刚才生成的密钥。如果看不到这个文件，你需要设置显示隐藏文件。打开，准确的复制这个文件的内容。</li>
-<li>登陆github系统。点击右上角的图像—&gt;Settings —&gt; SSH and GPG keys。<br><img src="创建自己的github-pages-hexo博客/setting.png" alt></li>
-<li>点击右上角New SSH key，把你刚刚复制的本地生成的密钥文件内容黏贴到里面（Key文本框中）， 点击Add SSH key就ok了<br><a href="https://seminelee.github.io/static/2016/07/3.png" target="_blank" rel="noopener"><img src="https://seminelee.github.io/static/2016/07/3.png" alt="将SSH Key添加到Github上"></a></li>
+<li><p>打开本地C:\Documents and Settings\Administrator.ssh\id_rsa.pub文件（注意id_rsa.pub文件名是在生产SSH是设置）。路径也有可能是C:\Users\Administrator.ssh，你可以直接在C盘中查找id_rsa.pub文件。此文件里面内容为刚才生成的密钥。如果看不到这个文件，你需要设置显示隐藏文件。打开，准确的复制这个文件的内容。</p>
+</li>
+<li><p>登陆github系统。点击右上角的图像—&gt;Settings —&gt; SSH and GPG keys。</p>
+<p><img src="创建自己的github-pages-hexo博客/setting.png"></p>
+</li>
+<li><p>点击右上角New SSH key，把你刚刚复制的本地生成的密钥文件内容黏贴到里面（Key文本框中）， 点击Add SSH key就ok了<br><a href="https://seminelee.github.io/static/2016/07/3.png" target="_blank" rel="noopener"><img src="https://seminelee.github.io/static/2016/07/3.png" alt="将SSH Key添加到Github上"></a></p>
+</li>
 </ol>
 <h3 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h3><p>可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -384,23 +389,23 @@
 </li>
 <li><p>搭建博客</p>
 <p> 首先，我们需要新建一个Repositories,Repository就相当于一个库，存放我们的项目文件，然后给自己的Repository取一个名字，注意！Github Pages的Repository名字是特定的，比如我Github账号是Eline302，那么我Github Pages Repository名字就是Eline302.github.io。</p>
+<p> <img src="创建自己的github-pages-hexo博客/git1.png"></p>
 </li>
 </ol>
-<p><img src="创建自己的github-pages-hexo博客/git1.png" alt></p>
 <p>然后点击create repository.</p>
 <p>随后跳转到该库界面,由于我是搭建好的，所以会有项目文件，然后选择Settings</p>
-<p><img src="创建自己的github-pages-hexo博客/git2.png" alt></p>
+<p><img src="创建自己的github-pages-hexo博客/git2.png"></p>
 <p>进入settings后，往下拉，找到GitHub pages设置界面</p>
-<p><img src="创建自己的github-pages-hexo博客/git3.png" alt></p>
+<p><img src="创建自己的github-pages-hexo博客/git3.png"></p>
 <p>按如图所示选择，注意，选择source之后记得Save，然后点击Choose a theme选择一个博客主题。</p>
-<p><img src="创建自己的github-pages-hexo博客/git4.png" alt></p>
+<p><img src="创建自己的github-pages-hexo博客/git4.png"></p>
 <p>然后点击Select theme到这一步呢，正常来说你就可以看到自己的博客了。在地址栏输入：<a href="https://Eline302.github.io你就可以访问页面了。" target="_blank" rel="noopener">https://Eline302.github.io你就可以访问页面了。</a></p>
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>Hexo是一个简单、快速、强大的博客发布工具，支持Markdown格式。<br>打开Git Bash</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
 <p>安装完毕后，在我的电脑某个位置中建立一个名字叫hexo的文件夹，然后在此文件夹中右键打开Git Bash。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
 <p>Hexo随后会自动在目标文件夹建立网站所需要的所有文件,如下图所示：</p>
-<p><img src="创建自己的github-pages-hexo博客/hexo1.png" alt></p>
+<p><img src="创建自己的github-pages-hexo博客/hexo1.png"></p>
 <p>现在我们已经搭建起本地的hexo博客了。<br>在hexo目录下输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 <p>然后到浏览器输入localhost:4000看看，可以看到默认主题下的博客，这就实现了本地预览了。</p>
