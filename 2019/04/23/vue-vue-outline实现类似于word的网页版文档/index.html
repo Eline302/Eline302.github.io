@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="vue,vue-outline,">
 
 
 
@@ -79,16 +79,21 @@
 
 
 
-<meta name="description" content="Web前端开发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Eline blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="基于项目需求，需要在后台系统中加入操作手册文档，用来介绍项目详细操作，基于vue-outline(一个Vue页面生成导航的小工具)加上自己优化与改进，实现了网页版文档，可以根据目录定位到具体内容，包含文档下载与返回功能。 操作文档界面 代码实现vue-outline安装1npm install vue-outline 或者 1yarn add vue-outline vue-outline引入方">
+<meta name="keywords" content="vue,vue-outline">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue+vue-outline实现类似于word的网页版文档">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/vue-vue-outline实现类似于word的网页版文档/index.html">
 <meta property="og:site_name" content="Eline blog">
-<meta property="og:description" content="Web前端开发">
+<meta property="og:description" content="基于项目需求，需要在后台系统中加入操作手册文档，用来介绍项目详细操作，基于vue-outline(一个Vue页面生成导航的小工具)加上自己优化与改进，实现了网页版文档，可以根据目录定位到具体内容，包含文档下载与返回功能。 操作文档界面 代码实现vue-outline安装1npm install vue-outline 或者 1yarn add vue-outline vue-outline引入方">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/04/23/vue-vue-outline实现类似于word的网页版文档/document1.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/23/vue-vue-outline实现类似于word的网页版文档/downf.png">
+<meta property="og:updated_time" content="2019-04-23T10:54:41.061Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eline blog">
-<meta name="twitter:description" content="Web前端开发">
+<meta name="twitter:title" content="vue+vue-outline实现类似于word的网页版文档">
+<meta name="twitter:description" content="基于项目需求，需要在后台系统中加入操作手册文档，用来介绍项目详细操作，基于vue-outline(一个Vue页面生成导航的小工具)加上自己优化与改进，实现了网页版文档，可以根据目录定位到具体内容，包含文档下载与返回功能。 操作文档界面 代码实现vue-outline安装1npm install vue-outline 或者 1yarn add vue-outline vue-outline引入方">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/23/vue-vue-outline实现类似于word的网页版文档/document1.png">
 
 
 
@@ -118,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/23/vue-vue-outline实现类似于word的网页版文档/">
 
 
 
 
 
-  <title>Eline blog</title>
+  <title>vue+vue-outline实现类似于word的网页版文档 | Eline blog</title>
   
 
 
@@ -143,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,9 +241,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -269,9 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/23/vue-vue-outline实现类似于word的网页版文档/" itemprop="url">vue+vue-outline实现类似于word的网页版文档</a></h1>
+          <h1 class="post-title" itemprop="name headline">vue+vue-outline实现类似于word的网页版文档</h1>
         
 
         <div class="post-meta">
@@ -343,9 +345,7 @@
       
 
       
-        
-          
-            <p> 基于项目需求，需要在后台系统中加入操作手册文档，用来介绍项目详细操作，基于vue-outline(一个Vue页面生成导航的小工具)加上自己优化与改进，实现了网页版文档，可以根据目录定位到具体内容，包含文档下载与返回功能。</p>
+        <p> 基于项目需求，需要在后台系统中加入操作手册文档，用来介绍项目详细操作，基于vue-outline(一个Vue页面生成导航的小工具)加上自己优化与改进，实现了网页版文档，可以根据目录定位到具体内容，包含文档下载与返回功能。</p>
 <h2 id="操作文档界面"><a href="#操作文档界面" class="headerlink" title="操作文档界面"></a>操作文档界面</h2><p><img src="/2019/04/23/vue-vue-outline实现类似于word的网页版文档/document1.png" alt></p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="vue-outline安装"><a href="#vue-outline安装" class="headerlink" title="vue-outline安装"></a>vue-outline安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-outline</span><br></pre></td></tr></table></figure>
 <p>或者</p>
@@ -389,8 +389,6 @@
 <li><a href="https://github.com/Lushenggang/vue-outline" target="_blank" rel="noopener">GitHub vue-outline</a></li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -405,387 +403,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eline">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Eline blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/19/创建自己的github-pages-hexo博客/" itemprop="url">创建自己的github pages-hexo博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T16:45:57+08:00">
-                2019-04-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/实践/" itemprop="url" rel="index">
-                    <span itemprop="name">实践</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/vue/" rel="tag"># vue</a>
           
-
+            <a href="/tags/vue-outline/" rel="tag"># vue-outline</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>羡慕身边大神都有个炫酷的博客，所以花时间建立自己的博客。得益于网络教程，发现原来并不难。以下是这一过程的记录，顺便学习下markdown，积累更多的知识，并享受分享带来的连锁反应。</p>
-<h2 id="为什么要建立这个博客"><a href="#为什么要建立这个博客" class="headerlink" title="为什么要建立这个博客"></a>为什么要建立这个博客</h2><h3 id="为什么选择GitHub-Pages"><a href="#为什么选择GitHub-Pages" class="headerlink" title="为什么选择GitHub Pages"></a>为什么选择GitHub Pages</h3><ul>
-<li>域名是github的二级域名，不用给空间付费，不用给域名付费</li>
-<li>流行又简洁的MarkDown写作语法</li>
-<li>支持本地编写、本地预览</li>
-<li>seo优化上，github在google上权重高</li>
-</ul>
-<h2 id="准备步骤"><a href="#准备步骤" class="headerlink" title="准备步骤"></a>准备步骤</h2><ol>
-<li>安装<a href="https://nodejs.org/" target="_blank" rel="noopener">node.js</a></li>
-<li>安装<a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></li>
-<li>注册<a href="http://www.github.com/" target="_blank" rel="noopener">github</a></li>
-</ol>
-<h2 id="配置SSH-keys"><a href="#配置SSH-keys" class="headerlink" title="配置SSH keys"></a>配置SSH keys</h2><h3 id="生成SSH-Keys"><a href="#生成SSH-Keys" class="headerlink" title="生成SSH Keys"></a>生成SSH Keys</h3><p>建立博客之前要先用SSH keys让我们的本地git项目与远程的github建立联系。<br>首先我们需要检查你电脑上现有的ssh key。右键打开Git Bash，输入：<br>（如果提示：No such file or directory 说明你是第一次使用git。）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/. ssh</span><br></pre></td></tr></table></figure>
-<p>生成新的SSH Key<br>（此处的邮箱地址请输入你自己的邮箱地址，与GitHub保持一致）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;邮件地址@youremail.com&quot;</span><br></pre></td></tr></table></figure>
-<p>然后回车</p>
-<p>然后系统会要你输入密码。这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。<br>（输入密码的时候没有*字样的，你直接输入就可以了）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase):&lt;输入加密串&gt;</span><br><span class="line">Enter same passphrase again:&lt;再次输入加密串&gt;</span><br></pre></td></tr></table></figure>
-<p>看到这样的界面就成功设置ssh key了。<img src="/2019/04/19/创建自己的github-pages-hexo博客/SHH key.png" alt></p>
-<p>注意：如果你使用的是mac，需要在命令前加上sudo，详细可以看这篇文章<a href="http://idealife.github.io/2015/10/02/Hexo%E9%83%A8%E7%BD%B2%E6%97%B6%E6%8F%90%E7%A4%BAfatal-Could-not-read-from-remote-repository%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Hexo部署时提示Fatal： Could not read from remote repository的问题处理</a></p>
-<h3 id="将SSH-Key添加到Github上"><a href="#将SSH-Key添加到Github上" class="headerlink" title="将SSH Key添加到Github上"></a>将SSH Key添加到Github上</h3><ol>
-<li><p>打开本地C:\Documents and Settings\Administrator.ssh\id_rsa.pub文件（注意id_rsa.pub文件名是在生产SSH是设置）。路径也有可能是C:\Users\Administrator.ssh，你可以直接在C盘中查找id_rsa.pub文件。此文件里面内容为刚才生成的密钥。如果看不到这个文件，你需要设置显示隐藏文件。打开，准确的复制这个文件的内容。</p>
-</li>
-<li><p>登陆github系统。点击右上角的图像—&gt;Settings —&gt; SSH and GPG keys。<br><img src="/2019/04/19/创建自己的github-pages-hexo博客/setting.png" alt></p>
-</li>
-<li><p>点击右上角New SSH key，把你刚刚复制的本地生成的密钥文件内容黏贴到里面（Key文本框中）， 点击Add SSH key就ok了</p>
-<p><img src="/2019/04/19/创建自己的github-pages-hexo博客/SHH key1.png" alt></p>
-</li>
-</ol>
-<h3 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h3><p>可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>然后输入yes<br>然后就会看到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi Eline302! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
-<h3 id="设置用户信息"><a href="#设置用户信息" class="headerlink" title="设置用户信息"></a>设置用户信息</h3><p>现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。<br>Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Eline302&quot;//用户名</span><br><span class="line">$ git config --global user.email  &quot;may.air@qq.com&quot;//填写自己的邮箱</span><br></pre></td></tr></table></figure>
-<p>完成以上步骤后本机就已成功连接到github</p>
-<h2 id="开始建立博客"><a href="#开始建立博客" class="headerlink" title="开始建立博客"></a>开始建立博客</h2><p>与GitHub建立好链接之后，就可以方便的使用它提供的Pages服务，GitHub Pages分两种，一种是你的GitHub用户名建立的username.github.io这样的用户&amp;组织页（站），另一种是依附项目的pages。<br>想建立个人博客是用的第一种，形如Eline302.github.io这样的可访问的站，每个用户名下面只能建立一个。</p>
-<h3 id="Github上建立仓库"><a href="#Github上建立仓库" class="headerlink" title="Github上建立仓库"></a>Github上建立仓库</h3><ol>
-<li><p>建立一个GitHub账户</p>
-</li>
-<li><p>搭建博客</p>
-<p> 首先，我们需要新建一个Repositories,Repository就相当于一个库，存放我们的项目文件，然后给自己的Repository取一个名字，注意！Github Pages的Repository名字是特定的，比如我Github账号是Eline302，那么我Github Pages Repository名字就是Eline302.github.io。</p>
-</li>
-</ol>
-<p><img src="/2019/04/19/创建自己的github-pages-hexo博客/git1.png" alt></p>
-<p>然后点击create repository.</p>
-<p>随后跳转到该库界面,由于我是搭建好的，所以会有项目文件，然后选择Settings</p>
-<p><img src="/2019/04/19/创建自己的github-pages-hexo博客/git2.png" alt></p>
-<p>进入settings后，往下拉，找到GitHub pages设置界面</p>
-<p><img src="/2019/04/19/创建自己的github-pages-hexo博客/git3.png" alt></p>
-<p>按如图所示选择，注意，选择source之后记得Save，然后点击Choose a theme选择一个博客主题。</p>
-<p><img src="/2019/04/19/创建自己的github-pages-hexo博客/git4.png" alt></p>
-<p>然后点击Select theme到这一步呢，正常来说你就可以看到自己的博客了。在地址栏输入：<a href="https://Eline302.github.io你就可以访问页面了。" target="_blank" rel="noopener">https://Eline302.github.io你就可以访问页面了。</a></p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>Hexo是一个简单、快速、强大的博客发布工具，支持Markdown格式。<br>打开Git Bash</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-<p>安装完毕后，在我的电脑某个位置中建立一个名字叫hexo的文件夹，然后在此文件夹中右键打开Git Bash。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-<p>Hexo随后会自动在目标文件夹建立网站所需要的所有文件,如下图所示：</p>
-<p><img src="/2019/04/19/创建自己的github-pages-hexo博客/hexo1.png" alt></p>
-<p>现在我们已经搭建起本地的hexo博客了。<br>在hexo目录下输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p>然后到浏览器输入localhost:4000看看，可以看到默认主题下的博客，这就实现了本地预览了。</p>
-<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>打开终端窗口，输入一下命令，将目录切换到Hexo文件夹内的themes文件夹内</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd themes</span><br></pre></td></tr></table></figure>
-<p>通过git clone克隆主题，这里用的是next主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
-<p>更多主题可以参考<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">有哪些好看的 Hexo 主题? - GitHub - 知乎</a></p>
-<p>每次更换主题前清空一下database</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p>打开终端窗口，输入一下命令，将目录切换到Hexo文件夹内的themes文件夹内</p>
-<p>启用主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: hexo-theme-next</span><br></pre></td></tr></table></figure>
-<p>修改hexo目录下的config.yml配置文件中的theme属性，将其设置为hexo-theme-next。<br>（注意：Hexo有两个config.yml文件，一个在根目录（站点配置文件），一个在theme（主题配置文件）下，此时修改的是在根目录下的。）</p>
-<p>更新主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd themes/hexo-theme-next</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-<p>然后可以本地预览一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g #generate生成</span><br><span class="line">$ hexo s #server测试环境，启动本地服务，进行文章预览调试</span><br></pre></td></tr></table></figure>
-<h3 id="上传到Github仓库"><a href="#上传到Github仓库" class="headerlink" title="上传到Github仓库"></a>上传到Github仓库</h3><p>打开hexo目录下的_config.yml，拉到最下面<br>配置为这样子,只需要把Eline302改为你自己的github用户名就可以了。（注意格式，冒号后要有空格，你可以直接复制以下代码再作修改）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: http://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/Eline302/Eline302.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>然后执行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g #generate生成</span><br><span class="line">$ hexo d #deploy开发环境</span><br></pre></td></tr></table></figure>
-<p>如果看到结果最后一行是INFO Deploy done:git则没有问题。否则，则可以把上面的配置改为下面这种使用SSH方式的提交，把用户名改为你自己的用户名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: http://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:Eline302/Eline302.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>再次执行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g #generate生成</span><br><span class="line">$ hexo d #deploy开发环境</span><br></pre></td></tr></table></figure>
-<p>如果在执行 hexo deploy 后,出现 error deployer not found:github 的错误，网上说是hexo 更新到3.0之后的一个坑，则需要安装hexo-deployer-git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>再次执行命令之后，打开<a href="https://Eline302.github.io就能看到你建立好的博客了！" target="_blank" rel="noopener">https://Eline302.github.io就能看到你建立好的博客了！</a></p>
-<h3 id="Next配置"><a href="#Next配置" class="headerlink" title="Next配置"></a>Next配置</h3><p>可以对Next配置自己喜欢的风格</p>
-<ul>
-<li><p><a href="https://github.com/iissnan/hexo-theme-next/wiki" target="_blank" rel="noopener">GitHub—Next配置文档</a></p>
-</li>
-<li><p><a href="https://www.jianshu.com/p/d95cff938277" target="_blank" rel="noopener">NexT主题配置文件的详细介绍和配置</a></p>
-<p>​</p>
-</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="noopener">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
-<li><a href="http://www.jianshu.com/p/863f3f2d1733" target="_blank" rel="noopener">使用github+Hexo人人都能拥有一个美美的博客</a></li>
-<li><a href="http://www.v2ex.com/t/175940" target="_blank" rel="noopener">搭建 hexo，在执行 hexo deploy 后,出现 error deployer not found:github 的错误</a></li>
-<li><a href="http://www.xinxiaoyang.com/programming/2016-11-25-hexo-image-bug/" target="_blank" rel="noopener">使用markdown语法写博客时，本地图片不显示问题</a></li>
-</ul>
-<p><a href="https://seminelee.github.io/tags/%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener"># 博客</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eline">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Eline blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/09/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T14:33:38+08:00">
-                2019-04-09
-              </time>
+              <a href="/2019/04/19/创建自己的github-pages-hexo博客/" rel="next" title="创建自己的github pages-hexo博客">
+                <i class="fa fa-chevron-left"></i> 创建自己的github pages-hexo博客
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -795,10 +444,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -806,6 +456,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -826,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -899,6 +562,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作文档界面"><span class="nav-number">1.</span> <span class="nav-text">操作文档界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-outline安装"><span class="nav-number">2.1.</span> <span class="nav-text">vue-outline安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-outline引入"><span class="nav-number">2.2.</span> <span class="nav-text">vue-outline引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件下载"><span class="nav-number">2.4.</span> <span class="nav-text">文件下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1032,6 +711,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
