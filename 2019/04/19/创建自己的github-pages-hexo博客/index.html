@@ -95,7 +95,11 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/git3.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/git4.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo1.png">
-<meta property="og:updated_time" content="2020-04-26T03:55:14.989Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo2.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo5.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo3.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo4.png">
+<meta property="og:updated_time" content="2020-04-26T09:39:55.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建自己的github pages-hexo博客">
 <meta name="twitter:description" content="羡慕身边大神都有个炫酷的博客，所以花时间建立自己的博客。得益于网络教程，发现原来并不难。以下是这一过程的记录，顺便学习下markdown，积累更多的知识，并享受分享带来的连锁反应。 为什么要建立这个博客为什么选择GitHub Pages 域名是github的二级域名，不用给空间付费，不用给域名付费 流行又简洁的MarkDown写作语法 支持本地编写、本地预览 seo优化上，github在googl">
@@ -404,7 +408,7 @@
 <p><img src="/2019/04/19/创建自己的github-pages-hexo博客/git3.png" alt></p>
 <p>按如图所示选择，注意，选择source之后记得Save，然后点击Choose a theme选择一个博客主题。</p>
 <p><img src="/2019/04/19/创建自己的github-pages-hexo博客/git4.png" alt></p>
-<p>然后点击Select theme到这一步呢，正常来说你就可以看到自己的博客了。在地址栏输入：<a href="https://Eline302.github.io你就可以访问页面了。" target="_blank" rel="noopener">https://Eline302.github.io你就可以访问页面了。</a></p>
+<p>然后点击Select theme到这一步呢，正常来说你就可以看到自己的博客了。在地址栏输入：<a href="https://eline302.github.io/" target="_blank" rel="noopener">https://Eline302.github.io</a>你就可以访问页面了。</p>
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>Hexo是一个简单、快速、强大的博客发布工具，支持Markdown格式。<br>打开Git Bash</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
 <p>安装完毕后，在我的电脑某个位置中建立一个名字叫hexo的文件夹，然后在此文件夹中右键打开Git Bash。</p>
@@ -439,7 +443,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g #generate生成</span><br><span class="line">$ hexo d #deploy开发环境</span><br></pre></td></tr></table></figure>
 <p>如果在执行 hexo deploy 后,出现 error deployer not found:github 的错误，网上说是hexo 更新到3.0之后的一个坑，则需要安装hexo-deployer-git</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>再次执行命令之后，打开<a href="https://Eline302.github.io就能看到你建立好的博客了！" target="_blank" rel="noopener">https://Eline302.github.io就能看到你建立好的博客了！</a></p>
+<p>再次执行命令之后，打开<a href="https://eline302.github.io" target="_blank" rel="noopener">https://Eline302.github.io</a>就能看到你建立好的博客了！</p>
 <h3 id="Next配置"><a href="#Next配置" class="headerlink" title="Next配置"></a>Next配置</h3><p>可以对Next配置自己喜欢的风格</p>
 <ul>
 <li><p><a href="https://github.com/iissnan/hexo-theme-next/wiki" target="_blank" rel="noopener">GitHub—Next配置文档</a></p>
@@ -447,6 +451,29 @@
 <li><p><a href="https://www.jianshu.com/p/d95cff938277" target="_blank" rel="noopener">NexT主题配置文件的详细介绍和配置</a></p>
 </li>
 </ul>
+<h3 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h3><p>  创建好自己博客后，就可以发表文章了，那接下来看看具体怎么操作</p>
+<h4 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h4><p> （1）在hexo博客目录下，进入Git Bash命令窗口中，输入以下命令：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">"文章名称"</span></span><br></pre></td></tr></table></figure>
+<p> （2）在博客目录下的/source/_posts/ 文件夹下，可以看到生成的.md文件和存放文章图片的文件夹（默认不会生成文件夹，需要进行配置，具体请看<strong>在博文中添加图片</strong>部分）</p>
+<p>   <img src="/2019/04/19/创建自己的github-pages-hexo博客/hexo2.png" alt></p>
+<p> （3）在.md文件中编辑自己的博客文章即可</p>
+<p>   注意：Hexo 发布的文章是<strong>Markdown</strong>格式的文件，具体参考<a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">Markdown基本语法</a></p>
+<h4 id="给文章添加分类和标签"><a href="#给文章添加分类和标签" class="headerlink" title="给文章添加分类和标签"></a>给文章添加分类和标签</h4><p>  (1) 在.md文件中设置tags和categories属性：</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章名称</span><br><span class="line">date: <span class="number">2020</span><span class="number">-04</span><span class="number">-26</span> <span class="number">15</span>:<span class="number">47</span>:<span class="number">39</span></span><br><span class="line">categories：  <span class="comment">//多个标签可以这样添加</span></span><br><span class="line">- 博客</span><br><span class="line">- hexo</span><br><span class="line">tags: web前端</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">## 文章内容部分</span><br></pre></td></tr></table></figure>
+<h4 id="添加“阅读全文”按钮"><a href="#添加“阅读全文”按钮" class="headerlink" title="添加“阅读全文”按钮"></a>添加“阅读全文”按钮</h4><p>  方法一：只在本文章中有效果，在文章任意你想添加的位置添加即可<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  方法二：对博客中所以文章都有效果，在主题的配置文件中更改，我使用的主题是hexo-theme-next，在them中找到_config.yml进行修改</p>
+<p>  <img src="/2019/04/19/创建自己的github-pages-hexo博客/hexo5.png" alt></p>
+<p>  其中length代表显示摘要的截取字符长度。<br>  注：这两种方法，在博客首页显示的效果不一样，根据自己的需要，选择自己喜欢的方法</p>
+<h4 id="在博文中添加图片"><a href="#在博文中添加图片" class="headerlink" title="在博文中添加图片"></a>在博文中添加图片</h4><p>  方法一：<br>   (1)在hexo目录下，安装插件：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<p>   (2)在hexo\source 目录下新建一个img文件夹，把图片放置在里面；<br>   (3)在xxx.md文件中引用图片：</p>
+   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![header](img/header.jpg)</span><br></pre></td></tr></table></figure>
+<p>  方法二：建议使用<br>    (1)在全局配置文件<code>hexo/_config.yml</code>中将post_asset_folder设置为true<br>    (2)创建文章（在创建的时候，会在hexo/source/_post目录下，生成一个XXX.md文件和一个XXX的文件夹）<br>    (3)把XXX这个博文需要展示的图片放在XXX文件夹目录下<br>    (4)在XXX.md文件中引入图片的方式如上</p>
+<h4 id="启动服务器，本地测试"><a href="#启动服务器，本地测试" class="headerlink" title="启动服务器，本地测试"></a>启动服务器，本地测试</h4>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>   服务器启动成功后，可以看到本地测试连接 <code>http://localhost:4000</code></p>
+<p>   <img src="/2019/04/19/创建自己的github-pages-hexo博客/hexo3.png" alt></p>
+<p>   打开连接，可以看到自己发表的文章，如下所示<br>   <img src="/2019/04/19/创建自己的github-pages-hexo博客/hexo4.png" alt></p>
+<h4 id="发布到Github上"><a href="#发布到Github上" class="headerlink" title="发布到Github上"></a>发布到Github上</h4><p> （1）发表的文章在本地预览无误后，在 Git Bash 命令窗口执行以下命令：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p> （2）在浏览器中，访问自己的博客域名，即可看到刚发布的文章</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="noopener">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
 <li><a href="http://www.jianshu.com/p/863f3f2d1733" target="_blank" rel="noopener">使用github+Hexo人人都能拥有一个美美的博客</a></li>
@@ -582,7 +609,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -593,7 +620,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -636,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要建立这个博客"><span class="nav-number">1.</span> <span class="nav-text">为什么要建立这个博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么选择GitHub-Pages"><span class="nav-number">1.1.</span> <span class="nav-text">为什么选择GitHub Pages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备步骤"><span class="nav-number">2.</span> <span class="nav-text">准备步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置SSH-keys"><span class="nav-number">3.</span> <span class="nav-text">配置SSH keys</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成SSH-Keys"><span class="nav-number">3.1.</span> <span class="nav-text">生成SSH Keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将SSH-Key添加到Github上"><span class="nav-number">3.2.</span> <span class="nav-text">将SSH Key添加到Github上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试一下"><span class="nav-number">3.3.</span> <span class="nav-text">测试一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置用户信息"><span class="nav-number">3.4.</span> <span class="nav-text">设置用户信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始建立博客"><span class="nav-number">4.</span> <span class="nav-text">开始建立博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github上建立仓库"><span class="nav-number">4.1.</span> <span class="nav-text">Github上建立仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">4.2.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换主题"><span class="nav-number">4.3.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传到Github仓库"><span class="nav-number">4.4.</span> <span class="nav-text">上传到Github仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Next配置"><span class="nav-number">4.5.</span> <span class="nav-text">Next配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要建立这个博客"><span class="nav-number">1.</span> <span class="nav-text">为什么要建立这个博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么选择GitHub-Pages"><span class="nav-number">1.1.</span> <span class="nav-text">为什么选择GitHub Pages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备步骤"><span class="nav-number">2.</span> <span class="nav-text">准备步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置SSH-keys"><span class="nav-number">3.</span> <span class="nav-text">配置SSH keys</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成SSH-Keys"><span class="nav-number">3.1.</span> <span class="nav-text">生成SSH Keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将SSH-Key添加到Github上"><span class="nav-number">3.2.</span> <span class="nav-text">将SSH Key添加到Github上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试一下"><span class="nav-number">3.3.</span> <span class="nav-text">测试一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置用户信息"><span class="nav-number">3.4.</span> <span class="nav-text">设置用户信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始建立博客"><span class="nav-number">4.</span> <span class="nav-text">开始建立博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github上建立仓库"><span class="nav-number">4.1.</span> <span class="nav-text">Github上建立仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">4.2.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换主题"><span class="nav-number">4.3.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传到Github仓库"><span class="nav-number">4.4.</span> <span class="nav-text">上传到Github仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Next配置"><span class="nav-number">4.5.</span> <span class="nav-text">Next配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布文章"><span class="nav-number">4.6.</span> <span class="nav-text">发布文章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建一篇文章"><span class="nav-number">4.6.1.</span> <span class="nav-text">新建一篇文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给文章添加分类和标签"><span class="nav-number">4.6.2.</span> <span class="nav-text">给文章添加分类和标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加“阅读全文”按钮"><span class="nav-number">4.6.3.</span> <span class="nav-text">添加“阅读全文”按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在博文中添加图片"><span class="nav-number">4.6.4.</span> <span class="nav-text">在博文中添加图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动服务器，本地测试"><span class="nav-number">4.6.5.</span> <span class="nav-text">启动服务器，本地测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发布到Github上"><span class="nav-number">4.6.6.</span> <span class="nav-text">发布到Github上</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
