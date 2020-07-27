@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content=",,">
+  <meta name="keywords" content="vue,双向绑定,">
 
 
 
@@ -81,22 +81,22 @@
 
 <meta name="description" content="了解过vue的基本都知道vue的v-model是双向绑定，但不可避免我们会误解v-model是双向数据流，其实不然，vue是单项数据流的，这时候可能有点疑惑，那接下来我们来了解下双向绑定和单向数据流  双向绑定首先我们看下什么是双向绑定？ 简单来说，双向绑定就是model的更新会触发view的更新，view的更新会触发model更新  其实关键点在于data如何更新view，因为view更新da">
 <meta name="keywords" content="vue,双向绑定">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Vue双向绑定和单向数据流">
-<meta property="og:url" content="http://yoursite.com/深入理解Vue双向绑定和单向数据流.html">
+<meta property="og:url" content="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/index.html">
 <meta property="og:site_name" content="Eline blog">
 <meta property="og:description" content="了解过vue的基本都知道vue的v-model是双向绑定，但不可避免我们会误解v-model是双向数据流，其实不然，vue是单项数据流的，这时候可能有点疑惑，那接下来我们来了解下双向绑定和单向数据流  双向绑定首先我们看下什么是双向绑定？ 简单来说，双向绑定就是model的更新会触发view的更新，view的更新会触发model更新  其实关键点在于data如何更新view，因为view更新da">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/1.2.png">
-<meta property="og:image" content="http://yoursite.com/4.png">
-<meta property="og:image" content="http://yoursite.com/2.png">
-<meta property="og:image" content="http://yoursite.com/3.png">
-<meta property="og:image" content="http://yoursite.com/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/1.2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/5.png">
 <meta property="og:updated_time" content="2020-05-19T11:35:30.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Vue双向绑定和单向数据流">
 <meta name="twitter:description" content="了解过vue的基本都知道vue的v-model是双向绑定，但不可避免我们会误解v-model是双向数据流，其实不然，vue是单项数据流的，这时候可能有点疑惑，那接下来我们来了解下双向绑定和单向数据流  双向绑定首先我们看下什么是双向绑定？ 简单来说，双向绑定就是model的更新会触发view的更新，view的更新会触发model更新  其实关键点在于data如何更新view，因为view更新da">
-<meta name="twitter:image" content="http://yoursite.com/1.2.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/1.2.png">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/深入理解Vue双向绑定和单向数据流.html">
+  <link rel="canonical" href="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/">
 
 
 
@@ -247,35 +247,119 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/19/深入理解Vue双向绑定和单向数据流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eline">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eline blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">深入理解Vue双向绑定和单向数据流</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <blockquote>
+          <h1 class="post-title" itemprop="name headline">深入理解Vue双向绑定和单向数据流</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-19T18:49:06+08:00">
+                2020-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
 <p>了解过vue的基本都知道vue的v-model是双向绑定，但不可避免我们会误解v-model是双向数据流，其实不然，vue是单项数据流的，这时候可能有点疑惑，那接下来我们来了解下双向绑定和单向数据流</p>
 </blockquote>
 <h3 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h3><p>首先我们看下什么是双向绑定？</p>
 <p>简单来说，双向绑定就是model的更新会触发view的更新，view的更新会触发model更新</p>
-<p><img src="/1.2.png" style="width:80%;margin-left:0px"></p>
+<p><img src="/2020/05/19/深入理解Vue双向绑定和单向数据流/1.2.png" style="width:80%;margin-left:0px"></p>
 <p>其实关键点在于data如何更新view，因为<strong>view</strong>更新<strong>data</strong>其实可以通过<strong>事件监听</strong>即可，比如input监听<code>oninput</code>事件就可以实现了。那么当<strong>data</strong>改变，如何更新<strong>view</strong>的，其实就是通过<strong>Object.defineProperty()</strong>对属性设置一个set函数，当数据改变时就会触发set函数，所以我们只要将一些需要更新的方法放在set函数里就可以实现data更新view了。</p>
-<p><img src="/4.png" style="margin-left:0px"></p>
+<p><img src="/2020/05/19/深入理解Vue双向绑定和单向数据流/4.png" style="margin-left:0px"></p>
 <h4 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty"></a>Object.defineProperty</h4><p>vue数据双向绑定是通过数据劫持结合发布者-订阅者模式的方式来实现的，数据劫持主要通过Object.defineProperty来实现。<br>那么我们可以通过下面例子来验证下</p>
 <p>代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        obj: &#123;</span><br><span class="line">            a: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><img src="/2.png" style="width:50%;margin-left:0px"></p>
+<p><img src="/2020/05/19/深入理解Vue双向绑定和单向数据流/2.png" style="width:50%;margin-left:0px"></p>
 <ul>
 <li><p>我们可以看到属性a有两个相对应的get和set方法，为什么会多出这两个方法呢？</p>
 <p>因为vue是通过Object.defineProperty()来实现数据劫持的,<a href="https://www.infoq.cn/article/sPCMAcrdAZQfmLbGJeGr" target="_blank" rel="noopener">不过在vue3.x使用Proxy来实现数据劫持</a>，</p>
@@ -290,7 +374,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Book = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">''</span>;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(Book, <span class="string">'name'</span>, &#123;</span><br><span class="line">  <span class="keyword">set</span>: function (value) &#123;</span><br><span class="line">    name = value;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'你取了一个书名叫做'</span> + value);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">get</span>: function () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'《'</span> + name + <span class="string">'》'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">Book.name = <span class="string">'vue权威指南'</span>;  <span class="comment">// 你取了一个书名叫做vue权威指南</span></span><br><span class="line"><span class="built_in">console</span>.log(Book.name);  <span class="comment">// 《vue权威指南》</span></span><br></pre></td></tr></table></figure>
 <p>我们通过<code>Object.defineProperty()</code>设置了对象Book的name属性，对其get和set进行重写操作，顾名思义，我们访问name属性时会自动执行get函数，设置name属性时，会自动执行 set 函数，所以当执行 Book.name = ‘vue权威指南’ 这个语句时，控制台会打印出 “你取了一个书名叫做vue权威指南”，紧接着，当读取这个属性时，就会输出 “《vue权威指南》”，因为我们在get函数里面对该值做了加工了。如果这个时候我们执行下下面的语句，控制台会输出什么？</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Book);</span><br></pre></td></tr></table></figure>
-<p><img src="/3.png" style="width:50%;margin-left:0px"></p>
+<p><img src="/2020/05/19/深入理解Vue双向绑定和单向数据流/3.png" style="width:50%;margin-left:0px"></p>
 <p>通过打印结果可以看出，和上面例子结果相似，说明vue确实是通过这种方法来进行数据劫持的。</p>
 <h3 id="单向数据流"><a href="#单向数据流" class="headerlink" title="单向数据流"></a>单向数据流</h3><p>简而言之，单向数据流就是model的更新会触发view的更新，view的更新不会触发model的更新，它们的作用是单向的</p>
 <p>其实所有的 prop 都使得其父子 prop 之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</p>
@@ -310,7 +394,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">currency-input</span> <span class="attr">v-model</span>=<span class="string">"price"</span>&gt;</span><span class="tag">&lt;/<span class="name">currency-input</span>&gt;</span></span><br><span class="line"></span><br><span class="line">所以在组件中使用时，它相当于下面的简写：</span><br><span class="line">//上行代码是下行的语法糖</span><br><span class="line"><span class="tag">&lt;<span class="name">currency-input</span> <span class="attr">:value</span>=<span class="string">"price"</span> @<span class="attr">input</span>=<span class="string">"price = arguments[0]"</span>&gt;</span><span class="tag">&lt;<span class="name">currency-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>所以，给组件添加 v-model 属性时，默认会把 value 作为组件的属性，然后把 ‘input’ 值作为给组件绑定事件时的事件名。这在写组件时特别有用。</p>
 <h4 id="vue-组件数据流"><a href="#vue-组件数据流" class="headerlink" title="vue 组件数据流"></a>vue 组件数据流</h4><p>从上面 v-model 的分析我们可以这么理解，双向数据绑定就是在单向绑定的基础上给可输入元素（input、textare等）添加了 change(input) 事件，来动态修改 model 和 view ，即通过触发（$emit）父组件的事件来修改mv来达到 mvvm 的效果。而 vue 组件间传递数据是单向的，即数据总是由父组件传递到子组件，子组件在其内部可以有自己维护的数据，但它无权修改父组件传递给它的数据，当开发者尝试这样做的时候，vue 将会报错。这样做是为了组件间更好的解耦，在开发中可能有多个子组件依赖于父组件的某个数据，假如子组件可以修改父组件数据的话，一个子组件变化会引发所有依赖这个数据的子组件发生变化，所以 vue 不推荐子组件修改父组件的数据，直接修改 props 会抛出警告。流程图如下：</p>
-<p><img src="/5.png" style="width:60%;margin-left:0px;"></p>
+<p><img src="/2020/05/19/深入理解Vue双向绑定和单向数据流/5.png" style="width:60%;margin-left:0px;"></p>
 <p>所以，当你想要在子组件去修改 props 时，把这个子组件当成父组件那样用，所以就有了</p>
 <p>1、定义一个局部变量，并用 prop 的值初始化它。<br>2、定义一个计算属性，处理 prop 的值并返回。</p>
 <p>额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。子组件想修改时，只能通过 $emit 派发一个自定义事件，父组件接收到后，由父组件修改。</p>
@@ -321,15 +405,69 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="string">'size'</span>],</span><br><span class="line">computed: &#123;</span><br><span class="line">  normalizedSize: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.size.trim().toLowerCase()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a href="https://zhuanlan.zhihu.com/p/47541415" target="_blank" rel="noopener">vue的双向绑定原理及实现</a><br><a href="https://github.com/wengjq/Blog/issues/17" target="_blank" rel="noopener">深入理解Vue单向数据流</a><br><a href="https://cn.vuejs.org/v2/guide/components-props.html#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81" target="_blank" rel="noopener">单向数据流</a></p>
 
-        
-      </div>
-      
-      
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/双向绑定/" rel="tag"># 双向绑定</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/26/web安全攻防解析/" rel="next" title="常见Web安全攻防解析">
+                <i class="fa fa-chevron-left"></i> 常见Web安全攻防解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/27/vue3-0-初探/" rel="prev" title="vue3.0 初探">
+                vue3.0 初探 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -389,7 +527,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -400,7 +538,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -411,7 +549,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
