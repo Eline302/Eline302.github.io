@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue3.0,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文主要是简单了解下vue3.0的新特性，vue2.x和vue3.0差异，以及如何使用方面进行学习，如有问题，请大佬们多多指教。  vue3.0 新特性1.更快更省  压缩包体积更小当前最小化并被压缩的vue运行时大小约为 20kB（2.6.10 版为 22.8kB）。vue3.0捆绑包的大小大约会减少一半，即大概有10kB。 重构 Virtual DOM传统Virtual DOM的性能瓶颈问题">
+<meta name="keywords" content="vue3.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3.0 初探">
+<meta property="og:url" content="http://yoursite.com/2020/07/27/vue3-0-初探/index.html">
+<meta property="og:site_name" content="Eline blog">
+<meta property="og:description" content="本文主要是简单了解下vue3.0的新特性，vue2.x和vue3.0差异，以及如何使用方面进行学习，如有问题，请大佬们多多指教。  vue3.0 新特性1.更快更省  压缩包体积更小当前最小化并被压缩的vue运行时大小约为 20kB（2.6.10 版为 22.8kB）。vue3.0捆绑包的大小大约会减少一半，即大概有10kB。 重构 Virtual DOM传统Virtual DOM的性能瓶颈问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/old-dom.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/old-dom1.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/old-dom2.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/old-dom3.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/old-dom4.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/old-dom5.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/1.png">
+<meta property="og:updated_time" content="2020-07-27T01:54:18.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue3.0 初探">
+<meta name="twitter:description" content="本文主要是简单了解下vue3.0的新特性，vue2.x和vue3.0差异，以及如何使用方面进行学习，如有问题，请大佬们多多指教。  vue3.0 新特性1.更快更省  压缩包体积更小当前最小化并被压缩的vue运行时大小约为 20kB（2.6.10 版为 22.8kB）。vue3.0捆绑包的大小大约会减少一半，即大概有10kB。 重构 Virtual DOM传统Virtual DOM的性能瓶颈问题">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/27/vue3-0-初探/old-dom.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/27/vue3-0-初探/">
+
+
+
+
+
+  <title>vue3.0 初探 | Eline blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eline blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/27/vue3-0-初探/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eline">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eline blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue3.0 初探</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-27T09:43:02+08:00">
+                2020-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文主要是简单了解下vue3.0的新特性，vue2.x和vue3.0差异，以及如何使用方面进行学习，如有问题，请大佬们多多指教。</p>
+</blockquote>
+<h2 id="vue3-0-新特性"><a href="#vue3-0-新特性" class="headerlink" title="vue3.0 新特性"></a>vue3.0 新特性</h2><p><strong>1.更快更省</strong></p>
+<ul>
+<li>压缩包体积更小<br>当前最小化并被压缩的vue运行时大小约为 20kB（2.6.10 版为 22.8kB）。vue3.0捆绑包的大小大约会减少一半，即大概有10kB。</li>
+<li>重构 <code>Virtual DOM</code><br>传统Virtual DOM的性能瓶颈问题，vue3.0采用<strong>动静结合</strong>减少性能损耗。</li>
+<li>响应式底层从 <code>Object.defineProperty</code> 变成 <code>Proxy</code><br><code>Object.defineProperty</code> 是一个相对比较昂贵的操作，因为它直接操作对象的属性，颗粒度比较小,将它替换为<code>ES6</code>的 <code>Proxy</code>，在目标对象之上架了一层拦截，代理的是对象而不是对象的属性，这样可以将原本对对象属性的操作变为对整个对象的操作，颗粒度变大。<br><code>javascript</code> 引擎在解析的时候希望对象的结构越稳定越好，如果对象一直在变，可优化性降低，<code>proxy</code> 不需要对原始对象做太多操作。</li>
+</ul>
+<p><strong>2.完全 <code>TypeScript</code> 重构</strong></p>
+<ul>
+<li>团队开发更轻松</li>
+<li>架构更灵活，阅读源码更轻松</li>
+<li>可以独立使用 <code>Vue</code> 内部模块</li>
+</ul>
+<p><strong>3.<a href="https://composition-api.vuejs.org/zh/api.html" target="_blank" rel="noopener">Composition API（组合式API)</a></strong></p>
+<p> 将 <code>vue2.x</code> 中与组件逻辑相关的选项以 <code>API</code> 函数的形式重新设计</p>
+<ul>
+<li>一组低侵入式的、函数式的 <code>API</code></li>
+<li>更好的逻辑复用与代码组织</li>
+<li>更好的类型推导</li>
+</ul>
+<p><strong>4.选用Function_based API</strong></p>
+<p>vue3.0将组件的逻辑都写在了函数内部，<code>setup()</code>会取代<code>vue2.x</code>的<code>data()</code>函数，返回一个对象，暴露给模板，而且只在初始化的时候调用一次，因为值可以被跟踪。</p>
+<p><strong>Function-based API 对比Class-based API有以下优点</strong></p>
+<ul>
+<li>对<code>typescript</code>更加友好，<code>typescript</code>对函数的参数和返回值都非常好，写<code>Function-based API</code>既是<code>javascript</code>又是<code>typescript</code>，不需要任何的类型声明，<code>typescript</code>可以自己做类型推导。</li>
+<li>静态的<code>import</code>和<code>export</code>是<code>treeshaking</code>的前提，<code>Function-based API</code>中的方法都是从全局的vue中<code>import</code>进来的。</li>
+<li>函数内部的变量名和函数名都可以被压缩为单个字母，但是对象和类的属性和方法名默认不被压缩（为了防止引用出错。</li>
+<li>更灵活的逻辑复用。</li>
+</ul>
+<p>5.使用了hooks</p>
+<h3 id="React-Hook-和-Vue-Hook对比"><a href="#React-Hook-和-Vue-Hook对比" class="headerlink" title="React Hook 和 Vue Hook对比"></a>React Hook 和 Vue Hook对比</h3><p>其实 React Hook 的限制非常多，比如官方文档中就专门有一个<a href="https://zh-hans.reactjs.org/docs/hooks-rules.html" target="_blank" rel="noopener">章节</a>介绍它的限制：</p>
+<p>1.不要在循环，条件或嵌套函数中调用 <code>Hook</code><br>2.确保总是在你的 <code>React</code> 函数的最顶层调用他们。<br>3.遵守这条规则，你就能确保 <code>Hook</code> 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 <code>useState</code> 和 <code>useEffect</code> 调用之间保持 <code>hook</code> 状态的正确。</p>
+<p><strong>而 Vue 带来的不同在于：</strong></p>
+<p>1.与 <code>React Hooks</code> 相同级别的逻辑组合功能，但有一些重要的区别。 与 <code>React Hook</code> 不同，<code>setup</code> 函数仅被调用一次，这在性能上比较占优。<br>2.对调用顺序没什么要求，每次渲染中不会反复调用 <code>Hook</code> 函数，产生的的 <code>GC</code> 压力较小。<br>3.不必考虑几乎总是需要 <code>useCallback</code> 的问题，以防止传递函数<code>prop</code>给子组件的引用变化，导致无必要的重新渲染。<br>4.<code>React Hook</code> 有闭包陷阱问题，如果用户忘记传递正确的依赖项数组，<code>useEffect</code> 和 <code>useMemo</code> 可能会捕获过时的变量，这不受此问题的影响。 <code>Vue</code> 的自动依赖关系跟踪确保观察者和计算值始终正确无误。</p>
+<p>我们认可 <code>React Hooks</code> 的创造力，这也是 <code>Vue-Composition-Api</code> 的主要灵感来源。上面提到的问题确实存在于 <code>React Hook</code> 的设计中，我们注意到 <code>Vue</code> 的响应式模型恰好完美的解决了这些问题。</p>
+<h3 id="vue2-x-和-vue3-x-的Virtual-DOM对比"><a href="#vue2-x-和-vue3-x-的Virtual-DOM对比" class="headerlink" title="vue2.x 和 vue3.x 的Virtual DOM对比"></a>vue2.x 和 vue3.x 的Virtual DOM对比</h3><h4 id="传统Virtual-DOM的性能瓶颈"><a href="#传统Virtual-DOM的性能瓶颈" class="headerlink" title="传统Virtual DOM的性能瓶颈"></a><strong>传统Virtual DOM的性能瓶颈</strong></h4><p>  数据变更之后，会触发对应<code>Dep</code>中的 <code>Watcher</code> 对象,<code>Watcher</code> 对象会调用对应的 <code>update</code> 来修改视图。这个过程主要是将新旧虚拟节点进行差异对比（新的Virtual DOM和旧的Virtual DOM进行 <code>patch</code>(<code>diff</code>算法) 算法比较，并算出二者之间的差异）， 然后根据对比结果进行DOM操作来更新视图,但是传统Virtual DOM，进行算法比对时颗粒度是组件，每个组件作为一个颗粒。</p>
+<p>  <img src="/2020/07/27/vue3-0-初探/old-dom.png"></p>
+<p>  虽然Vue能够保证触发更新的组件最小化，但是单个组件内部依然需要遍历该组件的整个Virtual DOM树。如下图所示，template中，只有message插值部分发生改变，整体结构不变，但是数据更新的时候，比对整个template结构，这样就存在性能损耗。</p>
+<p>  <img src="/2020/07/27/vue3-0-初探/old-dom1.png"></p>
+<h4 id="Vue3-0-Virtual-DOM"><a href="#Vue3-0-Virtual-DOM" class="headerlink" title="Vue3.0 Virtual DOM"></a><strong>Vue3.0 Virtual DOM</strong></h4><p>  <strong>动静结合</strong>：找到动态变化的部分，更新时只对比可以变化的部分，减少性能损耗。</p>
+<p>  <strong>1.节点结构不变</strong></p>
+<ul>
+<li>节点结构完全不会改变</li>
+<li><p>只有一个动态节点</p>
+<p><img src="/2020/07/27/vue3-0-初探/old-dom2.png"></p>
+<p>这个时候没有必要比较结构顺序。</p>
+<p><strong>2.节点结构变化 <code>v-if</code></strong></p>
+</li>
+<li><p><code>v-if</code> 外部：只有<code>v-if</code>是动态节点</p>
+</li>
+<li><p><code>v-if</code> 内部：只有 <code></code> 是动态节点</p>
+<p><img src="/2020/07/27/vue3-0-初探/old-dom3.png"></p>
+<p>把模板切分成两个部分，各部分相对静态。</p>
+<p><strong>3.节点结构变化 <code>v-for</code></strong></p>
+</li>
+<li><p><code>v-for</code> 外部：只有<code>v-for</code>是动态节点 <code>(fragment)</code></p>
+</li>
+<li><p>每个<code>v-for</code>循环内部：只有 <code></code> 是动态节点</p>
+<p><img src="/2020/07/27/vue3-0-初探/old-dom4.png"></p>
+<p><strong>区块树Block tree</strong><br>以结构性指令为边界，将整个模板切割成一个一个的相对内部静态的块。<br><img src="/2020/07/27/vue3-0-初探/old-dom5.png"></p>
+</li>
+<li><p>将模板基于动态节点指令切割为嵌套的区块。</p>
+</li>
+<li>每个区块内部的节点结构是固定的。</li>
+<li>每个区块只需要以一个Array追踪自身包含的动态节点。</li>
+</ul>
+<h3 id="响应式底层"><a href="#响应式底层" class="headerlink" title="响应式底层"></a>响应式底层</h3><p>从<code>Object.defineProperty</code>变成<code>Proxy</code></p>
+<h4 id="vue2-变更检测"><a href="#vue2-变更检测" class="headerlink" title="vue2 变更检测"></a>vue2 变更检测</h4><p><code>vue2</code>中是递归遍历 <code>data</code> 中的所有的 <code>property</code>，并使用 <code>Object.defineProperty</code> 把这些 <code>property</code> 全部转为 <code>getter/setter</code>，在 <code>getter</code> 中做数据依赖收集处理，在 <code>setter</code> 中监听数据的变化，并通知订阅当前数据的地方。<br> <img src="/2020/07/27/vue3-0-初探/1.png"></p>
+<p>这么做有什么问题呢？</p>
+<ul>
+<li>检测不到对象属性的添加和删除：当你在对象上新加了一个属性<code>newProperty</code>，当前新加的这个属性并没有加入<code>vue</code>检测数据更新的机制(因为是在初始化之后添加的),<code>vue.$set</code>是能让<code>vue</code>知道你添加了属性, 它会给你做处理，<code>$set</code>内部也是通过调用<code>Object.defineProperty()</code>去处理的</li>
+<li>无法监控到数组下标的变化，导致直接通过数组的下标给数组设置值，不能实时响应。</li>
+<li>性能问题，当<code>data</code>中数据比较多且层级很深的时候，因为要遍历<code>data</code>中所有的数据并给其设置成响应式的，会导致性能下降</li>
+</ul>
+<h4 id="vue3-Proxy"><a href="#vue3-Proxy" class="headerlink" title="vue3 Proxy"></a>vue3 Proxy</h4><p>Vue3 进行了全新改进，使用 <code>Proxy</code>代理的作为全新的变更检测，不再使用 <code>Object.defineProperty</code></p>
+<p>为什么使用 Proxy 可以解决上面的问题呢？</p>
+<p>主要是因为Proxy是拦截对象，对对象进行一个”拦截”，外界对该对象的访问，都必须先通过这层拦截。无论访问对象的什么属性，之前定义的还是新增的，它都会走到拦截中。</p>
+<p>下面分别用<code>Object.defineProperty()</code>和 <code>Proxy</code> 实现一个简单的数据响应</p>
+<ul>
+<li>使用 <code>Object.defineProperty()</code> 实现：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(data) &#123;</span><br><span class="line">    <span class="comment">// 遍历参数data的属性,给添加到this上</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(data)) &#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> data[key] === <span class="string">'object'</span>) &#123;</span><br><span class="line">        data[key] = <span class="keyword">new</span> Observer(data[key]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, key, &#123;</span><br><span class="line">          <span class="keyword">get</span>() &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'你访问了'</span> + key);</span><br><span class="line">            <span class="keyword">return</span> data[key];</span><br><span class="line">            &#125;,</span><br><span class="line">          <span class="keyword">set</span>(newVal) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'你设置了'</span> + key);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'新的'</span> + key + <span class="string">'='</span> + newVal);</span><br><span class="line">            <span class="keyword">if</span>(newVal === data[key]) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            data[key] = newVal;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  age: <span class="string">'18'</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 实例对象</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Observer(obj);</span><br><span class="line">app.age = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>.log(app.age);</span><br><span class="line">app.newPropKey = <span class="string">'新属性'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(app.newPropKey);</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改 obj原有的属性 age的输出</span></span><br><span class="line">你设置了age</span><br><span class="line">新的age=<span class="number">20</span></span><br><span class="line">你访问了age</span><br><span class="line"><span class="number">20</span></span><br><span class="line"><span class="comment">// 设置新属性的输出</span></span><br><span class="line">新属性</span><br></pre></td></tr></table></figure>
+<p>可以看到，给对象新增一个属性，内部并没有监听到，新增的属性需要手动再次使用<code>Object.defineProperty()</code>进行监听。<br>这就是为什么 <code>vue 2.x</code> 中 检测不到对象属性的添加和删除的原因，内部提供的<code>$set</code>就是通过调用<code>Object.defineProperty()</code>去处理的。</p>
+<ul>
+<li>下面我们使用 <code>Proxy</code> 替代 <code>Object.defineProperty()</code> 实现</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'app'</span>,</span><br><span class="line">    age: <span class="string">'18'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="keyword">get</span>(target, propKey, receiver) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'你访问了'</span> + propKey);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, propKey, receiver);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>(target, propKey, value, receiver) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'你设置了'</span> + propKey);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'新的'</span> + propKey + <span class="string">'='</span> + value);</span><br><span class="line">        <span class="built_in">Reflect</span>.set(target, propKey, value, receiver);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">p.age = <span class="string">'20'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(p.age);</span><br><span class="line">p.newPropKey = <span class="string">'新属性'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(p.newPropKey);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改原对象的age属性</span></span><br><span class="line">你设置了age</span><br><span class="line">新的age=<span class="number">20</span></span><br><span class="line">你访问了age</span><br><span class="line"><span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置新的属性</span></span><br><span class="line">你设置了newPropKey</span><br><span class="line">新的newPropKey=新属性</span><br><span class="line">你访问了newPropKey</span><br><span class="line">新属性</span><br></pre></td></tr></table></figure>
+<p>可以看到，新增的属性，并不需要重新添加响应式处理，因为 <code>Proxy</code> 是对对象的操作，只要你访问对象，就会走到 <code>Proxy</code> 的逻辑中。</p>
+<blockquote>
+<p>Reflect(ES6引入) 是一个内置的对象，它提供拦截 JavaScript 操作的方法。将Object对象一些明显属于语言内部方法（比如Object.defineProperty()）放到Reflect对象上。修改某些Object方法的返回结果，让其变得更合理。让Object操作都变成函数行为。具体内容查看<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener">MDN</a></p>
+</blockquote>
+<h2 id="vue2-x项目转换成3-x的方式"><a href="#vue2-x项目转换成3-x的方式" class="headerlink" title="vue2.x项目转换成3.x的方式"></a>vue2.x项目转换成3.x的方式</h2><ul>
+<li><p>1.composition-api<br>Github：<a href="https://github.com/vuejs/composition-api" target="_blank" rel="noopener">vuejs/composition-api</a></p>
+<p>安装：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install @vue/composition-api</span><br><span class="line"># or</span><br><span class="line">yarn add @vue/composition-api</span><br></pre></td></tr></table></figure>
+<p>前提：适合还需要使用到基于<code>Vue2.x</code>的第三方插件，比如<code>ElementUI</code>,<code>iview</code>等</p>
+<p>使用：通过安装包 <code>@vue/composition-api</code>，然后在<code>main.js</code>中导入，最后使用<code>Vue.use(xxx)</code>，就可以使用<code>Vue3.x</code>的语法</p>
+</li>
+<li><p>2.vue-next<br>Github：<a href="https://github.com/vuejs/vue-next" target="_blank" rel="noopener">vuejs/vue-next</a><br>安装：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue add vue-next</span><br></pre></td></tr></table></figure>
+<p>完全使用vue3.x的生态，包括最新版的<code>vue</code>、<code>vue-router</code>、<code>vuex</code>，目前可能会找不到合适的基于<code>Vue3.x</code>的插件</p>
+</li>
+</ul>
+<h2 id="Vue3-0和Vue2-x的差异"><a href="#Vue3-0和Vue2-x的差异" class="headerlink" title="Vue3.0和Vue2.x的差异"></a>Vue3.0和Vue2.x的差异</h2><blockquote>
+<p>通过使用 <code>composition-api</code> 方式简单的对比下</p>
+</blockquote>
+<p>1.语法上</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>test<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;msg1&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;msg2&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"changeMsg"</span>&gt;</span>更改msg1和msg2的值<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;num&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>2倍num: &#123;&#123;doubleNum&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>3倍num: &#123;&#123;threeNum&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"add"</span>&gt;</span>num++<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; reactive,ref,toRefs,computed,watch,beforeCreate,created&#125; <span class="keyword">from</span> <span class="string">'@vue/composition-api'</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript"><span class="comment">// vue2.x</span></span></span><br><span class="line"><span class="undefined">  data()&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span>&#123;</span></span><br><span class="line"><span class="javascript">      msg:<span class="string">'我的名字叫Jack'</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  beforeCreate()&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'---beforeCreate---'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  created()&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'---created---'</span>);</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="javascript"><span class="comment">// vue3.x</span></span></span><br><span class="line"><span class="javascript"><span class="comment">// setup函数是一个新的组件选项。作为在组件内使用Composition API的入口点</span></span></span><br><span class="line"><span class="undefined">  setup()&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'---setup---'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 第一种写法</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// reactive：接收一个普通对象然后返回该普通对象的响应式代理</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> state = reactive(&#123;</span></span><br><span class="line"><span class="javascript">      msg1:<span class="string">'年龄18'</span>,</span></span><br><span class="line"><span class="undefined">      num:1,</span></span><br><span class="line"><span class="javascript">      <span class="comment">// computed 第一种写法</span></span></span><br><span class="line"><span class="javascript">      doubleNum:computed(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> state.num*<span class="number">2</span></span></span><br><span class="line"><span class="undefined">      &#125;)</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 第一个参数是监听的值，state.num 表示当 state.num 发生变化就会触发监听器的回调函数，即第二个参数，第二个参数可以执行监听时候的回调</span></span></span><br><span class="line"><span class="javascript">    watch(<span class="function"><span class="params">()</span> =&gt;</span> state.num,val =&gt; &#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">`count is <span class="subst">$&#123;state.num&#125;</span>`</span>)</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 第二中写法</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">//ref: 接受一个参数值并返回一个响应式且可改变的 ref 对象</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> msg2=ref(<span class="string">'今年高二'</span>)</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 方法</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> changeMsg=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">      state.msg1=<span class="string">"年龄20岁"</span></span></span><br><span class="line"><span class="javascript">      msg2.value=<span class="string">'今年大一'</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// computed 第二种写法(计算属性 computed 是一个方法，里面需要包含一个回调函数，当我们访问计算属性返回结果时，会自动获取回调函数的值)</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> threeNum=computed(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> state.num*<span class="number">3</span></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> add=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="undefined">      state.num++</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">//toRefs: 从一个组合逻辑函数中返回响应式对象</span></span></span><br><span class="line"><span class="undefined">      ...toRefs(state),</span></span><br><span class="line"><span class="undefined">      msg2,</span></span><br><span class="line"><span class="undefined">      threeNum,</span></span><br><span class="line"><span class="undefined">      changeMsg,</span></span><br><span class="line"><span class="undefined">      add</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ref()函数接收一个参数值，返回一个响应式的数据对象。该对象只包含一个指向内部值的 .value 属性<br>  基本用法</p>
+<ul>
+<li>在模板中访问时，无需通过.value属性，它会自动展开</li>
+<li>当 ref 作为 reactive 对象的 property 被访问或修改时，也将自动解套 value 值，其行为类似普通属性</li>
+</ul>
+</blockquote>
+<p>2.生命周期钩子函数</p>
+<p><code>vue3.0</code> 中的生命周期函数和 <code>vue2.x</code> 相比做了一些调整和变化，对应关系如下：</p>
+<ul>
+<li><code>beforeCreate</code> -&gt; 使用 <code>setup()</code></li>
+<li><code>created</code> -&gt; 使用 <code>setup()</code></li>
+<li><code>beforeMount</code> -&gt; <code>onBeforeMount</code></li>
+<li><code>mounted</code> -&gt; <code>onMounted</code></li>
+<li><code>beforeUpdate</code> -&gt; <code>onBeforeUpdate</code></li>
+<li><code>updated</code> -&gt; <code>onUpdated</code></li>
+<li><code>beforeDestroy</code> -&gt; <code>onBeforeUnmount</code></li>
+<li><code>destroyed</code> -&gt; <code>onUnmounted</code></li>
+<li><p><code>errorCaptured</code> -&gt; <code>onErrorCaptured</code></p>
+<p>这些生命周期钩子函数只能在 <code>setup()</code> 函数中使用,<code>setup</code>是位于<code>beforeCreate</code>和<code>created</code>之间调用的</p>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.im/post/5e69ee2be51d4527196d6a24" target="_blank" rel="noopener">理解Vue3.0中的Proxy</a><br><a href="https://juejin.im/post/5ecdbaad6fb9a047e607f7f9#heading-9" target="_blank" rel="noopener">Vue 3.0 有哪些新特性</a><br><a href="https://composition-api.vuejs.org/zh/api.html#setup" target="_blank" rel="noopener">Vue 组合式 API</a><br><a href="https://zhuanlan.zhihu.com/p/68477600" target="_blank" rel="noopener">Vue Function-based API RFC</a><br><a href="https://juejin.im/post/5e99c21b6fb9a03c590dfea8" target="_blank" rel="noopener">Vue 3.0 全家桶抢先体验</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue3-0/" rel="tag"># vue3.0</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="Eline">
+            
+              <p class="site-author-name" itemprop="name">Eline</p>
+              <p class="site-description motion-element" itemprop="description">Web前端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Eline302" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue3-0-新特性"><span class="nav-number">1.</span> <span class="nav-text">vue3.0 新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-Hook-和-Vue-Hook对比"><span class="nav-number">1.1.</span> <span class="nav-text">React Hook 和 Vue Hook对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue2-x-和-vue3-x-的Virtual-DOM对比"><span class="nav-number">1.2.</span> <span class="nav-text">vue2.x 和 vue3.x 的Virtual DOM对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传统Virtual-DOM的性能瓶颈"><span class="nav-number">1.2.1.</span> <span class="nav-text">传统Virtual DOM的性能瓶颈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue3-0-Virtual-DOM"><span class="nav-number">1.2.2.</span> <span class="nav-text">Vue3.0 Virtual DOM</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应式底层"><span class="nav-number">1.3.</span> <span class="nav-text">响应式底层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vue2-变更检测"><span class="nav-number">1.3.1.</span> <span class="nav-text">vue2 变更检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue3-Proxy"><span class="nav-number">1.3.2.</span> <span class="nav-text">vue3 Proxy</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue2-x项目转换成3-x的方式"><span class="nav-number">2.</span> <span class="nav-text">vue2.x项目转换成3.x的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue3-0和Vue2-x的差异"><span class="nav-number">3.</span> <span class="nav-text">Vue3.0和Vue2.x的差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eline</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
