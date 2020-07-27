@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo5.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo3.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/19/创建自己的github-pages-hexo博客/hexo4.png">
-<meta property="og:updated_time" content="2020-07-27T02:40:35.933Z">
+<meta property="og:updated_time" content="2020-07-27T03:19:31.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建自己的github pages-hexo博客">
 <meta name="twitter:description" content="羡慕身边大神都有个炫酷的博客，所以花时间建立自己的博客。得益于网络教程，发现原来并不难。以下是这一过程的记录，顺便学习下markdown，积累更多的知识，并享受分享带来的连锁反应。 为什么要建立这个博客为什么选择GitHub Pages 域名是github的二级域名，不用给空间付费，不用给域名付费 流行又简洁的MarkDown写作语法 支持本地编写、本地预览 seo优化上，github在googl">
@@ -473,8 +473,12 @@
 <p>   服务器启动成功后，可以看到本地测试连接 <code>http://localhost:4000</code></p>
 <p>   <img src="/2019/04/19/创建自己的github-pages-hexo博客/hexo3.png" alt></p>
 <p>   打开连接，可以看到自己发表的文章，如下所示<br>   <img src="/2019/04/19/创建自己的github-pages-hexo博客/hexo4.png" alt></p>
-<h4 id="发布到Github上"><a href="#发布到Github上" class="headerlink" title="发布到Github上"></a>发布到Github上</h4><p> （1）发表的文章在本地预览无误后，在 Git Bash 命令窗口执行以下命令：<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment">// 清除缓存 网页正常情况下可以忽略此条命令</span></span><br><span class="line">hexo g   <span class="comment">//hexo generate  #生成静态网页</span></span><br><span class="line">hexo d  <span class="comment">//hexo deploy #开始部署</span></span><br></pre></td></tr></table></figure></p>
-<p> （2）在浏览器中，访问自己的博客域名，即可看到刚发布的文章</p>
+<h4 id="发布到Github上"><a href="#发布到Github上" class="headerlink" title="发布到Github上"></a>发布到Github上</h4><p>（1）发表的文章在本地预览无误后，在 Git Bash 命令窗口执行以下命令：<br>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g   <span class="comment">//hexo generate  #生成静态网页</span></span><br><span class="line">hexo d  <span class="comment">//hexo deploy #开始部署</span></span><br></pre></td></tr></table></figure></p>
+<p>可以合并为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d  <span class="comment">//生成并部署</span></span><br></pre></td></tr></table></figure>
+<p>部署到GitHub时，可能因为网速、翻墙等原因，需要多次运行 hexo deploy ；有时候可以运行 hexo clean 后在运行上述代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment">//清除缓存 网页正常情况下可以忽略此条命令</span></span><br></pre></td></tr></table></figure>
+<p>（2）在浏览器中，访问自己的博客域名，即可看到刚发布的文章</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="noopener">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
 <li><a href="http://www.jianshu.com/p/863f3f2d1733" target="_blank" rel="noopener">使用github+Hexo人人都能拥有一个美美的博客</a></li>
@@ -610,7 +614,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
