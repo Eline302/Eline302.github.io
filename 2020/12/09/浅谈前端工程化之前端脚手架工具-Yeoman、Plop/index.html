@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端工程化,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在日常开发中，我们经常使用脚手架工具来帮助我们创建项目，如vue-cli,create-react-app等，本文主要概述下什么是工程化，工程化主要解决的问题是什么，探讨如何使用Yeoman和Plop工具来搭建脚手架，最后来探讨下脚手架的基本原理。  前端工程化前端工程化是指遵循一定的标准和规范，通过工具去提高效率，降低成本的一种手段，近些年被广泛的关注和探讨，究其原因主要是因为前端应用功能要求">
+<meta name="keywords" content="前端工程化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈前端工程化之前端脚手架工具--Yeoman、Plop">
+<meta property="og:url" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/index.html">
+<meta property="og:site_name" content="Eline blog">
+<meta property="og:description" content="在日常开发中，我们经常使用脚手架工具来帮助我们创建项目，如vue-cli,create-react-app等，本文主要概述下什么是工程化，工程化主要解决的问题是什么，探讨如何使用Yeoman和Plop工具来搭建脚手架，最后来探讨下脚手架的基本原理。  前端工程化前端工程化是指遵循一定的标准和规范，通过工具去提高效率，降低成本的一种手段，近些年被广泛的关注和探讨，究其原因主要是因为前端应用功能要求">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/gch.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yproject.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp1.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp2.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp3.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp4.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp5.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue1.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue2.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue3.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/p0.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/plop1.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/p2.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j1.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j2.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j3.png">
+<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j4.png">
+<meta property="og:updated_time" content="2020-12-09T04:27:26.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈前端工程化之前端脚手架工具--Yeoman、Plop">
+<meta name="twitter:description" content="在日常开发中，我们经常使用脚手架工具来帮助我们创建项目，如vue-cli,create-react-app等，本文主要概述下什么是工程化，工程化主要解决的问题是什么，探讨如何使用Yeoman和Plop工具来搭建脚手架，最后来探讨下脚手架的基本原理。  前端工程化前端工程化是指遵循一定的标准和规范，通过工具去提高效率，降低成本的一种手段，近些年被广泛的关注和探讨，究其原因主要是因为前端应用功能要求">
+<meta name="twitter:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/gch.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/">
+
+
+
+
+
+  <title>浅谈前端工程化之前端脚手架工具--Yeoman、Plop | Eline blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eline blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eline">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eline blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅谈前端工程化之前端脚手架工具--Yeoman、Plop</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-09T12:11:55+08:00">
+                2020-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Yeoman/" itemprop="url" rel="index">
+                    <span itemprop="name">Yeoman</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Yeoman/Plop/" itemprop="url" rel="index">
+                    <span itemprop="name">Plop</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Yeoman/Plop/Generator/" itemprop="url" rel="index">
+                    <span itemprop="name">Generator</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Yeoman/Plop/Generator/脚手架工具/" itemprop="url" rel="index">
+                    <span itemprop="name">脚手架工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在日常开发中，我们经常使用脚手架工具来帮助我们创建项目，如vue-cli,create-react-app等，本文主要概述下什么是工程化，工程化主要解决的问题是什么，探讨如何使用Yeoman和Plop工具来搭建脚手架，最后来探讨下脚手架的基本原理。</p>
+</blockquote>
+<h2 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h2><p>前端工程化是指遵循一定的标准和规范，通过工具去提高效率，降低成本的一种手段，近些年被广泛的关注和探讨，究其原因主要是因为前端应用功能要求不断提高，业务逻辑日益复杂，从传统的网站，到现在的H5、移动web、桌面应用、以及小程序，前端技术几乎是无所不能全面覆盖，在这些表象的背后，实际上是前段行业我对我们开发人员的要求越来越高。</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/gch.png" alt="之前的前端"></p>
+<p>以往这种写Demo，套模板，再去调页面的这种“刀耕火种”方式，已经完全不符合对当下开发效率的要求，前段工程化就是在这样背景下被提上台面的，成为前端工程师必备的手段之一，技术是为了解决问题而存在的，前端工程化也不例外。</p>
+<p><strong>1. 工程化之前我们面临的一些问题：</strong></p>
+<ul>
+<li><p>想要使用ES6 +新特性，提高编码效率但是兼容有问题</p>
+</li>
+<li><p>想要使用 Less / Sass / PostCSS 提高 CSS 的编程性，但是这种工具在运行环境不能直接支持</p>
+</li>
+<li><p>想要使用模块化或者组件化的方式提高项目的可维护性，但实际运行环境不能直接支持</p>
+</li>
+<li><p>开发中经常会手动做的一些重复的工作，如部署上线前需要手动压缩代码及资源文件，部署过程需要手动上传代码到服务器</p>
+</li>
+<li><p>多人协作开发，无法硬性统一大家的代码风格，从仓库中 pull 回来的代码质量无法保证</p>
+</li>
+<li><p>部分功能开发时，需要等待后端服务接口提前完成，才可以做具体的编码</p>
+</li>
+</ul>
+<p><strong>2. 工程化主要解决的问题</strong></p>
+<ul>
+<li><p>传统语言或语法的弊端</p>
+</li>
+<li><p>无法使用模块化/组件化</p>
+</li>
+<li><p>重复的机械式工作</p>
+</li>
+<li><p>代码风格统一、质量保证</p>
+</li>
+<li><p>依赖后端服务接口支持</p>
+</li>
+<li><p>整体依赖后端项目</p>
+</li>
+</ul>
+<p><strong>3. 工程化的表现</strong></p>
+<p>以项目开发过程为例，来看下工程化的表现：</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/1.png" alt="工程化的表现"></p>
+<ul>
+<li><p><strong>创建项目阶段</strong>：使用脚手架自动完成项目基础结构的搭建；</p>
+</li>
+<li><p><strong>编码阶段</strong>：借助工程化的工具，自动化的帮我们做一些代码的格式化和风格校验，确保在项目中每个开发人员写出的代码风格相似，借助一些编译工具，提高代码编码效率</p>
+</li>
+<li><p><strong>预览/测试阶段</strong>：传统的预览需要借助Apache服务器提供基础的web服务，让应用可以在上面运行起来，但是没有热更新体验，除此之外在开发阶段会用到编译，编译就涉及到实际编写的代码和最终运行的代码有个转换，如果运行中存在问题需要借助source Map工具去定位到源代码所在的位置，使用mock方式可以解决，后端服务未完成的情况下提前开发业务功能，即写假接口方式，跟后端接口是以相同的规格存在的</p>
+</li>
+<li><p><strong>提交阶段</strong>：使用Git Hooks 方式自动化的在代码提交之前对项目做整体的检查，包括项目质量检查和项目风格检查</p>
+</li>
+<li><p><strong>部署阶段</strong>：使用命令代替传统的FTP上传，还可以实现代码提交后自动化的通过持续集成或者持续部署的方式自动将我们代码部署到服务器，避免了手动操作产生的不稳定的因素</p>
+</li>
+</ul>
+<p>一切重复的工作都应该被自动化。实现前端工程化可以从 模块化、组件化、规范化、自动化等方面出发。</p>
+<p><strong>4. 工程化不等于工具</strong></p>
+<p>工程化是对项目整体的一种规划或者架构，工具只是实现规划或者结构的手段</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/2.png" alt="工程化流程"></p>
+<p>如上图 一个工程化应该有的过程是规划项目整体的工作流架构，包括文件的组织结构，源代码的开发范式，以什么样的方式做前后端分离(基于ajax还是中间层)，明确规划后再根据这些规划来搭配工具做具体的配置选项,从而实现工程化整体的规划等</p>
+<blockquote>
+<p>一些成熟的工程化集成：create-react-app、vue-cli、angular-cli、gatsby-cli工具，需要注意的是这里工具不是脚手架，不同于之前的工具，这里的工具属于特定类型的项目官方给出的集成式工程化方案，以vue-cli为例，它不仅仅帮我们创建了项目，更多的是约定了vue项目应该是什么样的结构，提供了热更新开发服务的工具，自动编译单文件组件以及其他的模块文件，代码风格校验等，这些都是集成在vue-cli内部的server中。</p>
+</blockquote>
+<p><strong>5. 工程化与Node.js</strong></p>
+<p>工程化的一切都应该归功于Node。</p>
+<p>如果说Ajax给前端带来了新的生命力，那么Node对于前端而言，它除了让JavaScript有了一个新的舞台，更多的是让我们整个前端行业进行了一次工业革命，可以毫无夸张的说，没有Node.js，就没有今天的前端。</p>
+<p>前端工程化是由Node.js强烈驱动的。</p>
+<h2 id="脚手架工具"><a href="#脚手架工具" class="headerlink" title="脚手架工具"></a>脚手架工具</h2><h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>简单来说，脚手架就是用来自动的去帮我们创建项目基础文件的一个工具。脚手架工具，可以认为是前端工程化的发起者。</p>
+<h3 id="脚手架工具的作用"><a href="#脚手架工具的作用" class="headerlink" title="脚手架工具的作用"></a>脚手架工具的作用</h3><p>创建项目基础结构、提供项目规范和约定。</p>
+<p>一般来说，一个项目中包含一些相同的约定，即：</p>
+<ul>
+<li><p>相同的组织结构</p>
+</li>
+<li><p>相同的开发范式</p>
+</li>
+<li><p>相同的模块依赖</p>
+</li>
+<li><p>相同的工具配置</p>
+</li>
+<li><p>相同的基础代码</p>
+</li>
+</ul>
+<p>我们可以通过脚手架工具去快速搭建特定类型项目的骨架，然后去基于这个骨架进行后续开发工作。因为前端技术选项比较多样，也没有一个统一的标准，所以前端方向的脚手架不会集成在某一个IDE当中，都是以一个独立的工具存在，相对会复杂些。</p>
+<p>脚手架目标都是一样的，都是为了解决我们在创建项目过程当中那些复杂的工作。</p>
+<h3 id="常用的脚手架工具"><a href="#常用的脚手架工具" class="headerlink" title="常用的脚手架工具"></a>常用的脚手架工具</h3><ul>
+<li><p>适用于特例项目类型服务的脚手架工具</p>
+<p>目前一些成熟的脚手架工具(但大都是为了一些特例项目类型服务的)：</p>
+<ul>
+<li><p>React项目 =&gt; create-react-app</p>
+</li>
+<li><p>Vue.js项目 =&gt; vue-cli</p>
+</li>
+<li><p>Angular项目 =&gt; angular-cli</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>​    这些工具的实现方式都大同小异，无非都是根据信息创建对应的项目基础结构。</p>
+<ul>
+<li>通用性脚手架工具: Yeoman</li>
+</ul>
+<h3 id="Yeoman"><a href="#Yeoman" class="headerlink" title="Yeoman"></a>Yeoman</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>Yeoman是基于Nodejs开发的模块，是一款用于创造现代化web应用的脚手架工具，不同于cli工具，Yeoman更像是一个脚手架运行平台，我们可以通过它，搭配不同的Generator，去创建任何类型的项目。</p>
+<h4 id="基于Yeoman搭建一个项目类型的脚手架"><a href="#基于Yeoman搭建一个项目类型的脚手架" class="headerlink" title="基于Yeoman搭建一个项目类型的脚手架"></a>基于Yeoman搭建一个项目类型的脚手架</h4><ul>
+<li>全局范围安装Yeoman</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn global add yo #or npm install yo --global</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>安装项目模板：<a href="https://yeoman.io/generators/" target="_blank" rel="noopener">Generator</a></p>
+<p> Yeoman 需要搭配特定的 Generator 使用，在这里使用的node_module，因此还需要全局安装 generator-node</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn global add generator-node # or npm install generator-node --global</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>通过yo运行对应的Generator</p>
+<p>使用 Yeoman 提供的yo命令，去运行generator-node生成器。运行特定的生成器，就是将generator-前缀去掉，直接使用yo运行后面的部分即可。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yo node</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yproject.png" alt></p>
+<p>项目结构，如下图所示：</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp1.png" alt></p>
+<h3 id="Sub-Generator"><a href="#Sub-Generator" class="headerlink" title="Sub Generator"></a><strong>Sub Generator</strong></h3><p>有时候我们不需要创建完整的项目结构，可能是在已有的项目基础上创建一些特定类型的文件，比如在原有项目中添加一些配置，如eslit,babel文件，都会有一些基础的文件，可以通过生成器自动生成，可以使用Yeoman提供的Sub Generator特性进行实现，具体实现是在项目中运行特定的Sub Generator命令，生成对应的文件</p>
+<ul>
+<li>使用 <a href="https://github.com/yeoman/generator-node" target="_blank" rel="noopener">generator-node</a>中的子集的生成器，即cli生成器，它可以生成cli应用所需要的一些文件。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yo node:cli # or yo + generator的名字 + : + Sub Generator的名字</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp2.png" alt></p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp3.png" alt></p>
+<ul>
+<li>通过以下命令，将这个模块连接到全局范围，使其可以作为全局的命令行模块进行使用。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm link # or yarn link</span><br></pre></td></tr></table></figure>
+<p>可以看到，此时会将新的模块生成的依赖包，存放到 npm 应用程序的本地数据文件夹中。</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp4.png" alt></p>
+<ul>
+<li>安装项目依赖。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn</span><br></pre></td></tr></table></figure>
+<ul>
+<li>全局访问生成的模块</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ my-<span class="built_in">module</span> --help</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp5.png" alt></p>
+<p>注意：并不是每一个 generator 都存在子集的生成器，需要以官方文档为准。</p>
+<h3 id="基于Yeoman自定义一个脚手架工具"><a href="#基于Yeoman自定义一个脚手架工具" class="headerlink" title="基于Yeoman自定义一个脚手架工具"></a>基于Yeoman自定义一个脚手架工具</h3><p>基于Yeoman自定义一个脚手架工具，这个脚手架工具通常用来搭建项目类型的脚手架。实现上其实也就是自定义Yeoman的Generator，在这个过程中我们需要准备自己的脚手架模板项目并编写自己的generator模块。与Plop一样，相对于完全自定义实现脚手架脚本 / 工具而言，使用Yeoman虽然不能实现完全的自定义，但在它的规范下编写脚本可以调用它封装好的Api，可以简化脚本的编写。这让我们能够<strong>更加关注任务本身，而无需关注过多任务的实现细节</strong>，进而提高开发效率。</p>
+<p><strong>命名规范</strong></p>
+<p>  如果命名不规范，那么后期 Yeoman 就无法找到所定义的生成器模块。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">generator-name</span><br></pre></td></tr></table></figure>
+<p>以自定义Vue Generator为例：</p>
+<ul>
+<li>创建generator-eline-vue文件夹，并创建及初始化package.json包管理文件，以及安装yeoman-generator模块</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir generator-eline-vue</span><br><span class="line"></span><br><span class="line"> $ cd generator-eline-vue</span><br><span class="line"></span><br><span class="line"> $ yarn init # or npm init</span><br><span class="line"></span><br><span class="line"> $ yarn add yeoman-generator # or npm install yeoman-generator -D</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>将 vue中生成的目录结构，拷贝到Generator中，使其作为模板文件存在，如下图所示：</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue1.png" alt></p>
+</li>
+<li><p>根据自定义 Generator 步骤，在 index.js 入口文件中，解析项目模板创建项目。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此文件作为Generator的核心入口</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 需要导出一个继承自Yeoman Generator 的类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Yeoman Generator 在工作时会自动调动我们在此类型中定义的一些生命周期方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们在这些方法中可以通过调用父类提供的一些工具方法实现一些功能，例如文件写入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Generator = <span class="built_in">require</span>(<span class="string">'yeoman-generator'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发起命令行交互的询问，使用generator中的prompting方法</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">Generator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    prompting () &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// yeoman在询问用户环节会自动调用此方法</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 在此方法中可以调用父类的prompt()方法发出对用户的命令询问</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 接受一个数字参数，数组的每一项都是一个问题对象</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.prompt ([ <span class="comment">//返回一个promise对象（是一个promise方法）</span></span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//还用用户输入的方式，让用户提交信息</span></span><br><span class="line"></span><br><span class="line">                type: <span class="string">'input'</span>,</span><br><span class="line"></span><br><span class="line">                <span class="comment">//最终得到结果的一个键</span></span><br><span class="line"></span><br><span class="line">                name: <span class="string">'name'</span>,</span><br><span class="line"></span><br><span class="line">                <span class="comment">//在界面中给用户提示，即问题</span></span><br><span class="line"></span><br><span class="line">                message: <span class="string">'Your project name'</span>,</span><br><span class="line"></span><br><span class="line">                <span class="comment">//appname为项目生成目录名称</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">default</span>: <span class="keyword">this</span>.appname</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 用户输入之后的结果</span></span><br><span class="line"></span><br><span class="line">        ]).then(<span class="function"><span class="params">answers</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 以对象的形式出现</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// answers = &gt;&#123; name:'user input value'&#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.answers = answers</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    writing ()&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Yeoman 自动在生成文件阶段调用writing方法</span></span><br><span class="line"></span><br><span class="line">         <span class="keyword">const</span> templates = [</span><br><span class="line"></span><br><span class="line">              <span class="string">'.browserslistrc'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'.editorconfig'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'.env.development'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'.env.production'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'.eslintrc.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'.gitignore'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'babel.config.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'package.json'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'postcss.config.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'README.md'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'public/favicon.ico'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'public/index.html'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/App.vue'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/main.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/router.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/assets/logo.png'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/components/HelloWorld.vue'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/store/actions.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/store/getters.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/store/index.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/store/mutations.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/store/state.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/utils/request.js'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/views/About.vue'</span>,</span><br><span class="line"></span><br><span class="line">              <span class="string">'src/views/Home.vue'</span></span><br><span class="line"></span><br><span class="line">          ]</span><br><span class="line"></span><br><span class="line">        templates.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// item每个文件路径</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 利用fs的copyTpl方法：解析ejs模板文件后放入目标路径下</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// copyTpl(模板文件路径，输出目标路径，模板数据上下文)</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.fs.copyTpl(</span><br><span class="line"></span><br><span class="line">                <span class="keyword">this</span>.templatePath(item),</span><br><span class="line"></span><br><span class="line">                <span class="keyword">this</span>.destinationPath(item),</span><br><span class="line"></span><br><span class="line">                <span class="keyword">this</span>.answers</span><br><span class="line"></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过以下命令，将这个模块连接到全局范围，使其可以作为全局的命令行模块进行使用。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm link # or yarn link</span><br></pre></td></tr></table></figure>
+<p>可以看到，此时会将新的模块生成的依赖包，存放到npm应用程序的本地数据文件夹中。</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue2.png" alt></p>
+<p>*执行 yeoman 操作，创建一个跟模板相同的新项目</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yo eline-vue</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将generator模块发布到GitHub和npm中</li>
+</ul>
+<ol>
+<li><p>在发布之前，首先将项目的源代码托管到公开的代码仓库里面，这里我们使用GitHub。</p>
+<p>这里就不在介绍，具体可参考<a href="https://blog.csdn.net/zimeng303/article/details/109763449" target="_blank" rel="noopener">GIT关联本地仓库与远端仓库</a></p>
+</li>
+<li><p>在命令行界面输入发布命令，需要确保在npm中有注册账号。</p>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn publish # or npm publish</span><br></pre></td></tr></table></figure>
+<p>发布成功后可以去npm官网，查看刚刚发布的模块，如下图所示：</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue3.png" alt></p>
+<p>需要注意：若使用淘宝的镜像资源，则会报错下面的错误，这是由于淘宝镜像是只读的，不能将模块进行发布</p>
+<ul>
+<li>可以改变镜像资源</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm config <span class="keyword">set</span> registry https://registry.yarnpkg.org  # yarn 镜像源</span><br><span class="line"></span><br><span class="line">$ npm config <span class="keyword">set</span> registry https://registry.npmjs.org # node 默认镜像源</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在命令后面，直接跟上相关的镜像资源</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ yarn publish --registry-https:<span class="comment">//registry.yarnpkg.com # yarn 镜像源</span></span><br><span class="line"></span><br><span class="line"> $ yarn publish --registry-https:<span class="comment">//registry.npmjs.org # node 默认镜像源</span></span><br></pre></td></tr></table></figure>
+<p>发布报错时候可以参考<a href="https://blog.csdn.net/zimeng303/article/details/109770042" target="_blank" rel="noopener">yarn publish 报错</a>和<a href="https://coder5.blog.csdn.net/article/details/110109958" target="_blank" rel="noopener">npm发布包</a></p>
+<h3 id="基于Plop搭建单-多文件类型的脚手架"><a href="#基于Plop搭建单-多文件类型的脚手架" class="headerlink" title="基于Plop搭建单 / 多文件类型的脚手架"></a>基于Plop搭建单 / 多文件类型的脚手架</h3><h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><p>plop是一个在日常开发当中非常值得且频繁使用的小工具，在我们碰到需要搭建一个单/多文件类型的脚手架需求，比如搭建一个react组件脚手架（需要创建一个.js模板文件、一个.css模板文件以及一个.test.js模板文件），Plop就会是一个不错的助手。相对于完全自定义实现脚手架脚本/工具而言，使用Plop虽然不能实现完全的自定义，但在它的规范下编写脚本可以调用它封装好的Api，实现配置化的脚手架工具。这让我们能够更加关注任务本身，而无需关注过多任务的实现细节，进而提高开发效率。</p>
+<p>接下来主要关注下Plop自动化搭建脚手架的工作流程，具体的使用细节查看官方文档<a href="https://github.com/plopjs/plop" target="_blank" rel="noopener">Plop</a></p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p>这里以react为例，集成Plop。</p>
+<ol>
+<li>创建react项目</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-react-app my-react-app</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>将 plop 模块作为项目开发依赖安装</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add plop --dev # or npm install plop -D</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在项目根目录下，新建一个 plopfile.js 文件，定义 Plop 脚手架任务</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Plop 入口文件，需要导出一个函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此函数接收一个 plop对象，并且提供了一系列的工具函数，用于创建生成器任务</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">plop</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * setGenerator(生成器的名称,生成器的配置选项)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     */</span> </span><br><span class="line"></span><br><span class="line">    plop.setGenerator(<span class="string">'component'</span>, &#123;</span><br><span class="line"></span><br><span class="line">        description: <span class="string">'create a component'</span>,</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 指定Generator在执行时，发出的命令行问题</span></span><br><span class="line"></span><br><span class="line">        prompts: [ </span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                type: <span class="string">'input'</span>,</span><br><span class="line"></span><br><span class="line">                name: <span class="string">'name'</span>,</span><br><span class="line"></span><br><span class="line">                message: <span class="string">'component name'</span>,</span><br><span class="line"></span><br><span class="line">                <span class="keyword">default</span>: <span class="string">'MyComponent'</span>  </span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        ], </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 完成命令行交互过后，需要执行的动作,数组中的每一个对象，都表示一个动作对象, 可以创建多个模板</span></span><br><span class="line"></span><br><span class="line">            &#123;   </span><br><span class="line"></span><br><span class="line">                <span class="comment">// type指定动作的类型，add代表添加一个全新的文件</span></span><br><span class="line"></span><br><span class="line">                type: <span class="string">'add'</span>, </span><br><span class="line"></span><br><span class="line">                <span class="comment">// 文件输出位置</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 可以通过&#123;&#123;&#125;&#125;插值表达式的形式，去动态插入刚才用户输入的数据</span></span><br><span class="line"></span><br><span class="line">                path: <span class="string">'src/components/&#123;&#123;name&#125;&#125;/&#123;&#123;name&#125;&#125;.js'</span>,</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 模板文件位置</span></span><br><span class="line"></span><br><span class="line">                templateFile: <span class="string">'plop-templates/components.hbs'</span></span><br><span class="line"></span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                type: <span class="string">'add'</span>,</span><br><span class="line"></span><br><span class="line">                path: <span class="string">'src/components/&#123;&#123;name&#125;&#125;/&#123;&#123;name&#125;&#125;.css'</span>,</span><br><span class="line"></span><br><span class="line">                templateFile: <span class="string">'plop-templates/components.css.hbs'</span></span><br><span class="line"></span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                type: <span class="string">'add'</span>,</span><br><span class="line"></span><br><span class="line">                path: <span class="string">'src/components/&#123;&#123;name&#125;&#125;/&#123;&#123;name&#125;&#125;.test.js'</span>,</span><br><span class="line"></span><br><span class="line">                templateFile: <span class="string">'plop-templates/components.test.hbs'</span></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>创建对应的模板文件，模板文件采用Handlebars模板引擎进行书写，一般放置在根目录下的plop-templates下</li>
+</ol>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/p0.png" alt></p>
+<p><strong>components.hbs</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'React'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">    &lt;div className=<span class="string">"&#123;&#123;name&#125;&#125;"</span>&gt;</span><br><span class="line">        &lt;h1&gt;&#123;&#123;name&#125;&#125; Component&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>components.css.hbs</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.&#123;&#123;name&#125;&#125; &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>components.test.hbs</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; render, screen &#125; <span class="keyword">from</span> <span class="string">'@testing-library/react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;&#123;name&#125;&#125; <span class="keyword">from</span> <span class="string">'./&#123;&#123;name&#125;&#125;'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test(<span class="string">'renders learn react link'</span>, () =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  render(&lt;&lt;name&gt;&gt; /&gt;);</span><br><span class="line"></span><br><span class="line">  const linkElement = screen.getByText(/learn react/i);</span><br><span class="line"></span><br><span class="line">  expect(linkElement).toBeInTheDocument();</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>在安装 plop 时，Plop 提供了一个 CLI 的应用程序，由于yarn会自动找到node_modules下的bin目录下的命令行工具，所以可以通过 yarn 去启动这个程序</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn plop component # yarn plop 生成器的名称</span><br></pre></td></tr></table></figure>
+<p>执行结果，如下图所示：</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/plop1.png" alt></p>
+<p>执行成功后，我们可以去对应的文件夹下，找到生成的文件，如下图所示：</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/p2.png" alt></p>
+<h3 id="脚手架工作原理"><a href="#脚手架工作原理" class="headerlink" title="脚手架工作原理"></a>脚手架工作原理</h3><p>通过前面对脚手架工具的介绍，我们不难发现，大部分脚手架的工作原理都很简单，无外乎就是启动之后，它会自动的询问一些预设的问题，然后将回答的结果结合一些模板文件生成一个项目的结构，我们都知道脚手架工具就是一个 node cli 的应用，去创建脚手架工具，就是创建cli的应用，接下来通过nodejs开发一个小型的脚手架工具，在深入体会下脚手架工作的过程</p>
+<ol>
+<li><p>通过 在package.json 中添加属性bin，设置入口文件，用于指定CLI应用的入口文件</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j1.png" alt></p>
+</li>
+<li><p>编写 cli.js 文件,与以往的入口文件不同的，Node CLI 应用入口文件必须要有特定的文件头<code>#!/usr/bin/env node</code>，如果是Linux或者macOS系统下还需要修改此文件的读写权限为755</p>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  使用inquirer模块实现用户交互</span></span><br><span class="line"></span><br><span class="line">$ yarn add inquirer # or npm install inquirer</span><br><span class="line"></span><br><span class="line"><span class="comment">//  使用ejs模块进行文件渲染</span></span><br><span class="line"></span><br><span class="line">$ yarn add ejs # or npm install ejs</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Node CLI 应用入口文件必须要有这样的文件头</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果是Linux或者macOS系统下还需要修改此文件的读写权限为 755</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体就是通过chmod 755 cli.js 实现参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 脚手架的工作过程</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.通过命令行交互询问用户问题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.根据用户回答生成文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 发起命令行交互询问</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path=<span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fs =<span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> inquirer= <span class="built_in">require</span>(<span class="string">'inquirer'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ejs =<span class="built_in">require</span>(<span class="string">'ejs'</span>)</span><br><span class="line"></span><br><span class="line">inquirer.prompt([</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        type:<span class="string">'input'</span>,</span><br><span class="line"></span><br><span class="line">        name:<span class="string">'name'</span>,</span><br><span class="line"></span><br><span class="line">        message:<span class="string">'project name'</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">]).then(<span class="function"><span class="params">answers</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据用户回答生成文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模板目录</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tmplDir=path.join(__dirname,<span class="string">'templates'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 目标目录 命令行在哪个目录去执行就是哪个路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//process.cwd() 方法会返回 Node.js 进程的当前工作目录。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> destDir=process.cwd() </span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果实在当前项目运行npm init，生成的项目结构的路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// const destDir=$&#123;process.cwd()&#125;/newProject</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将模板下的文件全部转换到目标目录 files相对路径</span></span><br><span class="line"></span><br><span class="line">fs.readdir(tmplDir,(err,files)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">  files.forEach(<span class="function"><span class="params">file</span>=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过模板引擎渲染文件 renderFile(文件绝对路径，文件数据上下文，渲染成功后的函数)</span></span><br><span class="line"></span><br><span class="line">  ejs.renderFile(path.join(tmplDir,file),answers,(err,result)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(err) <span class="keyword">throw</span> err</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将结果写入目标文件路径</span></span><br><span class="line"></span><br><span class="line">      fs.writeFileSync(path.join(destDir,file),result)</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>创建模板,这里主要是关注脚手架的工作过程，不需要太过关系模板里面有什么,创建一个简单的html和css文件</p>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j2.png" alt></p>
+</li>
+<li><p>执行脚本,生成项目结构</p>
+</li>
+</ol>
+<ul>
+<li>在新文件中</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sample-scaffolding</span><br><span class="line"></span><br><span class="line">? project name new-project  # 项目名称</span><br><span class="line"></span><br><span class="line">? project name <span class="keyword">new</span>-project</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j3.png" alt></p>
+<ul>
+<li>在当前项目中,生成的文件会在newProject文件中</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$  npm run init</span><br><span class="line"></span><br><span class="line">? project name new-project  # 项目名称</span><br><span class="line"></span><br><span class="line">? project name <span class="keyword">new</span>-project</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j4.png" alt></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/zimeng303/article/details/110037847" target="_blank" rel="noopener">浅谈前端工程化</a></p>
+<p><a href="https://blog.csdn.net/jw2268136570/article/details/110731957" target="_blank" rel="noopener">前端工程化之脚手架</a></p>
+<p><a href="https://github.com/plopjs/plop" target="_blank" rel="noopener">plop</a></p>
+<p><a href="https://github.com/yeoman/generator-node" target="_blank" rel="noopener">yeoman/generator-node</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端工程化/" rel="tag"># 前端工程化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/27/vue3-0-初探/" rel="next" title="vue3.0 初探">
+                <i class="fa fa-chevron-left"></i> vue3.0 初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="Eline">
+            
+              <p class="site-author-name" itemprop="name">Eline</p>
+              <p class="site-description motion-element" itemprop="description">Web前端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Eline302" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端工程化"><span class="nav-number">1.</span> <span class="nav-text">前端工程化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚手架工具"><span class="nav-number">2.</span> <span class="nav-text">脚手架工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概要"><span class="nav-number">2.1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚手架工具的作用"><span class="nav-number">2.2.</span> <span class="nav-text">脚手架工具的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的脚手架工具"><span class="nav-number">2.3.</span> <span class="nav-text">常用的脚手架工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yeoman"><span class="nav-number">2.4.</span> <span class="nav-text">Yeoman</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">2.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于Yeoman搭建一个项目类型的脚手架"><span class="nav-number">2.4.2.</span> <span class="nav-text">基于Yeoman搭建一个项目类型的脚手架</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sub-Generator"><span class="nav-number">2.5.</span> <span class="nav-text">Sub Generator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Yeoman自定义一个脚手架工具"><span class="nav-number">2.6.</span> <span class="nav-text">基于Yeoman自定义一个脚手架工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Plop搭建单-多文件类型的脚手架"><span class="nav-number">2.7.</span> <span class="nav-text">基于Plop搭建单 / 多文件类型的脚手架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本介绍"><span class="nav-number">2.7.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本使用"><span class="nav-number">2.7.2.</span> <span class="nav-text">基本使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚手架工作原理"><span class="nav-number">2.8.</span> <span class="nav-text">脚手架工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eline</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
