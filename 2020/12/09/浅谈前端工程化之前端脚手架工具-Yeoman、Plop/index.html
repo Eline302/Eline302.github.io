@@ -92,10 +92,6 @@
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yproject.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp1.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp2.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp3.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp4.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp5.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue1.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue2.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yvue3.png">
@@ -106,7 +102,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j2.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j3.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/j4.png">
-<meta property="og:updated_time" content="2020-12-09T04:27:26.691Z">
+<meta property="og:updated_time" content="2020-12-11T01:47:37.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈前端工程化之前端脚手架工具--Yeoman、Plop">
 <meta name="twitter:description" content="在日常开发中，我们经常使用脚手架工具来帮助我们创建项目，如vue-cli,create-react-app等，本文主要概述下什么是工程化，工程化主要解决的问题是什么，探讨如何使用Yeoman和Plop工具来搭建脚手架，最后来探讨下脚手架的基本原理。  前端工程化前端工程化是指遵循一定的标准和规范，通过工具去提高效率，降低成本的一种手段，近些年被广泛的关注和探讨，究其原因主要是因为前端应用功能要求">
@@ -513,29 +509,6 @@
 <p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yproject.png" alt></p>
 <p>项目结构，如下图所示：</p>
 <p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp1.png" alt></p>
-<h3 id="Sub-Generator"><a href="#Sub-Generator" class="headerlink" title="Sub Generator"></a><strong>Sub Generator</strong></h3><p>有时候我们不需要创建完整的项目结构，可能是在已有的项目基础上创建一些特定类型的文件，比如在原有项目中添加一些配置，如eslit,babel文件，都会有一些基础的文件，可以通过生成器自动生成，可以使用Yeoman提供的Sub Generator特性进行实现，具体实现是在项目中运行特定的Sub Generator命令，生成对应的文件</p>
-<ul>
-<li>使用 <a href="https://github.com/yeoman/generator-node" target="_blank" rel="noopener">generator-node</a>中的子集的生成器，即cli生成器，它可以生成cli应用所需要的一些文件。</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yo node:cli # or yo + generator的名字 + : + Sub Generator的名字</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp2.png" alt></p>
-<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp3.png" alt></p>
-<ul>
-<li>通过以下命令，将这个模块连接到全局范围，使其可以作为全局的命令行模块进行使用。</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm link # or yarn link</span><br></pre></td></tr></table></figure>
-<p>可以看到，此时会将新的模块生成的依赖包，存放到 npm 应用程序的本地数据文件夹中。</p>
-<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp4.png" alt></p>
-<ul>
-<li>安装项目依赖。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn</span><br></pre></td></tr></table></figure>
-<ul>
-<li>全局访问生成的模块</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ my-<span class="built_in">module</span> --help</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/12/09/浅谈前端工程化之前端脚手架工具-Yeoman、Plop/yp5.png" alt></p>
-<p>注意：并不是每一个 generator 都存在子集的生成器，需要以官方文档为准。</p>
 <h3 id="基于Yeoman自定义一个脚手架工具"><a href="#基于Yeoman自定义一个脚手架工具" class="headerlink" title="基于Yeoman自定义一个脚手架工具"></a>基于Yeoman自定义一个脚手架工具</h3><p>基于Yeoman自定义一个脚手架工具，这个脚手架工具通常用来搭建项目类型的脚手架。实现上其实也就是自定义Yeoman的Generator，在这个过程中我们需要准备自己的脚手架模板项目并编写自己的generator模块。与Plop一样，相对于完全自定义实现脚手架脚本 / 工具而言，使用Yeoman虽然不能实现完全的自定义，但在它的规范下编写脚本可以调用它封装好的Api，可以简化脚本的编写。这让我们能够<strong>更加关注任务本身，而无需关注过多任务的实现细节</strong>，进而提高开发效率。</p>
 <p><strong>命名规范</strong></p>
 <p>  如果命名不规范，那么后期 Yeoman 就无法找到所定义的生成器模块。</p>
@@ -830,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端工程化"><span class="nav-number">1.</span> <span class="nav-text">前端工程化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚手架工具"><span class="nav-number">2.</span> <span class="nav-text">脚手架工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概要"><span class="nav-number">2.1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚手架工具的作用"><span class="nav-number">2.2.</span> <span class="nav-text">脚手架工具的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的脚手架工具"><span class="nav-number">2.3.</span> <span class="nav-text">常用的脚手架工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yeoman"><span class="nav-number">2.4.</span> <span class="nav-text">Yeoman</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">2.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于Yeoman搭建一个项目类型的脚手架"><span class="nav-number">2.4.2.</span> <span class="nav-text">基于Yeoman搭建一个项目类型的脚手架</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sub-Generator"><span class="nav-number">2.5.</span> <span class="nav-text">Sub Generator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Yeoman自定义一个脚手架工具"><span class="nav-number">2.6.</span> <span class="nav-text">基于Yeoman自定义一个脚手架工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Plop搭建单-多文件类型的脚手架"><span class="nav-number">2.7.</span> <span class="nav-text">基于Plop搭建单 / 多文件类型的脚手架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本介绍"><span class="nav-number">2.7.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本使用"><span class="nav-number">2.7.2.</span> <span class="nav-text">基本使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚手架工作原理"><span class="nav-number">2.8.</span> <span class="nav-text">脚手架工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端工程化"><span class="nav-number">1.</span> <span class="nav-text">前端工程化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚手架工具"><span class="nav-number">2.</span> <span class="nav-text">脚手架工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概要"><span class="nav-number">2.1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚手架工具的作用"><span class="nav-number">2.2.</span> <span class="nav-text">脚手架工具的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的脚手架工具"><span class="nav-number">2.3.</span> <span class="nav-text">常用的脚手架工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yeoman"><span class="nav-number">2.4.</span> <span class="nav-text">Yeoman</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概述"><span class="nav-number">2.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于Yeoman搭建一个项目类型的脚手架"><span class="nav-number">2.4.2.</span> <span class="nav-text">基于Yeoman搭建一个项目类型的脚手架</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Yeoman自定义一个脚手架工具"><span class="nav-number">2.5.</span> <span class="nav-text">基于Yeoman自定义一个脚手架工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Plop搭建单-多文件类型的脚手架"><span class="nav-number">2.6.</span> <span class="nav-text">基于Plop搭建单 / 多文件类型的脚手架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本介绍"><span class="nav-number">2.6.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本使用"><span class="nav-number">2.6.2.</span> <span class="nav-text">基本使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚手架工作原理"><span class="nav-number">2.7.</span> <span class="nav-text">脚手架工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
