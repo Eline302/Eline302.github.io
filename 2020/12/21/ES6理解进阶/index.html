@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/12/21/ES6理解进阶/iterator.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/21/ES6理解进阶/obj.png">
 <meta property="og:image" content="http://yoursite.com/2020/12/21/ES6理解进阶/BigInt">
-<meta property="og:updated_time" content="2020-12-21T11:55:12.994Z">
+<meta property="og:updated_time" content="2020-12-21T12:00:36.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6理解进阶">
 <meta name="twitter:description" content="本文主要是学习ES6既ES2015一些新特征之后一些总结以及个人理解，介绍一些在日常开发中使用，来进一步提高我们在开发中的代码质量。  ECMAScript概述ECMAScript是一门脚本语言，一般缩写为ES，通常看做JavaScript的标准化规范，实际上JavaScript是ECMAScript的扩展语言，因为在ECMAScript中提供了最基本的语法，通俗来说就是约定了代码该如何编写，怎">
@@ -468,6 +468,8 @@
 <p>this的总结：</p>
 <ul>
 <li>沿着作用域上找最近的一个function（不是箭头函数），看这个function最终是怎样执行的</li>
+</ul>
+<ul>
 <li>普通函数this的执行取决于所属function的调用方式，而不是定义</li>
 <li>function调用一般分为一下几种情况：<ul>
 <li>作为函数调用，即foo() 指向全局对象(globalThis),注意严格模式问题，严格模式下是undefined</li>
@@ -481,17 +483,16 @@
 <h2 id="内置对象Proxy"><a href="#内置对象Proxy" class="headerlink" title="内置对象Proxy"></a>内置对象Proxy</h2><p>Vue3.0以前通过<code>Object.defineProperty()</code> 监视对象属性读写，捕获到对象的读写过程方法实现数据响应，从而完成数据的双向绑定，但是<code>Object.defineProperty</code>是一个相对比较昂贵的操作，因为它直接操作对象的属性，颗粒度比较小,V3.0中将它替换为ES6的<code>Proxy</code>，在目标对象之上架了一层拦截（可以抽象为门卫），代理的是对象而不是对象的属性，这样可以将原本对对象属性的操作变为对整个对象的操作，颗粒度变大,下面我们来具体了解下Proxy的使用：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Proxy实现属性的读写操作</span></span><br><span class="line"><span class="comment">// 定义一个person对象</span></span><br><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name:<span class="string">'tom'</span>,</span><br><span class="line">  age:<span class="string">'20'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Proxy(代理目标对象，代理处理的对象)</span></span><br><span class="line"><span class="keyword">const</span> personProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(person,&#123;</span><br><span class="line">  <span class="comment">// 监视属性的访问 get(代理目标对象，外部访问的属性名)</span></span><br><span class="line">  <span class="keyword">get</span>(target,property)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'get被访问了'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(target,property);</span><br><span class="line">    <span class="comment">// 判断属性名是否存在，不存在设置默认值,返回值作为外部访问属性得到的结果</span></span><br><span class="line">    <span class="keyword">return</span> property <span class="keyword">in</span>  target ? target[property] : <span class="string">'default'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//监视对象设置属性方法过程 set(代理的目标对象，外部访问的属性名，属性值)</span></span><br><span class="line">  <span class="keyword">set</span>(target,property,value)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'set被访问了'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(target,property,value);</span><br><span class="line">    <span class="comment">// 判断是否是数字</span></span><br><span class="line">    <span class="keyword">if</span>(property===<span class="string">'age'</span>)&#123;</span><br><span class="line">      <span class="keyword">if</span>(!<span class="built_in">Number</span>.isInteger(value))&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">`<span class="subst">$&#123;value&#125;</span> is not an int`</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 代理目标设置指定的属性</span></span><br><span class="line">    target[property]=value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">let</span> age= personProxy.age</span><br><span class="line"><span class="built_in">console</span>.log(age); <span class="comment">// 20</span></span><br><span class="line">personProxy.gender=<span class="literal">true</span></span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">//&#123; name: 'tom', age: '20', gender: true &#125;</span></span><br></pre></td></tr></table></figure>
 <p><strong>Proxy对比Object.defineProperty()</strong></p>
-<ul>
-<li>1：<code>Proxy</code>可以监视读写以外的操作，如delete操作，对象中方法调用等,defineProperty只能监视对象属性的读写</li>
-</ul>
+<ol>
+<li><code>Proxy</code>可以监视读写以外的操作，如delete操作，对象中方法调用等,defineProperty只能监视对象属性的读写</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name:<span class="string">'tom'</span>,</span><br><span class="line">  age:<span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> personProxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(person,&#123;</span><br><span class="line">  deleteProperty(target,property)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'delete'</span>,property);</span><br><span class="line">    <span class="keyword">delete</span> target[property]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"> <span class="keyword">delete</span> personProxy.age <span class="comment">//delete age</span></span><br><span class="line"> <span class="built_in">console</span>.log(person); <span class="comment">//&#123; name: 'tom' &#125;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>2：Proxy 更好的支持数组对象的监视，例如重写数组方法的操作，通过自定义方法去覆盖原型对象上的方法，以此来劫持对应方法的调用过程</li>
-</ul>
+<p>2.<code>Proxy</code> 更好的支持数组对象的监视，例如重写数组方法的操作，通过自定义方法去覆盖原型对象上的方法，以此来劫持对应方法的调用过程</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list = []</span><br><span class="line"><span class="keyword">const</span> listProxy =<span class="keyword">new</span> <span class="built_in">Proxy</span>(list,&#123;</span><br><span class="line">  <span class="keyword">set</span>(target,property,value)&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'set'</span>,target,property,value);</span><br><span class="line">      target[property]=value</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">//表示设置成功</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>3：Proxy 不需要侵入对象<br>Proxy是以非侵入的方式监管了对象的读写，就是说一个已经定义好的对象，不需要对对象本身去做任何的操作，就可以监视到他内部成员的读写，而Object.defineProperty要求必需通过特定的方式单独去定义对象中需要被监视的属性，对一个已存在的对象如果要去监视它的属性，我们需要需要做很多额外的操作</li>
-</ul>
+<ol start="3">
+<li><code>Proxy</code>不需要侵入对象</li>
+</ol>
+<p>Proxy是以非侵入的方式监管了对象的读写，就是说一个已经定义好的对象，不需要对对象本身去做任何的操作，就可以监视到他内部成员的读写，而Object.defineProperty要求必需通过特定的方式单独去定义对象中需要被监视的属性，对一个已存在的对象如果要去监视它的属性，我们需要需要做很多额外的操作</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object.defineProperty实现对象的读写</span></span><br><span class="line"><span class="keyword">const</span> person = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;</span><br><span class="line">  <span class="keyword">get</span> () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'name 被访问'</span>)</span><br><span class="line">    <span class="keyword">return</span> person._name</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">set</span> (value) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'name 被设置'</span>)</span><br><span class="line">    person._name = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'age'</span>, &#123;</span><br><span class="line">  <span class="keyword">get</span> () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'age 被访问'</span>)</span><br><span class="line">    <span class="keyword">return</span> person._age</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">set</span> (value) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'age 被设置'</span>)</span><br><span class="line">    person._age = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">person.name = <span class="string">'jack'</span></span><br><span class="line">person.age=<span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name)</span><br><span class="line"><span class="built_in">console</span>.log(person.age);</span><br></pre></td></tr></table></figure>
 <h2 id="内置对象Refelect"><a href="#内置对象Refelect" class="headerlink" title="内置对象Refelect"></a>内置对象Refelect</h2><p>Refelect是JavaScript的一个新内置对象（非函数类型对象），与Math对象上挂载了很多用于数学处理方面的方法一样，Refelect对象身上挂在了一套用于操作对象的方法,Refelect成员方法就是Proxy处理对象的默认实现。需要注意的是Refelect属于一个静态类，不能通过new的方式构建实例对象，只能去调用静态类中的方法，如Refelect.get()</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj =&#123;</span><br><span class="line">  name:<span class="string">'Tom'</span>,</span><br><span class="line">  age:<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Proxy处理对象内部默认实现的逻辑就是调用了refelect的独享中对应的方法</span></span><br><span class="line"><span class="keyword">const</span> proxy=<span class="keyword">new</span> <span class="built_in">Proxy</span>(obj,&#123;</span><br><span class="line">  <span class="keyword">get</span>(target,property)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target,property)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(proxy.name);</span><br></pre></td></tr></table></figure>
@@ -760,6 +761,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/12/23/浅谈前端模块化开发/" rel="prev" title="浅谈前端模块化开发">
+                浅谈前端模块化开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -837,7 +842,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -848,7 +853,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -859,7 +864,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
