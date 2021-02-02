@@ -89,18 +89,18 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/DOM-res.png">
 <meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode.png">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(13">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode1.png">
 <meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/createElm.png">
 <meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/patchVNode.png">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(13">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(2">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(3">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(4">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(5">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(10">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(6">
-<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode%20(7">
-<meta property="og:updated_time" content="2021-02-02T09:24:03.991Z">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode1.png">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode2.png">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode3.png">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode4.png">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode5.png">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode6.png">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode7.png">
+<meta property="og:image" content="http://yoursite.com/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode8.png">
+<meta property="og:updated_time" content="2021-02-02T09:57:57.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Virtual DOM理解与Snabbdom源码分析">
 <meta name="twitter:description" content="本文主要讲解什么是 Virtual DOM 以及 Virtual DOM 的作用，通过一个 Virtual DOM 库 Snabbdom 真正了解什么是 Virtual DOM ，以及 Diff 算法的实现和 key 的作用。  Virtual DOM 和 DOMDOM（Document Object Model——文档对象模型）是用来呈现以及与任意 HTML 或 XML文档交互的API。DOM">
@@ -312,7 +312,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-02-02T17:24:03+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2021-02-02T17:57:57+08:00">
                 2021-02-02
               </time>
             
@@ -512,7 +512,7 @@
 <li>如果新的 VNode 有 children，判断子节点是否有变化，判断子节点的过程使用的就是 <strong>diff 算法</strong></li>
 <li>diff 过程只进行同层级比较</li>
 </ul>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (13" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode1.png" alt="diff"></p>
 <p>VNode中为什么要使用Diff算法?<br>渲染真实DOM的开销很大，DOM操作会引起浏览器的重拍和重绘，即浏览器重新渲染，性能消耗比较大<br>diff 算法核心：当数据变化后，不直接操作DOM，用js对象描述真实DOM，当数据变化后会先比较js对象是否发生变化，找到所有变化的位置，最小化的更新变化的位置，从而提高性能</p>
 <p>接下来我们看下patch函数是如果创建的？</p>
 <p>从之前的示例中我们可以得知，patch函数是通过调用init函数得到的，我们先来探讨一下init函数。</p>
@@ -613,7 +613,7 @@
 <ul>
 <li>要对比两棵树的差异，我们可以取第一棵树的每一个节点依次和第二课树的每一个节点比较，但是这样的时间复杂度为 O(n^3)(传统的diff)<br>传统的diff算法是：将两棵树中所有节点一一对比需要O(n^2)，在加上更新（移动，创建，删除）时需要遍历一次，所以是O(n^3)</li>
 <li><p>因此只需要找<strong>同级别的子节点依次比较</strong>，然后再找下一级别的节点比较，这样算法的时间复杂度为 O(n)<br>snbbdom根据DOM的特点对传统的diff算法做了优化，DOM操作时候会很少跨级别操作节点，值对比同级别的节点，n个节点需要对比n次，时间复杂度为O(n)</p>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (13" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode1.png" alt="diff"></p>
 </li>
 <li><p>在进行同级别节点比较的时候，首先会对新老节点数组的开始和结尾节点设置标记索引，遍历的过程中移动索引</p>
 </li>
@@ -624,7 +624,7 @@
 <li>oldStartVnode / oldEndVnode (旧开始节点 / 新结束节点)</li>
 <li>oldEndVnode / newStartVnode (旧结束节点 / 新开始节点)</li>
 </ul>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (2" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode2.png" alt="diff"></p>
 </li>
 <li><p>开始节点和结束节点比较，这两种情况类似</p>
 <ul>
@@ -637,7 +637,7 @@
 <li>调用 patchVnode() 对比和更新节点</li>
 <li>把旧开始和新开始索引往后移动  oldStartIdx++ / oldEndIdx++</li>
 </ul>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (3" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode3.png" alt="diff"></p>
 </li>
 <li><p>oldStartVnode / newEndVnode (旧开始节点 / 新结束节点) 相同</p>
 <ul>
@@ -647,7 +647,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (4" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode4.png" alt="diff"></p>
 </li>
 <li><p>oldEndVnode / newStartVnode (旧结束节点 / 新开始节点) 相同</p>
 <ul>
@@ -657,7 +657,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (5" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode5.png" alt="diff"></p>
 </li>
 <li><p>如果不是以上四种情况</p>
 <ul>
@@ -676,7 +676,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (10" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode6.png" alt="diff"></p>
 </li>
 <li><p>循环结束</p>
 <ul>
@@ -685,10 +685,10 @@
 </ul>
 </li>
 <li><p>如果老节点的数组先遍历完(oldStartIdx &gt; oldEndIdx)，说明新节点有剩余，把剩余节点批量插入到右边</p>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (6" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode7.png" alt="diff"></p>
 </li>
 <li><p>如果新节点的数组先遍历完(newStartIdx &gt; newEndIdx)，说明老节点有剩余，把剩余节点批量删除</p>
-<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode (7" alt="diff">.png)</p>
+<p><img src="/2021/01/21/Virtual-DOM理解与Snabbdom源码分析/vnode8.png" alt="diff"></p>
 </li>
 </ul>
 <p>这里有一个视频通过动画的形式讲解了Diff算法：<a href="https://www.bilibili.com/video/BV1b5411V7i3" target="_blank" rel="noopener">图解 Vue.js Virtual DOM 的 Diff 算法核心</a></p>
@@ -723,7 +723,7 @@
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateAttrs</span>(<span class="params">oldVnode: VNode, vnode: VNode</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key: string, <span class="attr">elm</span>: Element = vnode.elm <span class="keyword">as</span> Element,</span><br><span class="line">        oldAttrs = (oldVnode.data <span class="keyword">as</span> VNodeData).attrs,</span><br><span class="line">        attrs = (vnode.data <span class="keyword">as</span> VNodeData).attrs;</span><br><span class="line">    <span class="comment">// 新老节点没有 attrs 属性,返回</span></span><br><span class="line">    <span class="keyword">if</span> (!oldAttrs &amp;&amp; !attrs) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 新老节点的 attrs 属性相同,返回</span></span><br><span class="line">    <span class="keyword">if</span> (oldAttrs === attrs) <span class="keyword">return</span>;</span><br><span class="line">    oldAttrs = oldAttrs || &#123;&#125;;</span><br><span class="line">    attrs = attrs || &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// update modified attributes, add new attributes</span></span><br><span class="line">    <span class="comment">// 遍历新节点的属性</span></span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> attrs) &#123;</span><br><span class="line">        <span class="comment">// 新老节点的属性值</span></span><br><span class="line">        <span class="keyword">const</span> cur = attrs[key];</span><br><span class="line">        <span class="keyword">const</span> old = oldAttrs[key];</span><br><span class="line">        <span class="comment">// 如果新老节点的属性值不同</span></span><br><span class="line">        <span class="keyword">if</span> (old !== cur) &#123;</span><br><span class="line">            <span class="comment">// 布尔类型值的处理</span></span><br><span class="line">            <span class="keyword">if</span> (cur === <span class="literal">true</span>) &#123;</span><br><span class="line">                elm.setAttribute(key, <span class="string">""</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur === <span class="literal">false</span>) &#123;</span><br><span class="line">                elm.removeAttribute(key);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// xChar -&gt; x</span></span><br><span class="line">                <span class="comment">// &lt;svg xmlns="http://www.w3.org/2000/scg"&gt;</span></span><br><span class="line">                <span class="keyword">if</span> (key.charCodeAt(<span class="number">0</span>) !== xChar) &#123;</span><br><span class="line">                    elm.setAttribute(key, cur);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.charCodeAt(<span class="number">3</span>) === colonChar) &#123;</span><br><span class="line">                    <span class="comment">// colonChar -&gt; :</span></span><br><span class="line">                    <span class="comment">// Assume xml namespace</span></span><br><span class="line">                    elm.setAttributeNS(xmlNS, key, cur);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (key.charCodeAt(<span class="number">5</span>) === colonChar) &#123;</span><br><span class="line">                    <span class="comment">// Assume xlink namespace</span></span><br><span class="line">                    <span class="comment">// &lt;svg xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</span></span><br><span class="line">                    elm.setAttributeNS(xlinkNS, key, cur);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    elm.setAttribute(key, cur);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// remove removed attributes</span></span><br><span class="line">    <span class="comment">// use `in` operator since the previous `for` iteration uses it (.i.e. add even attributes with undefined value)</span></span><br><span class="line">    <span class="comment">// the other option is to remove all attributes with value == undefined</span></span><br><span class="line">    <span class="comment">// 如果老节点的属性在新节点中不存在,移除</span></span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> oldAttrs) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!(key <span class="keyword">in</span> attrs)) &#123;</span><br><span class="line">            elm.removeAttribute(key);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Introduction" target="_blank" rel="noopener">MDN DOM概述</a><br><a href="https://www.jianshu.com/p/f4cca5ce055a" target="_blank" rel="noopener">算法的时间复杂度</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Introduction" target="_blank" rel="noopener">MDN DOM概述</a><br><a href="https://www.jianshu.com/p/f4cca5ce055a" target="_blank" rel="noopener">算法的时间复杂度</a><br><a href="https://blog.csdn.net/jw2268136570/article/details/112715755" target="_blank" rel="noopener">snabbdom源码分析</a></p>
 
       
     </div>
