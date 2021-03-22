@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="NuxtJS,自动化部署,本地部署,">
+  <meta name="keywords" content=",,,">
 
 
 
@@ -81,53 +81,53 @@
 
 <meta name="description" content="本章节以realworld-nuxtjs项目为例，将项目部署在ucloud服务器上，主要学习项目的最简单的部署方式、使用PM2启动Node服务、自动化部署方式，以及在部署过程中遇到的问题和解决方案。  项目打包项目部署的前提是打包，Nuxt.js 提供了一系列常用的命令, 用于开发或发布部署   可以将这些命令添加至 package.json 中 12345&quot;scripts&quot;: &amp;#123;">
 <meta name="keywords" content="NuxtJS,自动化部署,本地部署">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="NuxtJS项目的本地部署和自动化部署">
-<meta property="og:url" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/index.html">
+<meta property="og:url" content="http://yoursite.com/zzzz/NuxtJS项目的本地部署和自动化部署.html">
 <meta property="og:site_name" content="Eline blog">
 <meta property="og:description" content="本章节以realworld-nuxtjs项目为例，将项目部署在ucloud服务器上，主要学习项目的最简单的部署方式、使用PM2启动Node服务、自动化部署方式，以及在部署过程中遇到的问题和解决方案。  项目打包项目部署的前提是打包，Nuxt.js 提供了一系列常用的命令, 用于开发或发布部署   可以将这些命令添加至 package.json 中 12345&quot;scripts&quot;: &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n1.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n2.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n3.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n4.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n5.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n6.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n7.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n8.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n9.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n10.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n11.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n12.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n13.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n14.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n15.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n16.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n17.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n18.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n19.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n20.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n21.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n22.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n23.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n24.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n25.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n26.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n27.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n30.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n28.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n31.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n29.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n32.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n33.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n34.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n35.png">
-<meta property="og:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n36.png">
-<meta property="og:updated_time" content="2021-03-22T01:50:57.867Z">
+<meta property="og:image" content="http://yoursite.com/zzzz/n1.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n2.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n3.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n4.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n5.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n6.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n7.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n8.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n9.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n10.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n11.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n12.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n13.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n14.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n15.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n16.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n17.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n18.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n19.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n20.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n21.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n22.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n23.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n24.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n25.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n26.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n27.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n30.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n28.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n31.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n29.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n32.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n33.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n34.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n35.png">
+<meta property="og:image" content="http://yoursite.com/zzzz/n36.png">
+<meta property="og:updated_time" content="2021-03-18T09:58:40.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NuxtJS项目的本地部署和自动化部署">
 <meta name="twitter:description" content="本章节以realworld-nuxtjs项目为例，将项目部署在ucloud服务器上，主要学习项目的最简单的部署方式、使用PM2启动Node服务、自动化部署方式，以及在部署过程中遇到的问题和解决方案。  项目打包项目部署的前提是打包，Nuxt.js 提供了一系列常用的命令, 用于开发或发布部署   可以将这些命令添加至 package.json 中 12345&quot;scripts&quot;: &amp;#123;">
-<meta name="twitter:image" content="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/n1.png">
+<meta name="twitter:image" content="http://yoursite.com/zzzz/n1.png">
 
 
 
@@ -157,7 +157,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/">
+  <link rel="canonical" href="http://yoursite.com/zzzz/NuxtJS项目的本地部署和自动化部署.html">
 
 
 
@@ -278,124 +278,28 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/16/NuxtJS项目的本地部署和自动化部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Eline">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Eline blog">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">NuxtJS项目的本地部署和自动化部署</h1>
-        
+	<h1 class="post-title" itemprop="name headline">NuxtJS项目的本地部署和自动化部署</h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-16T17:25:00+08:00">
-                2021-03-16
-              </time>
-            
 
-            
-              <span class="post-meta-divider">|</span>
-            
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-03-22T09:50:57+08:00">
-                2021-03-22
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vueJS/" itemprop="url" rel="index">
-                    <span itemprop="name">vueJS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <blockquote>
+      <div class="post-body">
+        
+        
+          <blockquote>
 <p>本章节以<a href="https://github.com/Eline302/realworld-nuxtjs/tags" target="_blank" rel="noopener">realworld-nuxtjs</a>项目为例，将项目部署在<a href="https://www.ucloud.cn/" target="_blank" rel="noopener">ucloud</a>服务器上，主要学习项目的最简单的部署方式、使用PM2启动Node服务、自动化部署方式，以及在部署过程中遇到的问题和解决方案。</p>
 </blockquote>
 <h2 id="项目打包"><a href="#项目打包" class="headerlink" title="项目打包"></a>项目打包</h2><p>项目部署的前提是打包，Nuxt.js 提供了一系列常用的<a href="https://www.nuxtjs.cn/guide/commands" target="_blank" rel="noopener">命令</a>, 用于开发或发布部署</p>
-<p> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n1.png" alt="命令"></p>
+<p> <img src="/zzzz/n1.png" alt="命令"></p>
 <p>可以将这些命令添加至 <code>package.json</code> 中</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "dev": "nuxt",</span><br><span class="line">  "build": "nuxt build",</span><br><span class="line">  "start": "nuxt start"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>这样可以通过 <code>npm run &lt;command&gt;</code> 来执行相应的命令。如:<code>npm run dev</code>表示以开发模式启动带热加载特性的 Nuxt 服务。</p>
@@ -403,10 +307,10 @@
 <p>提示: 要将参数传递给 npm 命令，您需要一个额外的<code>--</code>脚本名称(例如：<code>npm run dev --参数 --spa</code>)</p>
 </blockquote>
 <p>执行 <code>npm run build</code> 打包项目，打包后的文件存放在 <code>.nuxt/dist</code></p>
-<p> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n2.png" alt="dist"></p>
+<p> <img src="/zzzz/n2.png" alt="dist"></p>
 <h2 id="最简单的部署方式"><a href="#最简单的部署方式" class="headerlink" title="最简单的部署方式"></a>最简单的部署方式</h2><h3 id="配置-Host-Post"><a href="#配置-Host-Post" class="headerlink" title="配置 Host + Post"></a>配置 Host + Post</h3><p><code>nuxt.config.js</code>：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    server: &#123;</span><br><span class="line">        <span class="comment">// 设置成 0.0.0.0 监听所有的网卡地址</span></span><br><span class="line">        host: <span class="string">'0.0.0.0'</span>, <span class="comment">// 访问地址 default localhost</span></span><br><span class="line">        port: <span class="number">3000</span>       <span class="comment">// 端口号 port</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="压缩发布包"><a href="#压缩发布包" class="headerlink" title="压缩发布包"></a>压缩发布包</h3><p>把下面图中标识的文件，进行压缩(realworld-nuxtjs.zip)<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n3.png" alt="命令"></p>
+<h3 id="压缩发布包"><a href="#压缩发布包" class="headerlink" title="压缩发布包"></a>压缩发布包</h3><p>把下面图中标识的文件，进行压缩(realworld-nuxtjs.zip)<br> <img src="/zzzz/n3.png" alt="命令"></p>
 <ul>
 <li>.nuxt：Nuxt打包生成的资源文件</li>
 <li>static：项目静态资源</li>
@@ -415,24 +319,24 @@
 <li>package-lock.json：用于服务端第三方包的安装</li>
 </ul>
 <h3 id="把发布包传到服务端"><a href="#把发布包传到服务端" class="headerlink" title="把发布包传到服务端"></a>把发布包传到服务端</h3><ol>
-<li><p>查看服务器IP地址：（ucloud服务器为例）<br><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n4.png" alt="命令"></p>
+<li><p>查看服务器IP地址：（ucloud服务器为例）<br><img src="/zzzz/n4.png" alt="命令"></p>
 </li>
 <li><p>连接服务器(cmd 命令行、XShell、git …)</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@106.75.181.60  # ssh root@公网IP</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n5.png" alt="命令"></p>
+<p><img src="/zzzz/n5.png" alt="命令"></p>
 </li>
 <li>在服务器中创建realworld-nuxtjs文件，将打包后压缩的文件realworld-nuxtjs.zip传递到服务器中</li>
 </ol>
 <ul>
 <li><p>创建文件夹，并进入文件夹,查看当前文件的路径</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir realworld-nuxtjs</span><br><span class="line">$ cd realworld-nuxtjs/</span><br><span class="line"></span><br><span class="line"># 查看当前的目录路径path</span><br><span class="line">$ pwd</span><br></pre></td></tr></table></figure>
-<p>  <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n6.png" alt="命令"></p>
+<p>  <img src="/zzzz/n6.png" alt="命令"></p>
 </li>
 <li><p>执行 exit 命令退出服务器，或者新开一个 cmd 窗口，将压缩包上传到服务器</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># scp realworld-nuxtjs.zip root@xxx.xxx.xxx.xxx:path</span><br><span class="line">$ scp realworld-nuxtjs.zip root@<span class="number">106.75</span><span class="number">.181</span><span class="number">.60</span>:<span class="regexp">/root/</span>realworld-nuxtjs</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n7.png" alt="命令"></p>
+<p><img src="/zzzz/n7.png" alt="命令"></p>
 <h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><ul>
 <li><p>重新连接服务器，并进入压缩包存放的目录，进行解压</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@<span class="number">106.75</span><span class="number">.181</span><span class="number">.60</span></span><br><span class="line">$ cd realworld-nuxtjs/</span><br><span class="line">$ unzip realworld-nuxtjs.zip</span><br></pre></td></tr></table></figure>
@@ -442,12 +346,12 @@
 </li>
 </ul>
 <h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
-<p> 安装成功后如图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n8.png" alt="命令"></p>
+<p> 安装成功后如图所示：<br> <img src="/zzzz/n8.png" alt="命令"></p>
 <p>需要注意：如果没有安装 node，先要在服务器上安装 node，否则会报错，详情查看服务器端node安装章节</p>
 <h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
-<p> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n9.png" alt="命令"></p>
-<p> 使用<code>http://106.75.181.60:3000/</code>(公网IP:端口号)在浏览器中查看部署成功项目如下所示：<br>  <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n10.png" alt="命令"></p>
-<p>当在浏览器中访问<code>106.75.181.60:3000</code>报如下错误时候，表明3000端口并未开放，需要在服务器中开放 3000 端口<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n11.png" alt="命令"></p>
+<p> <img src="/zzzz/n9.png" alt="命令"></p>
+<p> 使用<code>http://106.75.181.60:3000/</code>(公网IP:端口号)在浏览器中查看部署成功项目如下所示：<br>  <img src="/zzzz/n10.png" alt="命令"></p>
+<p>当在浏览器中访问<code>106.75.181.60:3000</code>报如下错误时候，表明3000端口并未开放，需要在服务器中开放 3000 端口<br> <img src="/zzzz/n11.png" alt="命令"></p>
 <p>具体操作步骤查看下面的UCloud服务器防火墙设置部分</p>
 <h3 id="服务器端node安装"><a href="#服务器端node安装" class="headerlink" title="服务器端node安装"></a>服务器端node安装</h3><h4 id="使用自己封装的脚本安装"><a href="#使用自己封装的脚本安装" class="headerlink" title="使用自己封装的脚本安装"></a>使用自己封装的脚本安装</h4><p>封装脚本和下载的安装包查看：<a href="https://github.com/Eline302/realworld-nuxtjs/tree/master/node%E5%92%8Cpm2%E5%AE%89%E8%A3%85%E5%8C%85" target="_blank" rel="noopener">node和pm2安装包</a></p>
 <p>服务器端上传文件执行脚本，安装成功后测试</p>
@@ -459,23 +363,23 @@
 <li>服务器内部防火墙服务配置 ( 通过服务器命令行 )</li>
 </ul>
 <h4 id="外网防火墙"><a href="#外网防火墙" class="headerlink" title="外网防火墙"></a>外网防火墙</h4><ul>
-<li><p>登录 <a href="https://passport.ucloud.cn/#login" target="_blank" rel="noopener">官网</a><br><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n12.png" alt="命令"></p>
+<li><p>登录 <a href="https://passport.ucloud.cn/#login" target="_blank" rel="noopener">官网</a><br><img src="/zzzz/n12.png" alt="命令"></p>
 </li>
-<li><p>新建防火墙规则组<br><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n13.png" alt="命令"></p>
+<li><p>新建防火墙规则组<br><img src="/zzzz/n13.png" alt="命令"></p>
 </li>
-<li><p>通过复制已有规则新建<br><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n14.png" alt="命令"><br><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n15.png" alt="命令"></p>
+<li><p>通过复制已有规则新建<br><img src="/zzzz/n14.png" alt="命令"><br><img src="/zzzz/n15.png" alt="命令"></p>
 </li>
-<li><p>编辑新防火墙规则<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n16.png" alt="命令"></p>
+<li><p>编辑新防火墙规则<br> <img src="/zzzz/n16.png" alt="命令"></p>
 </li>
-<li><p>添加具体新规则<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n17.png" alt="命令"></p>
-<p>前端项目喜欢用 3000 端口, 要用哪个端口就仿照这个操作即可<br><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n18.png" alt="命令"></p>
+<li><p>添加具体新规则<br> <img src="/zzzz/n17.png" alt="命令"></p>
+<p>前端项目喜欢用 3000 端口, 要用哪个端口就仿照这个操作即可<br><img src="/zzzz/n18.png" alt="命令"></p>
 </li>
-<li><p>给服务器设置新防火墙规则<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n19.png" alt="命令"><br>  <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n20.png" alt="命令"></p>
+<li><p>给服务器设置新防火墙规则<br> <img src="/zzzz/n19.png" alt="命令"><br>  <img src="/zzzz/n20.png" alt="命令"></p>
 </li>
 </ul>
 <h4 id="内部设置"><a href="#内部设置" class="headerlink" title="内部设置"></a>内部设置</h4><p><strong>依次执行下面指令</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 1.查看防火墙状态</span><br><span class="line">systemctl status firewalld.service</span><br><span class="line"></span><br><span class="line"># 2.开启防火墙</span><br><span class="line">systemctl start  firewalld.service</span><br><span class="line"></span><br><span class="line"># 3.开放3000端口</span><br><span class="line">firewall-cmd  --zone=public  --add-port=<span class="number">3000</span>/tcp  --permanent</span><br><span class="line"></span><br><span class="line"># 4.重启防火墙使新设置生效</span><br><span class="line">firewall-cmd  --reload</span><br><span class="line"></span><br><span class="line"># 5.查看已经打开放的端口</span><br><span class="line">firewall-cmd  --list-ports</span><br></pre></td></tr></table></figure>
-<p> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n21.png" alt="命令"></p>
+<p> <img src="/zzzz/n21.png" alt="命令"></p>
 <h4 id="服务器内部防火墙服务配置"><a href="#服务器内部防火墙服务配置" class="headerlink" title="服务器内部防火墙服务配置"></a>服务器内部防火墙服务配置</h4><h2 id="使用PM2启动Node服务"><a href="#使用PM2启动Node服务" class="headerlink" title="使用PM2启动Node服务"></a>使用PM2启动Node服务</h2><h3 id="PM2-是什么？"><a href="#PM2-是什么？" class="headerlink" title="PM2 是什么？"></a>PM2 是什么？</h3><p>刚才我们在服务端是直接通过npm run start命令来启动了Web服务，如果我们通过这种方式启动起来以后，此时占用了命令行。我们希望它在后台运行这个应用，因此就需要用到pm2工具。</p>
 <p>PM2 是一个带有负载均衡功能的 Node 应用进程管理器。</p>
 <h3 id="使用-PM2-启动服务"><a href="#使用-PM2-启动服务" class="headerlink" title="使用 PM2 启动服务"></a>使用 PM2 启动服务</h3><ul>
@@ -493,12 +397,12 @@
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start npm --start </span><br><span class="line"># pm2 start 脚本路径</span><br></pre></td></tr></table></figure>
 <p><code>pm2 start npm --start</code>相当于给npm传参start，通过npm启动服务，服务被pm2进行管理</p>
-<p>启动成功后如下图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n22.png" alt="命令"></p>
+<p>启动成功后如下图所示：<br> <img src="/zzzz/n22.png" alt="命令"></p>
 <ul>
 <li>关闭 pm2</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pm2 stop id </span><br><span class="line"># 或</span><br><span class="line">pm2 stop name</span><br><span class="line"># pm2 stop npm</span><br></pre></td></tr></table></figure>
-<p>运行结果如下图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n23.png" alt="命令"></p>
+<p>运行结果如下图所示：<br> <img src="/zzzz/n23.png" alt="命令"></p>
 <p>启动成功后使用<code>http://106.75.181.60:3000/</code>(公网IP:端口号)在浏览器中查看</p>
 <h3 id="pm2-常用的命令"><a href="#pm2-常用的命令" class="headerlink" title="pm2 常用的命令"></a>pm2 常用的命令</h3><table>
 <thead>
@@ -538,7 +442,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="自动化部署"><a href="#自动化部署" class="headerlink" title="自动化部署"></a>自动化部署</h2><p>传统的部署方式需要反复地更新、构建、发布，显得很麻烦。我们希望这件事情能够自动化，即使用现代化的部署方式（CI/CD）<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n24.png" alt="命令"></p>
+<h2 id="自动化部署"><a href="#自动化部署" class="headerlink" title="自动化部署"></a>自动化部署</h2><p>传统的部署方式需要反复地更新、构建、发布，显得很麻烦。我们希望这件事情能够自动化，即使用现代化的部署方式（CI/CD）<br> <img src="/zzzz/n24.png" alt="命令"></p>
 <p><strong>CI/CD 服务</strong></p>
 <ul>
 <li>Jenkins</li>
@@ -554,16 +458,16 @@
 </ul>
 <h4 id="配置-GitHub-Access-Token"><a href="#配置-GitHub-Access-Token" class="headerlink" title="配置 GitHub Access Token"></a>配置 GitHub Access Token</h4><p><a href="https://github.com/settings/tokens" target="_blank" rel="noopener">https://github.com/settings/tokens</a></p>
 <ul>
-<li><p>登录 GitHub，点击图像，选择 Settings，点击 Developer settings，如图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n25.png" alt="命令"></p>
+<li><p>登录 GitHub，点击图像，选择 Settings，点击 Developer settings，如图所示：<br> <img src="/zzzz/n25.png" alt="命令"></p>
 </li>
-<li><p>然后，选择 Personal access tokens，点击Generate new token，创建Token，如图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n26.png" alt="命令"></p>
+<li><p>然后，选择 Personal access tokens，点击Generate new token，创建Token，如图所示：<br> <img src="/zzzz/n26.png" alt="命令"></p>
 </li>
-<li><p>填写生成 Token 的相关信息，以及选择相关权限，点击最下面Generate token按钮来生成Token,如图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n27.png" alt="命令"><br>  生成的Token记得复制一份，因为页面刷新后就看不到具体的值<br>  <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n30.png" alt="命令"></p>
+<li><p>填写生成 Token 的相关信息，以及选择相关权限，点击最下面Generate token按钮来生成Token,如图所示：<br> <img src="/zzzz/n27.png" alt="命令"><br>  生成的Token记得复制一份，因为页面刷新后就看不到具体的值<br>  <img src="/zzzz/n30.png" alt="命令"></p>
 </li>
-<li><p>最终生成Token，如图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n28.png" alt="命令"></p>
+<li><p>最终生成Token，如图所示：<br> <img src="/zzzz/n28.png" alt="命令"></p>
 </li>
 <li><p>配置到项目的 Secrets 中：项目所在的 GitHub 地址<a href="https://github.com/Eline302/realworld-nuxtjs" target="_blank" rel="noopener">realworld-nuxtjs</a><br> 进入仓库，选择 settings，点击 Secrets，再点击 New repository secret，填入生成的TOKEN，如图所示：</p>
-<p><img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n31.png" alt="命令"></p>
+<p><img src="/zzzz/n31.png" alt="命令"></p>
 </li>
 </ul>
 <h4 id="配置-GitHub-Actions-执行脚本"><a href="#配置-GitHub-Actions-执行脚本" class="headerlink" title="配置 GitHub Actions 执行脚本"></a>配置 GitHub Actions 执行脚本</h4><ul>
@@ -571,7 +475,7 @@
 </ul>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Publish</span> <span class="string">And</span> <span class="string">Deploy</span> <span class="string">Demo</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'v*'</span> <span class="comment"># 提交 以 v 开头的命令时，才会触发自动部署</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  build-and-deploy:</span></span><br><span class="line">    <span class="comment"># 运行环境</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 下载源码</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@master</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 打包构建</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/setup-node@master</span></span><br><span class="line"><span class="attr">    - run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="attr">    - run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line"><span class="attr">    - run:</span> <span class="string">tar</span> <span class="bullet">-zcvf</span> <span class="string">release.tgz</span> <span class="string">.nuxt</span> <span class="string">static</span> <span class="string">nuxt.config.js</span> <span class="string">package.json</span> <span class="string">package-lock.json</span> <span class="string">pm2.config.json</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发布 Release</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Create</span> <span class="string">Release</span></span><br><span class="line"><span class="attr">      id:</span> <span class="string">create_release</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/create-release@master</span></span><br><span class="line"><span class="attr">      env:</span></span><br><span class="line"><span class="attr">        GITHUB_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.TOKEN</span> <span class="string">&#125;&#125;</span> <span class="comment"># TOKEN 对应我们添加的 secret name</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        tag_name:</span> <span class="string">$&#123;&#123;</span> <span class="string">github.ref</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">        release_name:</span> <span class="string">Release</span> <span class="string">$&#123;&#123;</span> <span class="string">github.ref</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">        draft:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        prerelease:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 上传构建结果到 Release</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Upload</span> <span class="string">Release</span> <span class="string">Asset</span></span><br><span class="line"><span class="attr">      id:</span> <span class="string">upload-release-asset</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-release-asset@master</span></span><br><span class="line"><span class="attr">      env:</span></span><br><span class="line"><span class="attr">        GITHUB_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line">        <span class="comment"># 上传地址</span></span><br><span class="line"><span class="attr">        upload_url:</span> <span class="string">$&#123;&#123;</span> <span class="string">steps.create_release.outputs.upload_url</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="comment"># 上传文件</span></span><br><span class="line"><span class="attr">        asset_path:</span> <span class="string">./release.tgz</span></span><br><span class="line">        <span class="comment"># 上传之后的文件名</span></span><br><span class="line"><span class="attr">        asset_name:</span> <span class="string">release.tgz</span></span><br><span class="line"><span class="attr">        asset_content_type:</span> <span class="string">application/x-tgz</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 部署到服务器</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Deploy</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">appleboy/ssh-action@master</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line">        <span class="comment"># 连接远程服务的信息(Secrets 中，配置下面属性)</span></span><br><span class="line"><span class="attr">        host:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HOST</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">        username:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.USERNAME</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">        password:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.PASSWORD</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">        port:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.PORT</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="comment"># 运行在远程服务器中</span></span><br><span class="line"><span class="attr">        script:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          cd /root/realworld-nuxtjs # 远程服务器的web目录</span></span><br><span class="line"><span class="string">          wget https://github.com/Eline302/realworld-nuxtjs/releases/latest/download/release.tgz -O release.tgz   # 下载上传的发布包到服务器(将Eline302/realworld-nuxtjs改为自己项目所在的远程仓库地址)</span></span><br><span class="line"><span class="string">          tar zxvf release.tgz       # 解压</span></span><br><span class="line"><span class="string">          npm install --production   # 安装生产依赖</span></span><br><span class="line"><span class="string">          pm2 reload pm2.config.json # 启动服务</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>将所需用到的 HOST 、PORT、USERNAME、PASSWORD ，配置到 Secrets 中,和添加TOKEN方式一样<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n29.png" alt="命令"></p>
+<li><p>将所需用到的 HOST 、PORT、USERNAME、PASSWORD ，配置到 Secrets 中,和添加TOKEN方式一样<br> <img src="/zzzz/n29.png" alt="命令"></p>
 </li>
 <li><p>配置 PM2 配置文件</p>
 </li>
@@ -582,12 +486,12 @@
 <li>提交更新</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">"发布部署-测试"</span></span><br><span class="line"></span><br><span class="line"># 新建标签 git tag 版本号</span><br><span class="line">$ git tag v0<span class="number">.1</span><span class="number">.0</span>  </span><br><span class="line"></span><br><span class="line"># 查看创建的tag</span><br><span class="line">$ git tag</span><br><span class="line"></span><br><span class="line"># 将代码推送到对应的远程tag中</span><br><span class="line">$ git push origin v0<span class="number">.1</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
-<p>提交成功后如下图所示<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n32.png" alt="命令"><br>在项目仓库中也可以看到<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n33.png" alt="命令"></p>
+<p>提交成功后如下图所示<br> <img src="/zzzz/n32.png" alt="命令"><br>在项目仓库中也可以看到<br> <img src="/zzzz/n33.png" alt="命令"></p>
 <ul>
 <li>查看自动部署状态</li>
 </ul>
-<p>1.登录 GitHub，查看新建的 tag：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n34.png" alt="命令"></p>
-<p>2.点击 actions ，在All workflows中可以看到部署的版本，如图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n35.png" alt="命令"><br>3.部署成功，如图所示：<br> <img src="/2021/03/16/NuxtJS项目的本地部署和自动化部署/n36.png" alt="命令"></p>
+<p>1.登录 GitHub，查看新建的 tag：<br> <img src="/zzzz/n34.png" alt="命令"></p>
+<p>2.点击 actions ，在All workflows中可以看到部署的版本，如图所示：<br> <img src="/zzzz/n35.png" alt="命令"><br>3.部署成功，如图所示：<br> <img src="/zzzz/n36.png" alt="命令"></p>
 <p>使用<code>http://106.75.181.60:3000/</code>(公网IP:端口号)在浏览器中查看</p>
 <h2 id="在部署过程中可能会使用的其他命令"><a href="#在部署过程中可能会使用的其他命令" class="headerlink" title="在部署过程中可能会使用的其他命令"></a>在部署过程中可能会使用的其他命令</h2><h3 id="创建文件与删除文件"><a href="#创建文件与删除文件" class="headerlink" title="创建文件与删除文件"></a>创建文件与删除文件</h3><table>
 <thead>
@@ -650,67 +554,15 @@
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/zimeng303/article/details/112562586" target="_blank" rel="noopener">【Linux 命令】云服务器 ECS (CentOS) 开启防火墙操作</a></p>
 <p><a href="https://www.nuxtjs.cn/" target="_blank" rel="noopener">nuxtjs</a></p>
 
+        
+      </div>
+      
+      
       
     </div>
     
     
     
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/NuxtJS/" rel="tag"># NuxtJS</a>
-          
-            <a href="/tags/自动化部署/" rel="tag"># 自动化部署</a>
-          
-            <a href="/tags/本地部署/" rel="tag"># 本地部署</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2021/03/08/【vue服务端渲染】-- NuxtJS基础/" rel="next" title="【vue服务端渲染】—— NuxtJS基础">
-                <i class="fa fa-chevron-left"></i> 【vue服务端渲染】—— NuxtJS基础
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
