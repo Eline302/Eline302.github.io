@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="本章就从 “浏览器地址栏输入URL后，到页面渲染出来，整个过程 都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。  介绍网站页面的生命周期，通俗地讲就是从我们在浏览器的地址栏中输入⼀个 URL 后，到整个">
+<meta name="description" content="本章就从 “ 浏览器地址栏输入URL后，到页面渲染出来，整个过程都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。  介绍网站页面的生命周期，通俗地讲就是从我们在浏览器的地址栏中输入⼀个 URL 后，到整个">
 <meta name="keywords" content="前端页面的生命周期">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端页面的生命周期">
 <meta property="og:url" content="http://yoursite.com/2021/05/02/前端页面的生命周期/index.html">
 <meta property="og:site_name" content="Eline blog">
-<meta property="og:description" content="本章就从 “浏览器地址栏输入URL后，到页面渲染出来，整个过程 都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。  介绍网站页面的生命周期，通俗地讲就是从我们在浏览器的地址栏中输入⼀个 URL 后，到整个">
+<meta property="og:description" content="本章就从 “ 浏览器地址栏输入URL后，到页面渲染出来，整个过程都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。  介绍网站页面的生命周期，通俗地讲就是从我们在浏览器的地址栏中输入⼀个 URL 后，到整个">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2021/05/02/前端页面的生命周期/网页的生命周期图.png">
 <meta property="og:image" content="http://yoursite.com/2021/05/02/前端页面的生命周期/进程.png">
@@ -102,10 +102,10 @@
 <meta property="og:image" content="http://yoursite.com/2021/05/02/前端页面的生命周期/CSSOM.png">
 <meta property="og:image" content="http://yoursite.com/2021/05/02/前端页面的生命周期/浏览器性能检测.png">
 <meta property="og:image" content="http://yoursite.com/2021/05/02/前端页面的生命周期/渲染树.png">
-<meta property="og:updated_time" content="2021-05-08T01:42:33.100Z">
+<meta property="og:updated_time" content="2021-05-08T02:07:09.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端页面的生命周期">
-<meta name="twitter:description" content="本章就从 “浏览器地址栏输入URL后，到页面渲染出来，整个过程 都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。  介绍网站页面的生命周期，通俗地讲就是从我们在浏览器的地址栏中输入⼀个 URL 后，到整个">
+<meta name="twitter:description" content="本章就从 “ 浏览器地址栏输入URL后，到页面渲染出来，整个过程都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。  介绍网站页面的生命周期，通俗地讲就是从我们在浏览器的地址栏中输入⼀个 URL 后，到整个">
 <meta name="twitter:image" content="http://yoursite.com/2021/05/02/前端页面的生命周期/网页的生命周期图.png">
 
 
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-05-08T09:42:33+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-08T10:07:09+08:00">
                 2021-05-08
               </time>
             
@@ -371,14 +371,14 @@
 
       
         <blockquote>
-<p>本章就从 “浏览器地址栏输入URL后，到页面渲染出来，整个过程 都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。</p>
+<p>本章就从 “ 浏览器地址栏输入URL后，到页面渲染出来，整个过程都发生了什么？” 这个问题出发，通过对此问题的解答，来分析前端页面生命周期的各个环节，并着重分析其中关键渲染路径的具体过程和优化实践，以此为基础建构⼀套完整知识框架的图谱，其实我们在前端性能优化方面，也都是对此生命周期中某个局部过程做的优化。</p>
 </blockquote>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>网站页面的生命周期，通俗地讲就是从我们在浏览器的地址栏中输入⼀个 URL 后，到整个页面渲染出来的过程。整个过程包括域名解析，建立 TCP 连接，前后端通过 HTTP 进行会话，压缩与解压，以及前端的关键渲染路径等，把这些阶段拆解开来看，不仅能容易地获得优化性能的启发，而且也能为今后的前端工程师之路构建出完整的知识框架，网站页面加载的生命周期如下图所示：</p>
 <p> <img src="/2021/05/02/前端页面的生命周期/网页的生命周期图.png" alt="网站页面加载的生命周期图"></p>
-<p>如果回答 “从浏览器地址栏输入URL后，到页面渲染出来，整个过程都发生了什么？” 能从信号与系统、计算机原理、操作系统聊到网络通信、浏览器内核，再到 DNS 解析、负载均衡、页面渲染等，但本章主要关注前端方面的相关内容，为了后文表述更清楚，这里首先将整个过程划分为以下几个阶段。</p>
+<p>如果回答 “ 从浏览器地址栏输入URL后，到页面渲染出来，整个过程都发生了什么？” 能从信号与系统、计算机原理、操作系统聊到网络通信、浏览器内核，再到 DNS 解析、负载均衡、页面渲染等，但本章主要关注前端方面的相关内容，为了后文表述更清楚，这里首先将整个过程划分为以下几个阶段。</p>
 <ul>
 <li>浏览器接收到 URL，到网络请求线程的开启；</li>
-<li>⼀个完整的 HTTP 请求的发出；</li>
+<li>一个完整的 HTTP 请求的发出；</li>
 <li>服务器接收到请求并转到具体的处理后台；</li>
 <li>前后台之间的 HTTP 交互和涉及的缓存机制；</li>
 <li>浏览器接收到数据包后的关键渲染路径；</li>
@@ -458,7 +458,7 @@
 <li><strong>网络进程：</strong>负责页面的网络资源加载，之前属于浏览器主进程中的⼀个模块，最近才独立出来。</li>
 <li><strong>渲染进程：</strong>也称为浏览器内核，其默认会为<strong>每个标签窗口页开辟⼀个独立的渲染进程</strong>，负责将 HTML、CSS 和 JavaScript 等资源转为可交互的页面，其中包含多个子线程，即 JS 引擎线程、GUI 渲 染线程、事件触发线程、定时触发器线程、异步 HTTP 请求线程等。当打开⼀个标签页输入 URL 后，所 发起的网络请求就是从这个进程开始的。另外，出于对安全性的考虑，渲染进程也被放入沙箱中。</li>
 </ul>
-<p>打开 Chrome 任务管理器，可以从中查看到当前浏览器都启动了哪些进程，如下图所示：</p>
+<p>打开 Chrome 任务管理器，可以从中查看到当前浏览器都启动了哪些进程，快捷键shift+Esc 如下图所示：</p>
 <p> <img src="/2021/05/02/前端页面的生命周期/进程1.png" alt="进程与线程图"></p>
 <p>此时仅打开了两个标签页，除了我自己浏览器添加插件所开辟的进程，还可以看到浏览器进程、GPU 进程、 网络进程，以及最近新抽离出来的⼀个音频服务进程等。</p>
 <h2 id="建立HTTP请求"><a href="#建立HTTP请求" class="headerlink" title="建立HTTP请求"></a>建立HTTP请求</h2><p>这个阶段的主要工作分为两部分：DNS 解析和通信链路的建立。</p>
@@ -467,9 +467,9 @@
 <li>首先发起请求的客户端浏览器要明确知道所要访问的服务器地址 </li>
 <li>然后建立通往该服务器地址的路径</li>
 </ul>
-<h3 id="DNS-解析"><a href="#DNS-解析" class="headerlink" title="DNS 解析"></a>DNS 解析</h3><p>在前面章节讲到的 URL 解析，其实仅将 URL 拆分为代表具体含义的字段，然后以参数的形式传入网络请求线程进行进⼀步处理，首先第⼀步便是这里讲到的 DNS 解析。其主要目的便是通过查询将 URL 中的 Host 字段转化为网络中具体的 IP 地址，因为域名只是为了方便帮助记忆的，IP 地址才是所访问服务器在 网络中的“⻔牌号”。</p>
+<h3 id="DNS-解析"><a href="#DNS-解析" class="headerlink" title="DNS 解析"></a>DNS 解析</h3><p>在前面章节讲到的 URL 解析，其实仅将 URL 拆分为代表具体含义的字段，然后以参数的形式传入网络请求线程进行进⼀步处理，首先第一步便是这里讲到的 DNS 解析。其主要目的便是通过查询将 URL 中的 Host 字段转化为网络中具体的 IP 地址，因为域名只是为了方便帮助记忆的，IP 地址才是所访问服务器在网络中的“⻔牌号”。</p>
 <p> <img src="/2021/05/02/前端页面的生命周期/DNS.png" alt="DNS解析"></p>
-<p>首先查询浏览器自身的 DNS 缓存，如果查到 IP 地址就结束解析，由于缓存时间限制比较⼤，⼀般只有1 分钟，同时缓存容量也有限制，所以在浏览器缓存中没找到 IP 地址时，就会搜索系统自身的 DNS 缓存； 如果还未找到，接着就会尝试从系统的 hosts 文件中查找。</p>
+<p>首先查询浏览器自身的 DNS 缓存，如果查到 IP 地址就结束解析，由于缓存时间限制比较大，一般只有1 分钟，同时缓存容量也有限制，所以在浏览器缓存中没找到 IP 地址时，就会搜索系统自身的 DNS 缓存； 如果还未找到，接着就会尝试从系统的 hosts 文件中查找。</p>
 <p>在本地主机进行的查询若都没获取到，接下来便会在本地域名服务器上查询。如果本地域名服务器没有直 接的目标 IP 地址可供返回，则本地域名服务器便会采取迭代的方式去依次查询根域名服务器、COM 顶级 域名服务器和权限域名服务器等，最终将所要访问的目标服务器 IP 地址返回本地主机，若查询不到，则返回报错信息。</p>
 <p>由此可以看出 DNS 解析是个很耗时的过程，若解析的域名过多，势必会延缓首屏的加载时间。本节仅对 DNS 解析过程进行简要的概述，而关于原理及优化方式参考<a href="https://juejin.cn/post/6844904132923359246" target="_blank" rel="noopener">前端性能优化-页面加载渲染优化</a></p>
 <h3 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h3><p>在通过 DNS 解析获取到目标服务器 IP 地址后，就可以建立网络连接进行资源的请求与响应了。但在此之前，我们需要对网络架构模型有⼀些基本的认识，在互联网发展初期，为了使网络通信能够更加灵活、稳定及可互操作，国际标准化组织提出了⼀些网络架构模型：OSI 模型、TCP/IP 模型，⼆者的网络模型图如下图所示：</p>
@@ -532,23 +532,23 @@
 <li>当服务器端确认已完成所有数据传递后，便发送带有 FIN=N 的报文给客户端，准备关闭连接。 </li>
 <li>客户端收到 FIN=N 的报文后可进行关闭操作，但为保证数据正确性，会回传给服务器端⼀个确认 报文 ack=N+1 ，同时服务器端也在等待客户端的最终确认，如果服务器端没有收到报文则会进行重传， 只有收到报文后才会真正断开连接。而客户端在发送了确认报文⼀段时间后，没有收到服务器端任何信息 则认为服务器端连接已关闭，也可关闭客户端信息。 只有连接建立成功后才可开始进行数据的传递，由于浏览器对同⼀域名下并发的 TCP 连接有限制，以及在 1.0 版本的 HTTP 协议中，⼀个资源的下载需对应⼀个 TCP 的请求，这样的并发限制又会涉及许多优化 方案，我们将在后续章节中进行进⼀步介绍。</li>
 </ul>
-<p>这里较为详细地介绍了 TCP 连接建立和断开的过程，首先让读者有⼀个网络架构分层的概念，虽然前端工 作基本围绕在应用层，但有⼀个全局的网络视角后，能帮助我们在定位性能瓶颈时更加准确；其次也为了 说明影响前端性能体验的因素，不仅是⽇常编写的代码和使用的资源，网络通信中每个环节的优劣缓急都值得关注。</p>
-<p><strong>QA：为什么三次握手建立连接的 TCP 客户端最后还要发送⼀次确认呢？</strong></p>
+<p>这里较为详细地介绍了 TCP 连接建立和断开的过程，首先让读者有⼀个网络架构分层的概念，虽然前端工 作基本围绕在应用层，但有一个全局的网络视角后，能帮助我们在定位性能瓶颈时更加准确；其次也为了说明影响前端性能体验的因素，不仅是⽇常编写的代码和使用的资源，网络通信中每个环节的优劣缓急都值得关注。</p>
+<p><strong>QA：为什么三次握手建立连接的 TCP 客户端最后还要发送一次确认呢？</strong></p>
 <blockquote>
-<p>⼀句话，主要防⽌已经失效的连接请求报文突然又传送到了服务器，从而产生错误。<br>如果使用的是两次握手建立连接，假设有这样⼀种场景，客户端发送了第⼀个请求连接并且没有丢失， 只是因为在网络节点中滞留的时间太长了，由于 TCP 的客户端迟迟没有收到确认报文，以为服务器没 有收到，此时重新向服务器发送这条报文，此后客户端和服务器经过两次握手完成连接，传输数据，然 后关闭连接。此时此前滞留的那⼀次请求连接，网络通畅了到达了服务器，这个报文本该是失效的，但 是，两次握手的机制将会让客户端和服务器再次建立连接，这将导致不必要的错误和资源的浪费。<br>如果采用的是三次握手，就算是那⼀次失效的报文传送过来了，服务端接受到了那条失效报文并且回复 了确认报文，但是客户端不会再次发出确认。由于服务器收不到确认，就知道客户端并没有请求连接。</p>
+<p>一句话，主要防止已经失效的连接请求报文突然又传送到了服务器，从而产生错误。<br>如果使用的是两次握手建立连接，假设有这样一种场景，客户端发送了第一个请求连接并且没有丢失，只是因为在网络节点中滞留的时间太长了，由于 TCP 的客户端迟迟没有收到确认报文，以为服务器没有收到，此时重新向服务器发送这条报文，此后客户端和服务器经过两次握手完成连接，传输数据，然后关闭连接。此时此前滞留的那一次请求连接，网络通畅了到达了服务器，这个报文本该是失效的，但是，两次握手的机制将会让客户端和服务器再次建立连接，这将导致不必要的错误和资源的浪费。<br>如果采用的是三次握手，就算是那⼀次失效的报文传送过来了，服务端接受到了那条失效报文并且回复了确认报文，但是客户端不会再次发出确认。由于服务器收不到确认，就知道客户端并没有请求连接。</p>
 </blockquote>
 <p><strong>QA：为什么建立连接是三次握手，关闭连接确是四次挥手呢？</strong></p>
 <blockquote>
-<p>建立连接的时候， 服务器在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在⼀个 报文里发送给客户端。 而关闭连接时，服务器收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，而自己 也未必全部数据都发送给对方了，所以⼰方可以立即关闭，也可以发送⼀些数据给对方后，再发送FIN报 文给对方来表示同意现在关闭连接，因此，⼰方ACK和FIN⼀般都会分开发送，从而导致多了⼀次。</p>
+<p>建立连接的时候，服务器在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，服务器收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，而自己也未必全部数据都发送给对方了，所以⼰方可以立即关闭，也可以发送⼀些数据给对方后，再发送FIN报 文给对方来表示同意现在关闭连接，因此，⼰方ACK和FIN⼀般都会分开发送，从而导致多了⼀次。</p>
 </blockquote>
 <p><strong>QA：如果已经建立了连接，但是客户端突然出现故障了怎么办？</strong></p>
 <blockquote>
-<p>TCP 还设有⼀个保活计时器，显然，客户端如果出现故障，服务器不能⼀直等下去，⽩⽩浪费资源。服务器每收到⼀次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送⼀个探测报文段，以后每隔75秒发送⼀次。若⼀连发送10个探测 报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
+<p>TCP 还设有一个保活计时器，显然，客户端如果出现故障，服务器不能一直直等下去，白白浪费资源。服务器每收到⼀次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送⼀个探测报文段，以后每隔75秒发送⼀次。若⼀连发送10个探测 报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
 </blockquote>
-<h2 id="前后端的交互"><a href="#前后端的交互" class="headerlink" title="前后端的交互"></a>前后端的交互</h2><p>当 TCP 连接建立好之后，便可通过 HTTP 等协议进行前后端的通信，但在实际的网络访问中，并非浏览 器与确定 IP 地址的服务器之间直接通信，往往会在中间加入反向代理服务器。</p>
+<h2 id="前后端的交互"><a href="#前后端的交互" class="headerlink" title="前后端的交互"></a>前后端的交互</h2><p>当 TCP 连接建立好之后，便可通过 HTTP 等协议进行前后端的通信，但在实际的网络访问中，并非浏览器与确定 IP 地址的服务器之间直接通信，往往会在中间加入反向代理服务器。</p>
 <h3 id="反向代理服务器"><a href="#反向代理服务器" class="headerlink" title="反向代理服务器"></a>反向代理服务器</h3><p>对需要提供复杂功能的网站来说，通常单⼀的服务器资源是很难满足期望的。⼀般采用的方式是将多个应用服务器组成的集群由反向代理服务器提供给客户端用户使用，这些功能服务器可能具有不同类型，比如文件服务器、邮件服务器及 Web 应用服务器，同时也可能是相同的Web服务部署到多个服务器上，以实现负载均衡的效果，反向代理服务器的作用如图所示:</p>
 <p> <img src="/2021/05/02/前端页面的生命周期/反向代理.png" alt="反向代理"></p>
-<p>反向代理服务器根据客户的请求，从后端服务器上获取资源后提供给客户端。反向代理服务器通常的作用 如下：</p>
+<p>反向代理服务器根据客户的请求，从后端服务器上获取资源后提供给客户端。反向代理服务器通常的作用如下：</p>
 <ul>
 <li>负载均衡</li>
 <li>安全防⽕墙</li>
@@ -579,16 +579,16 @@
 <li><strong>HTTP头部压缩：</strong>减少报文传输体积。</li>
 </ul>
 <h3 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h3><p>在基于 HTTP 的前后端交互过程中，使用缓存可以使性能得到显著提升。具体的缓存策略分为两种：强缓存和协商缓存。 </p>
-<h4 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h4><p>强缓存就是当浏览器判断出本地缓存未过期时，直接读取本地缓存，⽆须发起 HTTP 请求，此时状态为：200 from cache 。在HTTP 1.1版本后通过头部的 <code>cache-control</code> 字段的 <code>max-age</code> 属性值规定 的过期时长来判断缓存是否过期失效，这比之前使用 expires 标识的服务器过期时间更准确而且安全。 </p>
+<h4 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h4><p>强缓存就是当浏览器判断出本地缓存未过期时，直接读取本地缓存，⽆须发起 HTTP 请求，此时状态为：200 from cache 。在HTTP 1.1版本后通过头部的 <code>cache-control</code> 字段的 <code>max-age</code> 属性值规定的过期时长来判断缓存是否过期失效，这比之前使用 expires 标识的服务器过期时间更准确而且安全。 </p>
 <h4 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h4><p>协商缓存则需要浏览器向服务器发起 HTTP 请求，来判断浏览器本地缓存的文件是否仍未修改，若未修改则从缓存中读取，此时的状态码为：304 。具体过程是判断浏览器头部 if-none-match 与服务器短的 e-tag 是否匹配，来判断所访问的数据是否发生更改。这相比 HTTP 1.0 版本通过 <code>last-modified</code> 判断上次文件修改时间来说也更加准确。具体的浏览器缓存触发逻辑如图所示：</p>
 <p> <img src="/2021/05/02/前端页面的生命周期/浏览器缓存.png" alt="浏览器缓存"></p>
 <p> 在浏览器缓存中，强缓存优于协商缓存，若强缓存生效则直接使用强缓存，若不生效则再进行协商缓存的请求，由服务器来判断是否使用缓存，如果都失效则重新向服务器发起请求获取资源。本节仅简要说明浏览器缓存的触发过程，由于这部分对性能优化来说比较重要，所以在后续章节也会详细介绍。</p>
 <h2 id="关键渲染路径"><a href="#关键渲染路径" class="headerlink" title="关键渲染路径"></a>关键渲染路径</h2><p>当我们经历了网络请求过程，从服务器获取到了所访问的页面文件后，浏览器如何将这些 HTML、CSS 及 JS 文件组织在⼀起渲染出来呢？</p>
-<h3 id="构建对象模型"><a href="#构建对象模型" class="headerlink" title="构建对象模型"></a>构建对象模型</h3><p>首先浏览器会通过解析 HTML 和 CSS 文件，来构建 DOM（文档对象模型）和 CSSOM（层叠样式表对 象模型），为便于理解，我们以如下 HTML 内容文件为例，来观察文档对象模型的构建过程。</p>
+<h3 id="构建对象模型"><a href="#构建对象模型" class="headerlink" title="构建对象模型"></a>构建对象模型</h3><p>首先浏览器会通过解析 HTML 和 CSS 文件，来构建 DOM（文档对象模型）和 CSSOM（层叠样式表对象模型），为便于理解，我们以如下 HTML 内容文件为例，来观察文档对象模型的构建过程。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scal e=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>关键路径渲染<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>你好<span class="tag">&lt;<span class="name">span</span>&gt;</span>性能优化<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"avatar.jpg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>浏览器接收读取到的 HTML 文件，其实是文件根据指定编码（UTF-8）的原始字节，形如 3C 62 6F 79 3E 65 6C 6F 2C 20 73 70… 。首先需要将字节转换成字符，即原本的代码字符串，接着再将字 符串转化为 W3C 标准规定的令牌结构，所谓令牌就是 HTML 中不同标签代表不同含义的⼀组规则结构。 然后经过词法分析将令牌转化成定义了属性和规则值的对象，最后将这些标签节点根据 HTML 表示的⽗子关系，连接成树形结构，如下图所示:</p>
+<p>浏览器接收读取到的 HTML 文件，其实是文件根据指定编码（UTF-8）的原始字节，形如 3C 62 6F 79 3E 65 6C 6F 2C 20 73 70… 。首先需要将字节转换成字符，即原本的代码字符串，接着再将字符串转化为 W3C 标准规定的令牌结构，所谓令牌就是 HTML 中不同标签代表不同含义的⼀组规则结构。 然后经过词法分析将令牌转化成定义了属性和规则值的对象，最后将这些标签节点根据 HTML 表示的⽗子关系，连接成树形结构，如下图所示:</p>
 <p> <img src="/2021/05/02/前端页面的生命周期/构建对象模型.png" alt="构建对象模型"></p>
-<p>DOM 树表示文档标记的属性和关系，但未包含其中各元素经过渲染后的外观呈现，这便是接下来 CSSOM 的职责了，与将 HTML 文件解析为文档对象模型的过程类似，CSS 文件也会首先经历从字节到 字符串，然后令牌化及词法分析后构建为层叠样式表对象模型。假设 CSS 文件内容如下：</p>
+<p>DOM 树表示文档标记的属性和关系，但未包含其中各元素经过渲染后的外观呈现，这便是接下来 CSSOM 的职责了，与将 HTML 文件解析为文档对象模型的过程类似，CSS 文件也会首先经历从字节到字符串，然后令牌化及词法分析后构建为层叠样式表对象模型。假设 CSS 文件内容如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后构建的 CSSOM 树如图所示。</p>
 <p> <img src="/2021/05/02/前端页面的生命周期/CSSOM.png" alt="CSSOM"></p>
