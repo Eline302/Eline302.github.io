@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GridSome,GraphQL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本章用静态站点生成器 Gridsome 快速生成静态网站，通过简单的案例学习其相关知识点  静态网站生成器静态网站生成器是使用一系列配置、模板以及数据，生成静态 HTML 文件及相关资源的工具。 特点：  由于是提前生成静态 HTML 文件及相关资源，所以也叫预渲染 生成的网站不需要类似 PHP 这样的服务器，只需要放到支持静态资源的 web server 或 CDN 即可运行  优势：  省钱">
+<meta name="keywords" content="GridSome,GraphQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue静态站点生成 -- GridSome基础">
+<meta property="og:url" content="http://yoursite.com/2021/05/19/Vue静态站点生成 -- GridSome基础/index.html">
+<meta property="og:site_name" content="Eline blog">
+<meta property="og:description" content="本章用静态站点生成器 Gridsome 快速生成静态网站，通过简单的案例学习其相关知识点  静态网站生成器静态网站生成器是使用一系列配置、模板以及数据，生成静态 HTML 文件及相关资源的工具。 特点：  由于是提前生成静态 HTML 文件及相关资源，所以也叫预渲染 生成的网站不需要类似 PHP 这样的服务器，只需要放到支持静态资源的 web server 或 CDN 即可运行  优势：  省钱">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/05/19/Vue静态站点生成%20--%20GridSome基础/gs2.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/19/Vue静态站点生成%20--%20GridSome基础/gs3.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/19/Vue静态站点生成%20--%20GridSome基础/gs4.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/19/Vue静态站点生成%20--%20GridSome基础/gs5.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/19/Vue静态站点生成%20--%20GridSome基础/gs6.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/19/Vue静态站点生成%20--%20GridSome基础/gs7.png">
+<meta property="og:updated_time" content="2021-05-20T07:37:12.830Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue静态站点生成 -- GridSome基础">
+<meta name="twitter:description" content="本章用静态站点生成器 Gridsome 快速生成静态网站，通过简单的案例学习其相关知识点  静态网站生成器静态网站生成器是使用一系列配置、模板以及数据，生成静态 HTML 文件及相关资源的工具。 特点：  由于是提前生成静态 HTML 文件及相关资源，所以也叫预渲染 生成的网站不需要类似 PHP 这样的服务器，只需要放到支持静态资源的 web server 或 CDN 即可运行  优势：  省钱">
+<meta name="twitter:image" content="http://yoursite.com/2021/05/19/Vue静态站点生成%20--%20GridSome基础/gs2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/05/19/Vue静态站点生成 -- GridSome基础/">
+
+
+
+
+
+  <title>Vue静态站点生成 -- GridSome基础 | Eline blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eline blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/19/Vue静态站点生成 -- GridSome基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eline">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eline blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue静态站点生成 -- GridSome基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-19T15:19:11+08:00">
+                2021-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-20T15:37:12+08:00">
+                2021-05-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSG/" itemprop="url" rel="index">
+                    <span itemprop="name">SSG</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本章用静态站点生成器 Gridsome 快速生成静态网站，通过简单的案例学习其相关知识点</p>
+</blockquote>
+<h2 id="静态网站生成器"><a href="#静态网站生成器" class="headerlink" title="静态网站生成器"></a>静态网站生成器</h2><p>静态网站生成器是使用一系列配置、模板以及数据，生成静态 <code>HTML</code> 文件及相关资源的工具。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>由于是提前生成静态 <code>HTML</code> 文件及相关资源，所以也叫<strong>预渲染</strong></li>
+<li>生成的网站不需要类似 <code>PHP</code> 这样的服务器，只需要放到支持静态资源的 <code>web server</code> 或 <code>CDN</code> 即可运行</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>省钱-不需要专业的服务器，只要能托管静态文件的空间</li>
+<li>快速-不经过后端服务器的处理，只传输内容</li>
+<li>安全- 没有后端程序的执行，自然会更安全</li>
+</ul>
+<h3 id="常见的静态网站生成器"><a href="#常见的静态网站生成器" class="headerlink" title="常见的静态网站生成器"></a>常见的静态网站生成器</h3><ul>
+<li>基于 Ruby 的 JekyII</li>
+<li>基于 Node.js 的 Hexo</li>
+<li>基于 GoLang 的 Hugo</li>
+<li>基于 Node/React 的 <a href="https://www.gatsbyjs.com/" target="_blank" rel="noopener">Gatsby</a></li>
+<li>基于 Node/Vue 的 Gridsome</li>
+<li>基于 Vue 的 <a href="https://vuepress.vuejs.org/zh/guide/" target="_blank" rel="noopener">VuePress</a></li>
+</ul>
+<p>Next.js 和Nuxt.js 也能生成静态网站，但是他们更多的被认为是服务端渲染（SSR）框架</p>
+<p>这类静态网站生成器统称 <a href="https://gridsome.org/docs/jamstack/" target="_blank" rel="noopener">JAMStack</a>（JAM指JavaScript、API、Markup），通过调用各种API来实现更多的功能，其本质是一种前后端分离的模式，甚至前后端可以来自不同的厂商。</p>
+<h3 id="静态应用的使用场景"><a href="#静态应用的使用场景" class="headerlink" title="静态应用的使用场景"></a>静态应用的使用场景</h3><ul>
+<li>不适合有大量路由页面的应用，路由页面过多，则预渲染会非常慢</li>
+</ul>
+<p>如果您的站点有成百上千条路由页面，则预渲染将非常缓慢。当然，你每次更新只需要做一次，但是可能要花一些时间。大多数人不会最终获得数千条静态路由页面，而只是以防万一。</p>
+<p>适合纯内容展示类的应用，例如博客，企业的宣传站，包括一些文档类的，这些网站完全可以做成静态应用，得到有个极致的速度体验。</p>
+<ul>
+<li>不适合有大量动态内容的应用例如后台管理系统</li>
+</ul>
+<p>如果渲染路线中包含特定于用户查看其内容或其动态源的内容，则应确保您具有可以显示的占位符组件，直到动态内容加载到客户端为止。否则可能有点怪异。</p>
+<h2 id="Gridsome"><a href="#Gridsome" class="headerlink" title="Gridsome"></a>Gridsome</h2><p>学习 GridSome 要有 Vue 基础，但比 Vue 简单，参考 <a href="https://www.gridsome.org/" target="_blank" rel="noopener">官方文档</a>或者<a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub gridsome</a></p>
+<h3 id="Gridsome介绍"><a href="#Gridsome介绍" class="headerlink" title="Gridsome介绍"></a>Gridsome介绍</h3><ul>
+<li>一个免费、开源、基于 Vue.js 技术栈的静态网站生成器。</li>
+<li>Gridsome 是由 Vue.js 驱动的 Jamstack 框架，用于构建默认情况下快速生成的静态生成的网站和应用。<br>Jamstack使您可以通过预渲染文件并直接从CDN直接提供文件来构建快速安全的站点和应用程序，而无需管理或运行Web服务器。</li>
+<li>Gridsome 是 Vue 提供支持的静态站点生成器，用于为任何无头 CMS，本地文件或API构建可用于CDN的网站</li>
+<li>使用Vue.js，webpack和Node.js等现代工具构建网站。通过npm进行热重载并访问任何软件包，并使用自动前缀在您喜欢的预处理器（如Sass或Less）中编写CSS。</li>
+<li>Gridsome 使开发人员可以轻松构建默认情况下快速生成的静态生成的网站和应用程序</li>
+<li>Gridsome允许在内容里面引用任何CMS或数据源。<br>从WordPress，Contentful或任何其他无头CMS或API中提取数据，并在组件和页面中使用GraphQL访问它。</li>
+</ul>
+<h3 id="Gridsome-工作原理"><a href="#Gridsome-工作原理" class="headerlink" title="Gridsome 工作原理"></a>Gridsome 工作原理</h3><ul>
+<li>Gridsome生成静态HTML，一旦加载到浏览器中，该HTML就会渗入Vue SPA。这意味着您可以使用 Gridsome 构建静态网站和动态应用程序。</li>
+<li>Gridsome为每个页面构建一个.html文件和一个.json文件。加载第一页后，它仅使用.json文件来预取和加载下一页的数据。它还为需要它的每个页面构建一个.js包（代码拆分）。</li>
+<li>它使用 vue-router 进行SPA路由，并使用vue-meta来管理<code>&lt;head&gt;</code>。</li>
+<li>Gridsome默认添加最小57kB的gzip JS捆绑包大小（vue.js，vue-router，vue-meta和一些用于图像延迟加载的文件）。</li>
+</ul>
+<p><a href="https://gridsome.org/docs/how-it-works/" target="_blank" rel="noopener">详细了解其工作原理</a></p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li>不适合管理系统</li>
+<li>简单页面展示</li>
+<li>想要有更好的 SEO</li>
+<li>想要有更好的渲染性能</li>
+</ul>
+<h3 id="创建Gridsome项目"><a href="#创建Gridsome项目" class="headerlink" title="创建Gridsome项目"></a>创建Gridsome项目</h3><p>环境准备：Node.js（v8.3 +）环境、C++编译环境、Python环境</p>
+<h4 id="安装Gridsome-CLI脚手架工具"><a href="#安装Gridsome-CLI脚手架工具" class="headerlink" title="安装Gridsome CLI脚手架工具"></a>安装Gridsome CLI脚手架工具</h4><p><a href="https://www.gridsome.cn/docs/" target="_blank" rel="noopener">Gridsome官网</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 使用 yarn</span><br><span class="line">$ yarn global add @gridsome/cli</span><br><span class="line"></span><br><span class="line"># 使用 npm</span><br><span class="line">$ npm install --global @gridsome/cli</span><br><span class="line"></span><br><span class="line"># 查看是否安装成功</span><br><span class="line">$ gridsome --version</span><br></pre></td></tr></table></figure>
+<h4 id="准备sharp的安装环境"><a href="#准备sharp的安装环境" class="headerlink" title="准备sharp的安装环境"></a>准备sharp的安装环境</h4><blockquote>
+<p>不管是哪个是哪个操作平台（Windows、Linux）,都需要有python环境，windows环境可以通过Windows应用商店安装。</p>
+</blockquote>
+<p><a href="https://sharp.pixelplumbing.com/" target="_blank" rel="noopener">sharp官网</a><br><a href="https://github.com/lovell/sharp" target="_blank" rel="noopener">sharp：Github地址</a></p>
+<p>使用Gridsome脚手架创建项目时，处理图片（如压缩图片的大小、转换图片的格式）依赖的sharp包很难安装成功，主要原因有两点：</p>
+<ul>
+<li>sharp里面包含一些C++文件，在安装的时候需要先编译，需要要有C++编译环境</li>
+<li>sharp依赖的libvips几十兆，比较大，由于国内网络环境原因，很难下载成功<br>所以在创建Gridsome项目项目之前首先需要解决这两个问题</li>
+</ul>
+<ol>
+<li>在sharp官网找到<a href="https://sharp.pixelplumbing.com/install#chinese-mirror" target="_blank" rel="noopener">国内镜像</a>，安装国内镜像</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 安装sharp镜像</span><br><span class="line">$ npm config <span class="keyword">set</span> sharp_binary_host "https://npm.taobao.org/mirrors/sharp"</span><br><span class="line"># 安装sharp_libvips镜像</span><br><span class="line">$ npm config <span class="keyword">set</span> sharp_libvips_binary_host "https://npm.taobao.org/mirrors/sharp-libvips"</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>安装C++编译环境</li>
+</ol>
+<p><a href="https://github.com/nodejs/node-gyp" target="_blank" rel="noopener">node-gyp：Github地址</a><br>下载Python安装包，安装Python环境<br>安装node-gyp及相关套件windows-build-tools，它的作用是编译C++扩展包</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装node-gyp</span><br><span class="line">$ npm install -g node-gyp</span><br><span class="line"></span><br><span class="line"># 安装windows-build-tools</span><br><span class="line">$ npm install --global windows-build-tools</span><br></pre></td></tr></table></figure>
+<h4 id="创建Gridsome项目，并安装依赖包"><a href="#创建Gridsome项目，并安装依赖包" class="headerlink" title="创建Gridsome项目，并安装依赖包"></a>创建Gridsome项目，并安装依赖包</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 创建项目</span><br><span class="line">$ gridsome create blog-<span class="keyword">with</span>-gridsome</span><br></pre></td></tr></table></figure>
+<p>创建的目录结构 详见<a href="https://www.gridsome.cn/docs/directory-structure/" target="_blank" rel="noopener">Gridsome官方文档</a></p>
+<pre><code>├── src
+│   ├── components     # 公共组件
+│   ├── layouts        # 布局组件
+│   ├── pages          # 页面路由组件
+│   ├── templates      # 模板文件
+│   ├── favicon.png    # 网站图标
+│   └── main.js        # 应用入口
+├── static             # 静态资源存储目录，该目录中的资源不做构建处理
+├── README.md
+├── gridsome.config.js # gridsome配置文件
+├── gridsome.server.js # gridsome内部服务配置文件
+├── package-lock.json
+└── package.json
+</code></pre><blockquote>
+<p>注意：<br>1、Gridsome不需要显示的配置路由，会依据pages目录自动生成路由规则<br>2、pages目录下的路由组件名默认支持小写，如果是大写，会转成小写，多个单词用”-“连接，如：src/pages/AboutUs.vue 转成 /about-us<br>3、页面路由会自动查找index.vue组件，如src/pages/blog/Index.vue becomes /blog</p>
+</blockquote>
+<p>npm scripts命令</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "build": "gridsome build", //编译构建预渲染静态网页</span><br><span class="line">  "develop": "gridsome develop", //本地启动项目</span><br><span class="line">  "explore": "gridsome explore"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>本地执行 npm run develop 启动项目，浏览器访问<a href="http://localhost:8080/，页面如下：" target="_blank" rel="noopener">http://localhost:8080/，页面如下：</a></p>
+<p> <img src="/2021/05/19/Vue静态站点生成 -- GridSome基础/gs2.png" alt="GridSome"></p>
+<h4 id="构建预渲染静态网页"><a href="#构建预渲染静态网页" class="headerlink" title="构建预渲染静态网页"></a>构建预渲染静态网页</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build</span><br></pre></td></tr></table></figure>
+<p>构建结果默认输出到 dist 目录中,可以将其部署在任何支持静态文件的web服务器上,Gridsome 会把每个路由文件构建为独立的 HTML 页面。</p>
+<h4 id="使用serve插件本地部署测试打包后的文件"><a href="#使用serve插件本地部署测试打包后的文件" class="headerlink" title="使用serve插件本地部署测试打包后的文件"></a>使用serve插件本地部署测试打包后的文件</h4><blockquote>
+<p>serve是一个基于node.js的命令行静态web服务</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装 serve 部署静态网站</span><br><span class="line">$ npm install -g serve</span><br></pre></td></tr></table></figure>
+<p>项目根目录下执行 serve dist启动本地服务，如下图表示启动成功：</p>
+<p> <img src="/2021/05/19/Vue静态站点生成 -- GridSome基础/gs3.png" alt="GridSome"></p>
+<h4 id="项目配置文件"><a href="#项目配置文件" class="headerlink" title="项目配置文件"></a>项目配置文件</h4><p><a href="https://www.gridsome.cn/docs/config/" target="_blank" rel="noopener">Gridsome官方文档-配置文件</a><br>Gridsome 需要 gridsome.config.js 才能工作。插件和项目设置位于此处。<br>gridsome.config.js ，基本配置文件如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    siteName: <span class="string">'Gridsome'</span>,</span><br><span class="line">    siteUrl: <span class="string">'https://www.gridsome.org'</span>,</span><br><span class="line">    plugins: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>siteName</td>
+<td>string</td>
+<td><code>&lt;dirname&gt;</code></td>
+<td>该名称通常在标题标签中使用</td>
+</tr>
+<tr>
+<td>siteDescription</td>
+<td>string</td>
+<td>‘’</td>
+<td>页面描述，<code>&lt;meta name=&quot;description&quot; content=&quot;xxx&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>pathPrefix</td>
+<td>string</td>
+<td>‘’</td>
+<td>Gridsome假定您的项目是从域的根目录提供的。如果您的项目将托管在名为my-app的子目录中，则将此选项更改为“/ my-app”</td>
+</tr>
+<tr>
+<td>titleTemplate</td>
+<td>string</td>
+<td><code>%s - &lt;siteName&gt;</code></td>
+<td>设置标题标签的模板。 %s占位符将替换为您在页面中设置的metaInfo的标题</td>
+</tr>
+<tr>
+<td>plugins</td>
+<td>Array</td>
+<td>[]</td>
+<td>通过将插件添加到plugins数组来激活插件</td>
+</tr>
+<tr>
+<td>templates</td>
+<td>object</td>
+<td>{}</td>
+<td>定义 collections 的路由和模板</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>object</td>
+<td>{}</td>
+<td>将全局元数据添加到GraphQL模式</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>string \</td>
+<td>object</td>
+<td>‘./src/favicon.png’</td>
+<td>Gridsome默认情况下会将位于src / favicon.png的任何图像用作favicon和touchicon，但您可以定义其他路径或大小等。图标应为正方形且至少16个像素。网站图标将调整为16、32、96像素。默认情况下，触摸图标的大小将调整为76、152、120、167、180像素</td>
+</tr>
+<tr>
+<td>configureWebpack</td>
+<td>object \</td>
+<td>Function</td>
+<td></td>
+<td>如果该选项是一个对象，它将与内部配置合并</td>
+</tr>
+<tr>
+<td>chainWebpack</td>
+<td>Function</td>
+<td></td>
+<td>该函数将接收由webpack-chain驱动的ChainableConfig实例</td>
+</tr>
+<tr>
+<td>runtimeCompiler</td>
+<td>boolean</td>
+<td>false</td>
+<td>在运行时包括Vue模板编译器</td>
+</tr>
+<tr>
+<td>configureServer</td>
+<td>Function</td>
+<td></td>
+<td>配置开发服务器</td>
+</tr>
+<tr>
+<td>permalinks.trailingSlash</td>
+<td>boolean</td>
+<td>true</td>
+<td>默认情况下，在页面和模板后添加斜杠。启用此选项后，具有动态路由的页面将不包含尾部斜杠，并且服务器上必须具有额外的重写规则才能正常工作。另外，<code>&lt;g-link&gt;</code>的静态路径不会自动包含尾部斜杠，而应包含在路径中</td>
+</tr>
+<tr>
+<td>permalinks.slugify</td>
+<td></td>
+<td></td>
+<td>使用自定义的Slugify方法。默认是 <a href="https://github.com/sindresorhus/slugify" target="_blank" rel="noopener">@sindresorhus/slugify</a></td>
+</tr>
+<tr>
+<td>css.split</td>
+<td>boolean</td>
+<td>false</td>
+<td>将CSS分成多个块。默认情况下禁用拆分。拆分CSS可能会导致奇怪的行为</td>
+</tr>
+<tr>
+<td>css.loaderOptions</td>
+<td>Object</td>
+<td>{}</td>
+<td>将选项传递给与CSS相关的 loader</td>
+</tr>
+<tr>
+<td>host</td>
+<td>string</td>
+<td>localhost</td>
+<td>访问地址</td>
+</tr>
+<tr>
+<td>port</td>
+<td>number</td>
+<td>8080</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td>outputDir</td>
+<td>string</td>
+<td>‘dist’</td>
+<td>运行gridsome构建时将在其中生成生产构建文件的目录</td>
+</tr>
+</tbody>
+</table>
+<p>插件示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        &#123;</span><br><span class="line">            use: <span class="string">'@gridsome/source-filesystem'</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">                path: <span class="string">'blog/**/*.md'</span>,</span><br><span class="line">                route: <span class="string">'/blog/:year/:month/:day/:slug'</span>,</span><br><span class="line">                typeName: <span class="string">'Post'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：开发过程中修改配置需要重启服务</p>
+</blockquote>
+<h4 id="路由组件页面"><a href="#路由组件页面" class="headerlink" title="路由组件页面"></a>路由组件页面</h4><p><a href="https://www.gridsome.cn/docs/pages/" target="_blank" rel="noopener">Gridsome官方文档-页面组件</a></p>
+<p>生成页面组件有两种方式：</p>
+<ul>
+<li>单文件组件，使用文件系统的方式，和创建普通文件方式一致</li>
+<li>使用 Pages API 以编程方式创建页面</li>
+</ul>
+<h5 id="pages-中的单文件组件"><a href="#pages-中的单文件组件" class="headerlink" title="pages 中的单文件组件"></a>pages 中的单文件组件</h5><p>src/pages 目录中的单文件组件将自动具有其自己的URL。文件路径用于生成 URL，以下是一些基本示例：</p>
+<ul>
+<li>src/pages/Index.vue becomes <code>/(The frontpage)</code></li>
+<li>src/pages/AboutUs.vue becomes <code>/about-us/</code></li>
+<li>src/pages/about/Vision.vue becomes <code>/about/vision/</code></li>
+<li>src/pages/blog/Index.vue becomes <code>/blog/</code></li>
+</ul>
+<blockquote>
+<p>大小自动转小写，驼峰命名会自动使用短横杠分割</p>
+</blockquote>
+<p>src/pages 中的页面通常用于诸如 /about/ 之类的固定 URL，或用于在 /blog/ 等处列出博客文章</p>
+<h5 id="使用-Pages-API-创建页面"><a href="#使用-Pages-API-创建页面" class="headerlink" title="使用 Pages API 创建页面"></a>使用 Pages API 创建页面</h5><p>可以使用 gridsome.server.js 中的 createPages 钩子以编程方式创建页面。如果您要从外部 API 手动创建页面而不使用 GraphQL 数据层，则此功能很有用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">api</span>) </span>&#123;</span><br><span class="line">    api.createPages(<span class="function">(<span class="params">&#123; createPage &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        createPage(&#123;</span><br><span class="line">            path: <span class="string">'/my-page'</span>,</span><br><span class="line">            component: <span class="string">'./src/templates/MyPage.vue'</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启本地项目，浏览器访问<code>http://localhost:8080/my-page</code>页面正常，说明创建路由页面成功。</p>
+<h5 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h5><p>动态路由对于仅需要客户端路由的页面很有用。例如，根据URL中的细分从生产环境中的外部API获取信息的页面。</p>
+<h6 id="通过文件创建动态路由"><a href="#通过文件创建动态路由" class="headerlink" title="通过文件创建动态路由"></a>通过文件创建动态路由</h6><p>动态页面用于客户端路由。可以通过将名称包装在方括号中来将路由参数放置在文件和目录名称中。例如：</p>
+<ul>
+<li>src/pages/user/[id].vue  becomes <code>/user/:id</code></li>
+<li>src/pages/user/[id]/settings.vue  becomes <code>/user/:id/settings</code></li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>在构建时，这将生成 user/_id.html 和 user/_id/settings.html，并且您必须具有重写规则以使其正常运行。</li>
+<li>具有动态路由的页面的优先级低于固定路由。例如，如果您有一个 /user/create 路由和 /user/:id 路由，则 /user/create 路由将具有优先级。</li>
+</ul>
+<p>这是一个基本的页面组件，它使用路由中的id参数来获取客户端的用户信息：</p>
+<ul>
+<li><code>user/[id].vue</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; user.name &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  data() &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      user: <span class="literal">null</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="javascript">  <span class="keyword">async</span> mounted() &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> &#123; id &#125; = <span class="keyword">this</span>.$route.params</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">`https://api.example.com/user/<span class="subst">$&#123;id&#125;</span>`</span>)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">this</span>.user = <span class="keyword">await</span> response.json()</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>始终使用 mounted 来获取客户端数据。由于在生成静态HTML时执行数据，因此在 created 中获取数据会引起问题。</p>
+<h6 id="通过编程方式创建动态路由"><a href="#通过编程方式创建动态路由" class="headerlink" title="通过编程方式创建动态路由"></a>通过编程方式创建动态路由</h6><p>以编程方式创建带有动态路由的页面，以获取更高级的路径。动态参数使用 <code>:</code> 来指定。</p>
+<p>每个参数都可以具有一个自定义的正则表达式，以仅匹配数字或某些值</p>
+<ul>
+<li><code>gridsome.server.js</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">api</span>) </span>&#123;</span><br><span class="line">  api.createPages(<span class="function">(<span class="params">&#123; createPage &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    createPage(&#123;</span><br><span class="line">      path: <span class="string">'/user/:id(\\d+)'</span>,</span><br><span class="line">      component: <span class="string">'./src/templates/User.vue'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="生成重写规则"><a href="#生成重写规则" class="headerlink" title="生成重写规则"></a>生成重写规则</h6><p>Gridsome无法为动态路由的每种可能的变体生成HTML文件，这意味着直接访问URL时最有可能显示404页。而是，Gridsome生成一个HTML文件，该文件可用于重写规则。例如，类似<code>/user/:id</code>的路由将生成位于<code>/user/_id.html</code>的HTML文件。您可以具有重写规则，以将所有与<code>/user/:id</code>匹配的路径映射到该文件。</p>
+<p>由于每种服务器类型都有自己的语法，因此必须手动生成重写规则。 <code>afterBuild</code> 挂钩中的 <code>redirects</code> 数组包含应生成的所有必要的重写规则。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  afterBuild (&#123; redirects &#125;) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> rule <span class="keyword">of</span> redirects) &#123;</span><br><span class="line">      <span class="comment">// rule.from   - The dynamic path</span></span><br><span class="line">      <span class="comment">// rule.to     - The HTML file path</span></span><br><span class="line">      <span class="comment">// rule.status - 200 if rewrite rule</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="页面-meta-信息"><a href="#页面-meta-信息" class="headerlink" title="页面 meta 信息"></a>页面 meta 信息</h6><p>Gridsome 使用 vue-meta 处理有关页面的元信息。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  metaInfo: &#123;</span></span><br><span class="line"><span class="javascript">    title: <span class="string">'Hello, world!'</span>,</span></span><br><span class="line"><span class="undefined">    meta: [</span></span><br><span class="line"><span class="javascript">      &#123; <span class="attr">name</span>: <span class="string">'author'</span>, <span class="attr">content</span>: <span class="string">'John Doe'</span> &#125;</span></span><br><span class="line"><span class="undefined">    ]</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="自定义-404-页面"><a href="#自定义-404-页面" class="headerlink" title="自定义 404 页面"></a>自定义 404 页面</h6><p>创建一个 <code>src/pages/404.vue</code> 组件以具有一个自定义 404 页面</p>
+<h4 id="Collections-集合"><a href="#Collections-集合" class="headerlink" title="Collections 集合"></a>Collections 集合</h4><p>集合是一组节点，每个节点都包含带有自定义数据的字段。如果您要在网站上放置博客文章，标签，产品等，则集合很有用。</p>
+<p><strong>数据集合作用：</strong></p>
+<ul>
+<li>承载数据-将通过请求获取到的动态数据预渲染到页面当中</li>
+<li>预渲染页面-将集合包含模板的节点预渲染成页面</li>
+</ul>
+<p><strong>数据集合原理：</strong></p>
+<p><img src="/2021/05/19/Vue静态站点生成 -- GridSome基础/gs4.png" alt="数据集合原理"></p>
+<p>将从各种数据源获取到的外部数据源，通过某种方式生成集合，集合添加带模板的节点，最后将这些节点预渲染成页面。</p>
+<p>在开发和构建期间，这些集合存储在本地内存数据存储中。节点可以来自本地文件（Markdown，JSON，YAML等）或任何外部API。</p>
+<h5 id="添加集合"><a href="#添加集合" class="headerlink" title="添加集合"></a>添加集合</h5><ul>
+<li><a href="https://gridsome.org/plugins/" target="_blank" rel="noopener">source plugins</a>插件，通过封装好的插件将外部动态数据集成到gridsome中</li>
+<li>数据存储api（<a href="https://gridsome.org/docs/data-store-api/" target="_blank" rel="noopener">Data Store API</a>）创建数据集合，通过在gridsome.server.js中将外部动态数据提前获取</li>
+</ul>
+<h6 id="使用-source-plugins-添加集合"><a href="#使用-source-plugins-添加集合" class="headerlink" title="使用 source plugins 添加集合"></a>使用 source plugins 添加集合</h6><p>将集合添加到 Gridsome 的最简单方法是使用源插件。本示例从 WordPress 网站创建集合。源插件的 typeName 选项通常用于为插件添加的集合名称添加前缀。</p>
+<ul>
+<li>gridsome.config.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        &#123;</span><br><span class="line">            use: <span class="string">'@gridsome/source-wordpress'</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">                baseUrl: <span class="string">'YOUR_WEBSITE_URL'</span>,</span><br><span class="line">                typeName: <span class="string">'WordPress'</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>插件的列表详见<a href="https://gridsome.org/plugins" target="_blank" rel="noopener">plugins</a></p>
+<h6 id="使用-Data-Store-API-添加集合"><a href="#使用-Data-Store-API-添加集合" class="headerlink" title="使用 Data Store API 添加集合"></a>使用 Data Store API 添加集合</h6><p>您可以从任何外部 API 手动添加集合。</p>
+<p>本示例创建一个名为 Post 的集合，该集合从 API 获取内容并将结果作为节点添加到该集合中</p>
+<ul>
+<li><code>gridsome.server.js</code> 使用数据存储api创建数据集合</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">api</span>) </span>&#123;</span><br><span class="line">    api.loadSource(<span class="keyword">async</span> actions =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> collection = actions.addCollection(<span class="string">'Post'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> &#123; data &#125; = <span class="keyword">await</span> axios.get(<span class="string">'https://api.example.com/posts'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> data) &#123;</span><br><span class="line">            collection.addNode(&#123;</span><br><span class="line">                id: item.id,</span><br><span class="line">                title: item.title,</span><br><span class="line">                content: item.content</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以通过GraphQL查询集合当中的数据，下面具体看下</p>
+<h5 id="GraphQL数据层"><a href="#GraphQL数据层" class="headerlink" title="GraphQL数据层"></a>GraphQL数据层</h5><p><img src="/2021/05/19/Vue静态站点生成 -- GridSome基础/gs5.png" alt="GraphQL"></p>
+<p>GraphQL数据层是在开发模式下可用的工具。这是临时存储到 Gridsome 项目中的所有数据的地方。可以将其视为可帮助您更快更好地处理数据的本地数据库。</p>
+<p>来自 GraphQL 数据层的数据将生成为静态内容。</p>
+<p>数据层和导入数据的源之间没有实时连接,这意味着您需要重新生成网站以获取最新的数据更新。</p>
+<p>如果需要动态数据，则应使用<a href="https://gridsome.org/docs/client-side-data/" target="_blank" rel="noopener">客户端数据</a></p>
+<blockquote>
+<p>提示：默认情况下，Pages 也 Site metadata 已添加到数据层。</p>
+</blockquote>
+<h6 id="通过GraphQL查询集合当中的数据"><a href="#通过GraphQL查询集合当中的数据" class="headerlink" title="通过GraphQL查询集合当中的数据"></a>通过GraphQL查询集合当中的数据</h6><p>每个 collection 都会向<a href="https://gridsome.org/docs/data-layer/" target="_blank" rel="noopener">GraphQL schema</a>中添加两个用于获取页面节点的根级字段，这些字段用于检索页面中的节点，字段名称是根据集合名称自动生成的，如创建了一个 Post 数据集合，就会向 GraphQL schema 中添加两个根级字段：</p>
+<ul>
+<li>Post：通过id获取单个节点</li>
+<li>allPost：获取节点列表</li>
+</ul>
+<p>开发环境中，启动项目的时候，同时启动了GraphQL Data资源管理，浏览器访问 <code>http://localhost:8080/___explore</code>（只有开发环境可访问），可以看到 Post 和 allPost</p>
+<p><img src="/2021/05/19/Vue静态站点生成 -- GridSome基础/gs6.png" alt></p>
+<p>在GraphQL Data资源管理器的左侧区域输入查询条件，点击演示按钮，在右侧区域查看结果，如下查询id为2的文章详情</p>
+<p><img src="/2021/05/19/Vue静态站点生成 -- GridSome基础/gs7.png" alt></p>
+<p><strong>页面中通过代码查询GraphQL集合当中的数据</strong></p>
+<ul>
+<li>在Pages 、Templates中使用<code>&lt;page-query&gt;</code></li>
+<li>在Components中使用<code>&lt;static-query&gt;</code></li>
+</ul>
+<ol>
+<li><p>查询节点集合</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查询按标题排序的数据集合</span></span><br><span class="line">query &#123;</span><br><span class="line">allPost(sortBy: <span class="string">"title"</span>, <span class="attr">order</span>: DESC) &#123;</span><br><span class="line">    edges &#123;</span><br><span class="line">    node &#123;</span><br><span class="line">        title</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询按多个字段排序的数据集合</span></span><br><span class="line">query &#123;</span><br><span class="line">allPost(sort: [&#123; <span class="attr">by</span>: <span class="string">"featured"</span> &#125;, &#123; <span class="attr">by</span>: <span class="string">"date"</span> &#125;]) &#123;</span><br><span class="line">    edges &#123;</span><br><span class="line">    node &#123;</span><br><span class="line">        title</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询单个节点</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">query &#123;</span><br><span class="line">    post(id: <span class="string">"1"</span>) &#123;</span><br><span class="line">        title</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在页面组件中查询节点</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Latest blog posts<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"edge in $page.posts.edges"</span> <span class="attr">:key</span>=<span class="string">"edge.node.id"</span>&gt;</span></span><br><span class="line">        &#123;&#123; edge.node.title &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">page-query</span>&gt;</span></span><br><span class="line">query &#123;</span><br><span class="line">    posts: allWordPressPost &#123;</span><br><span class="line">        edges &#123;</span><br><span class="line">        node &#123;</span><br><span class="line">            id</span><br><span class="line">            title</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">page-query</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在其他组件中查询节点</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-html</span>=<span class="string">"$static.post.content"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">static-query</span>&gt;</span></span><br><span class="line">query &#123;</span><br><span class="line">    post(id: "1") &#123;</span><br><span class="line">        content</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">static-query</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>  创建src/pages/Posts2.vue,使用&lt;<code>page-query&gt;</code>查询GraphQL中的数据集合，通过预渲染实现页面静态化</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Posts2<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"edge in $page.posts.edges"</span> <span class="attr">:key</span>=<span class="string">"edge.node.id"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">g-link</span> <span class="attr">:to</span>=<span class="string">"edge.node.path"</span>&gt;</span>&#123;&#123; edge.node.title &#125;&#125;<span class="tag">&lt;/<span class="name">g-link</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">page-query</span>&gt;</span></span><br><span class="line">query &#123;</span><br><span class="line">    posts: allPost &#123;</span><br><span class="line">        edges &#123;</span><br><span class="line">            node &#123;</span><br><span class="line">                id</span><br><span class="line">                title</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">page-query</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<pre><code>1. 修改了gridsome.server.js文件以后，需要重新启动项目，修改的内容才能生效
+2. jsonplaceholder提供了很多在线的模拟数据接口，可用于开发阶段的功能测试
+3. GraphQL Data对应的资源管理只有在开发模式下能访问
+4. Gridsome会把page-query查到的数据放入当前组件实例的$page对象当中
+</code></pre></blockquote>
+<p>探索可用的类型和字段</p>
+<p>可以通过在 <a href="https://gridsome.org/docs/data-layer/#the-graphql-explorer" target="_blank" rel="noopener">GraphQL 资源管理器</a>中打开架构选项卡来浏览可用字段。</p>
+<p>阅读有关如何在 GraphQL 中查询节点的更多信息查看<a href="https://gridsome.org/docs/querying-data/" target="_blank" rel="noopener">Querying data</a></p>
+<h5 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h5><p>模板用于为集合中的节点创建单个页面。节点需要相应的页面才能显示在其自己的URL上。</p>
+<p>在<code>src/templates</code>下创建一个和集合名字一致的模板，并在<code>gridsome.config.js</code>中为该集合配置创建的模板</p>
+<ul>
+<li><code>src/templates/Post.vue</code>创建模板，并接收页面传参id、修改页面标题</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;Layout&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;&#123;&#123;$page.post.title&#125;&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;h5&gt;&#123;&#123;$page.post.content&#125;&#125;&lt;/</span>h5&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>Layout&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;page-query&gt;</span></span><br><span class="line"><span class="regexp">query($id: ID!) &#123;</span></span><br><span class="line"><span class="regexp">  post(id: $id) &#123;</span></span><br><span class="line"><span class="regexp">    id</span></span><br><span class="line"><span class="regexp">    title </span></span><br><span class="line"><span class="regexp">    content</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>page-query&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"PostPage"</span>,</span><br><span class="line">  <span class="comment">//只有函数中可以访问当前组件实例的$page</span></span><br><span class="line">  metaInfo() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      title: <span class="keyword">this</span>.$page.post.title</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<br>query ($id: ID!) {} ：<br>id ：指的是在 gridsome.config.js 中配置模板时填写的动态路由 :id；<br>ID! ：是指 对应字段 ID，并且是非空的</p>
+</blockquote>
+<ul>
+<li><code>gridsome.config.js</code>配置模板</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  ...</span><br><span class="line">  templates: &#123;</span><br><span class="line">    Post: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">'/posts/:id'</span>,</span><br><span class="line">        component: <span class="string">'./src/templates/Post.vue'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>src/pages/Posts.vue</code> 配置模板入口</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-<span class="keyword">for</span>=<span class="string">"edge in $page.posts.edges"</span> :key=<span class="string">"edge.node.id"</span>&gt;</span><br><span class="line">    &lt;g-link :to=<span class="string">"edge.node.path"</span>&gt;&#123;&#123; edge.node.title &#125;&#125;&lt;<span class="regexp">/g-link&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>li&gt;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">...</span></span><br></pre></td></tr></table></figure>
+<p>重新启动项目，如果能在浏览器正常访问文章详情页面，说明以上使用模板渲染节点页面成功</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>学习Gridsome需要具备css、html、javascript、vue基础</li>
+<li>使用脚手架（@gridsome/cli）创建Gridsome项目时，本地需要有环境准备Node.js（v8.3 +）环境、C++编译环境、Python环境</li>
+<li>Gridsome不需要显示的配置路由，会依据pages目录自动生成路由规则</li>
+<li>每次修改配置文件后，需要重新启动项目，修改的部分才会生效</li>
+<li>需要预渲染的外部数据必须通过集合collection获取</li>
+<li>Gridsome有三种获取动态数据的方式：通过插件、特定的API、本地文件</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GridSome/" rel="tag"># GridSome</a>
+          
+            <a href="/tags/GraphQL/" rel="tag"># GraphQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/02/前端页面的生命周期/" rel="next" title="前端页面的生命周期">
+                <i class="fa fa-chevron-left"></i> 前端页面的生命周期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/05/20/Vue静态站点生成-Gridsome综合案例/" rel="prev" title="Vue静态站点生成 -- Gridsome综合案例">
+                Vue静态站点生成 -- Gridsome综合案例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="Eline">
+            
+              <p class="site-author-name" itemprop="name">Eline</p>
+              <p class="site-description motion-element" itemprop="description">Web前端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Eline302" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态网站生成器"><span class="nav-number">1.</span> <span class="nav-text">静态网站生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的静态网站生成器"><span class="nav-number">1.1.</span> <span class="nav-text">常见的静态网站生成器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态应用的使用场景"><span class="nav-number">1.2.</span> <span class="nav-text">静态应用的使用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gridsome"><span class="nav-number">2.</span> <span class="nav-text">Gridsome</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gridsome介绍"><span class="nav-number">2.1.</span> <span class="nav-text">Gridsome介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gridsome-工作原理"><span class="nav-number">2.2.</span> <span class="nav-text">Gridsome 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">2.3.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Gridsome项目"><span class="nav-number">2.4.</span> <span class="nav-text">创建Gridsome项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Gridsome-CLI脚手架工具"><span class="nav-number">2.4.1.</span> <span class="nav-text">安装Gridsome CLI脚手架工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备sharp的安装环境"><span class="nav-number">2.4.2.</span> <span class="nav-text">准备sharp的安装环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Gridsome项目，并安装依赖包"><span class="nav-number">2.4.3.</span> <span class="nav-text">创建Gridsome项目，并安装依赖包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建预渲染静态网页"><span class="nav-number">2.4.4.</span> <span class="nav-text">构建预渲染静态网页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用serve插件本地部署测试打包后的文件"><span class="nav-number">2.4.5.</span> <span class="nav-text">使用serve插件本地部署测试打包后的文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目配置文件"><span class="nav-number">2.4.6.</span> <span class="nav-text">项目配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由组件页面"><span class="nav-number">2.4.7.</span> <span class="nav-text">路由组件页面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pages-中的单文件组件"><span class="nav-number">2.4.7.1.</span> <span class="nav-text">pages 中的单文件组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-Pages-API-创建页面"><span class="nav-number">2.4.7.2.</span> <span class="nav-text">使用 Pages API 创建页面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态路由"><span class="nav-number">2.4.7.3.</span> <span class="nav-text">动态路由</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#通过文件创建动态路由"><span class="nav-number">2.4.7.3.1.</span> <span class="nav-text">通过文件创建动态路由</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#通过编程方式创建动态路由"><span class="nav-number">2.4.7.3.2.</span> <span class="nav-text">通过编程方式创建动态路由</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#生成重写规则"><span class="nav-number">2.4.7.3.3.</span> <span class="nav-text">生成重写规则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#页面-meta-信息"><span class="nav-number">2.4.7.3.4.</span> <span class="nav-text">页面 meta 信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自定义-404-页面"><span class="nav-number">2.4.7.3.5.</span> <span class="nav-text">自定义 404 页面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections-集合"><span class="nav-number">2.4.8.</span> <span class="nav-text">Collections 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加集合"><span class="nav-number">2.4.8.1.</span> <span class="nav-text">添加集合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用-source-plugins-添加集合"><span class="nav-number">2.4.8.1.1.</span> <span class="nav-text">使用 source plugins 添加集合</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用-Data-Store-API-添加集合"><span class="nav-number">2.4.8.1.2.</span> <span class="nav-text">使用 Data Store API 添加集合</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GraphQL数据层"><span class="nav-number">2.4.8.2.</span> <span class="nav-text">GraphQL数据层</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#通过GraphQL查询集合当中的数据"><span class="nav-number">2.4.8.2.1.</span> <span class="nav-text">通过GraphQL查询集合当中的数据</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Templates"><span class="nav-number">2.4.8.3.</span> <span class="nav-text">Templates</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eline</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

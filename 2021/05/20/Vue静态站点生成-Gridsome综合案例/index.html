@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GraphQL,Strapi,Vercel,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本博客案例使用静态站点生成器 Gridsome 快速生成静态网站，后台的数据使用 Strapi 进行管理，案例中使用 GraphQL 访问 Strapi 中的数据，最后通过 Vercel 来自动化部署。  案例介绍功能介绍：实现一个个人博客的基本功能页面UI：参照startbootstrap-clean-blog、github地址案例目的：体验使用Gridsome解决实际开发过程中的问题 案例实">
+<meta name="keywords" content="GraphQL,Strapi,Vercel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue静态站点生成 -- Gridsome综合案例">
+<meta property="og:url" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/index.html">
+<meta property="og:site_name" content="Eline blog">
+<meta property="og:description" content="本博客案例使用静态站点生成器 Gridsome 快速生成静态网站，后台的数据使用 Strapi 进行管理，案例中使用 GraphQL 访问 Strapi 中的数据，最后通过 Vercel 来自动化部署。  案例介绍功能介绍：实现一个个人博客的基本功能页面UI：参照startbootstrap-clean-blog、github地址案例目的：体验使用Gridsome解决实际开发过程中的问题 案例实">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs1.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs2.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs3.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs4.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs5.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs6.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs7.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs8.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs9.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs10.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs11.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs12.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs13.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs14.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs15.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs16.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs17.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs18.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs19.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs20.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs21.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs22.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs23.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs24.png">
+<meta property="og:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs25.png">
+<meta property="og:updated_time" content="2021-05-24T03:32:41.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue静态站点生成 -- Gridsome综合案例">
+<meta name="twitter:description" content="本博客案例使用静态站点生成器 Gridsome 快速生成静态网站，后台的数据使用 Strapi 进行管理，案例中使用 GraphQL 访问 Strapi 中的数据，最后通过 Vercel 来自动化部署。  案例介绍功能介绍：实现一个个人博客的基本功能页面UI：参照startbootstrap-clean-blog、github地址案例目的：体验使用Gridsome解决实际开发过程中的问题 案例实">
+<meta name="twitter:image" content="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/">
+
+
+
+
+
+  <title>Vue静态站点生成 -- Gridsome综合案例 | Eline blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eline blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/20/Vue静态站点生成-Gridsome综合案例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eline">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eline blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue静态站点生成 -- Gridsome综合案例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-20T15:34:14+08:00">
+                2021-05-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-24T11:32:41+08:00">
+                2021-05-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Gridsome/" itemprop="url" rel="index">
+                    <span itemprop="name">Gridsome</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本博客案例使用静态站点生成器 Gridsome 快速生成静态网站，后台的数据使用 Strapi 进行管理，案例中使用 GraphQL 访问 Strapi 中的数据，最后通过 Vercel 来自动化部署。</p>
+</blockquote>
+<h2 id="案例介绍"><a href="#案例介绍" class="headerlink" title="案例介绍"></a>案例介绍</h2><p><strong>功能介绍：</strong>实现一个个人博客的基本功能<br><strong>页面UI：</strong>参照<a href="https://startbootstrap.github.io/startbootstrap-clean-blog/" target="_blank" rel="noopener">startbootstrap-clean-blog</a>、<a href="https://github.com/StartBootstrap/startbootstrap-clean-blog" target="_blank" rel="noopener">github地址</a><br><strong>案例目的：</strong>体验使用Gridsome解决实际开发过程中的问题</p>
+<h2 id="案例实现"><a href="#案例实现" class="headerlink" title="案例实现"></a>案例实现</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gridsome create blog-<span class="keyword">with</span>-gridsome</span><br></pre></td></tr></table></figure>
+<p>本地启动项目</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run develop</span><br></pre></td></tr></table></figure>
+<p>浏览器访问<code>http://localhost:8080/</code>，如下：</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs1.png" alt="Gridsome"></p>
+<h3 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h3><p>根据 <code>startbootstrap-clean-blog/index.html</code>，处理首页模板</p>
+<ul>
+<li>安装相关依赖</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i bootstrap @fortawesome/fontawesome-free</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建 <code>src/assets/css/index.css</code> 文件，引入项目中需要的goole字体文件，并导入其他需要的css样式</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(<span class="string">'https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic'</span>);</span><br><span class="line">@<span class="keyword">import</span> url(<span class="string">'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'</span>);</span><br><span class="line"><span class="comment">/* 将 startbootstrap-clean-blog/css/clean-blog.css 中的内容复制到下方 */</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>src/main.js</code> 中，全局引入项目中所需的静态资源</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'bootstrap/dist/css/bootstrap.min.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'@fortawesome/fontawesome-free/css/all.min.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'~/assets/css/index.css'</span></span><br></pre></td></tr></table></figure>
+<h3 id="公共模板"><a href="#公共模板" class="headerlink" title="公共模板"></a>公共模板</h3><p>每个页面的头部和底部都是一样的，只有中间部分不一样，因此将其公共部分提取出来</p>
+<p>将 <code>startbootstrap-clean-blog/index.html</code> 的 <code>body</code> 部分的 <code>Navigation</code> 和 <code>Footer</code> 内容，复制到 <code>src/layout/Default.vue</code> 中</p>
+<ul>
+<li><a href="https://github.com/Eline302/blog-with-gridsome/blob/master/src/layouts/Default.vue" target="_blank" rel="noopener">src/layout/Default.vue</a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"layout"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- Navigation --&gt;</span><br><span class="line">        &lt;nav <span class="class"><span class="keyword">class</span></span>=<span class="string">"navbar navbar-expand-lg navbar-light fixed-top"</span> id=<span class="string">"mainNav"</span>&gt;</span><br><span class="line">            ......</span><br><span class="line">        &lt;<span class="regexp">/nav&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;!-- 默认插槽 --&gt;</span></span><br><span class="line"><span class="regexp">        &lt;slot/</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;hr /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- Footer --&gt;</span><br><span class="line">        &lt;footer&gt;</span><br><span class="line">            ......</span><br><span class="line">        &lt;<span class="regexp">/footer&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="首页模板"><a href="#首页模板" class="headerlink" title="首页模板"></a>首页模板</h3><p>将 <code>startbootstrap-clean-blog/index.html</code> 的 <code>body</code> 部分的 <code>Page Header</code> 和 <code>Main Content</code> 内容，复制到 <code>src/pages/index.vue</code> 中</p>
+<ul>
+<li><a href="https://github.com/Eline302/blog-with-gridsome/blob/master/src/pages/Index.vue" target="_blank" rel="noopener">src/pages/index.vue</a> ，创建根节点</li>
+<li>将 startbootstrap-clean-blog/img 目录拷贝到 <a href="https://github.com/Eline302/blog-with-gridsome/tree/master/static/img" target="_blank" rel="noopener">static/img</a> 目录下，并修改 url 路径，如下所示：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Layout</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Page Header --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"masthead"</span> <span class="attr">style</span>=<span class="string">"background-image: url('/img/home-bg.jpg')"</span>&gt;</span></span><br><span class="line">          ......</span><br><span class="line">        <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Main Content --&gt;</span></span><br><span class="line">        ......</span><br><span class="line">    <span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其他页面模板，与首页模板相似</p>
+<h3 id="处理页面数据"><a href="#处理页面数据" class="headerlink" title="处理页面数据"></a>处理页面数据</h3><h4 id="使用本地md文件管理文章详情"><a href="#使用本地md文件管理文章详情" class="headerlink" title="使用本地md文件管理文章详情"></a>使用本地md文件管理文章详情</h4><p>适用范围：适用于需求比较简单的情况</p>
+<blockquote>
+<p>注意：<br>1.Gridsome有三种获取动态数据的方式：通过插件、特定的API、本地文件。<br>2.使用@gridsome/source-filesystem获取本地文件内容，它的作用是将本地文件内容转换为在组件中能够被GraphQL请求的形式。<br>3.使用@gridsome/source-filesystem处理.md文件时，必须搭配将文件转换为html的插件@gridsome/transformer-remark，否则会报错<br>4.重启项目后配置的插件才会生效</p>
+</blockquote>
+<ul>
+<li>安装插件和 markdown 的转换器</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 安装@gridsome/source-filesystem</span><br><span class="line">$ npm install @gridsome/source-filesystem --save</span><br><span class="line"># markdown 的转换器,将 md 文件 转换为 HTML 文件</span><br><span class="line">$ npm install @gridsome/transformer-remark --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <code>gridsome.config.js</code> 中，配置插件，并创建对应路径的 md 文件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> ...</span><br><span class="line">  plugins: [</span><br><span class="line">    &#123;</span><br><span class="line">      use: <span class="string">'@gridsome/source-filesystem'</span>,</span><br><span class="line">      options: &#123;</span><br><span class="line">        <span class="comment">//GraphQL类型、template名称，</span></span><br><span class="line">        <span class="comment">//src/templates下的.vue文件必须通过typeName指定一个模板</span></span><br><span class="line">        typeName: <span class="string">'BlogPost'</span>, </span><br><span class="line">        <span class="comment">//数据源路径</span></span><br><span class="line">        path: <span class="string">'./content/blog/**/*.md'</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建<code>content/blog/article1.md</code>，执行 <code>npm run develop</code> 启动项目，浏览器访问 <code>http://localhost:8080/___explore</code>，看到<code>blogPost</code>、<code>allBlogPost</code>，说明插件引入成功</li>
+</ul>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs2.png" alt="gridsome"></p>
+<p>在GraphQL Data资源管理器里面输入查询语句，获取.md的内容</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs3.png" alt="gridsome"></p>
+<ul>
+<li><p>在页面中使用.md格式的数据</p>
+<ul>
+<li>先通过<code>&lt;page-query&gt;</code>获取GraphQL中的md格式的数据</li>
+<li>使用<a href="https://github.com/markdown-it/markdown-it" target="_blank" rel="noopener">markdown-it</a>插件将.md格式的字符串转换为html字符串</li>
+<li>使用v-html指令在页面上显示转换后的html字符串</li>
+</ul>
+</li>
+</ul>
+<p>例如，获取存放在md中的欢迎页数据</p>
+<ol>
+<li>安装插件</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install markdown-it --save</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>将插件引入页面，进行转换</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--在页面上显示转换后的`html`字符串--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-html</span>=<span class="string">"mdToHtml($page.welcome.edges[0].node.content)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 获取GraphQL中的md格式的数据 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">page-query</span>&gt;</span></span><br><span class="line">query &#123;</span><br><span class="line">  welcome:allWelcome &#123;</span><br><span class="line">    edges &#123;</span><br><span class="line">      node &#123;</span><br><span class="line">        content </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">page-query</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 将`.md`格式的字符串转换为`html`字符串 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">// import MarkdownIt from 'markdown-it'</span></span></span><br><span class="line"><span class="javascript"><span class="comment">// const md = new MarkdownIt()</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> md = <span class="built_in">require</span>(<span class="string">'markdown-it'</span>)(&#123; <span class="attr">html</span>: <span class="literal">true</span> &#125;);</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">'AboutPage'</span>,</span></span><br><span class="line"><span class="undefined">  metaInfo: &#123;</span></span><br><span class="line"><span class="javascript">    title: <span class="string">'Welcome'</span></span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">//将.md格式的字符串转换为html字符串</span></span></span><br><span class="line"><span class="undefined">    mdToHtml(markdown) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> md.render(markdown);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意 ：如果获取的数据中包含html,必须启用markdown-it插件的【在源码中启用 html 标签】，否则使用v-html指令显示的还是html 字符串</p>
+</blockquote>
+<p>markdown-it插件的所有的选项列表（默认情况下）如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> md = <span class="built_in">require</span>(<span class="string">'markdown-it'</span>)(&#123;</span><br><span class="line">  html:         <span class="literal">false</span>,        <span class="comment">// 在源码中启用 HTML 标签</span></span><br><span class="line">  xhtmlOut:     <span class="literal">false</span>,        <span class="comment">// 使用 '/' 来闭合单标签 （比如 &lt;br /&gt;）。</span></span><br><span class="line">                              <span class="comment">// 这个选项只对完全的 CommonMark 模式兼容。</span></span><br><span class="line">  breaks:       <span class="literal">false</span>,        <span class="comment">// 转换段落里的 '\n' 到 &lt;br&gt;。</span></span><br><span class="line">  langPrefix:   <span class="string">'language-'</span>,  <span class="comment">// 给围栏代码块的 CSS 语言前缀。对于额外的高亮代码非常有用。</span></span><br><span class="line">  linkify:      <span class="literal">false</span>,        <span class="comment">// 将类似 URL 的文本自动转换为链接。</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 启用一些语言中立的替换 + 引号美化</span></span><br><span class="line">  typographer:  <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当 typographer 启用时，成倍的 + 单引号替换对。</span></span><br><span class="line">  <span class="comment">// 或者智能(smartquotes)引号等，可以是 String 或 Array。</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">// 比方说，你可以支持 '«»„“' 给俄罗斯人使用， '„“‚‘'  给德国人使用。</span></span><br><span class="line">  <span class="comment">// 还有 ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] 给法国人使用（包括 nbsp）。</span></span><br><span class="line">  quotes: <span class="string">'“”‘’'</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 高亮函数，会返回转义的 HTML。</span></span><br><span class="line">  <span class="comment">// 如果源字符串未更改，且应该进行外部的转义，或许返回 ''</span></span><br><span class="line">  <span class="comment">// 如果结果以 &lt;pre ... 开头，内部包装器则会跳过。</span></span><br><span class="line">  highlight: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="regexp">/*str, lang*/</span></span>) </span>&#123; <span class="keyword">return</span> <span class="string">''</span>; &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Strapi-处理来自后台管理系统的数据"><a href="#Strapi-处理来自后台管理系统的数据" class="headerlink" title="Strapi - 处理来自后台管理系统的数据"></a>Strapi - 处理来自后台管理系统的数据</h4><h5 id="Strapi简介"><a href="#Strapi简介" class="headerlink" title="Strapi简介"></a>Strapi简介</h5><ul>
+<li>Strapi - 一款比较通用的内容管理系统（CMS：Content Management System），可以帮助我们轻松的管理内容，官网地址：<a href="https://strapi.io/" target="_blank" rel="noopener">strapi</a></li>
+<li>Strapi可以管理各种形式的内容，如博客的文章、商品、用户评论、用户信息等</li>
+<li>Strapi特点<ul>
+<li>可以管理用户自定义的任何内容</li>
+<li>用户管理内容的方式简单易操作</li>
+<li>对开发者而言，提供了友好的API</li>
+<li>支持角色权限的管理</li>
+<li>可以通过插件系统扩展功能</li>
+<li>支持用户自定义功能</li>
+</ul>
+</li>
+</ul>
+<h5 id="Strapi使用"><a href="#Strapi使用" class="headerlink" title="Strapi使用"></a>Strapi使用</h5><ul>
+<li>创建一个Strapi项目，建议使用npx</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># yarn</span><br><span class="line">$ yarn create strapi-app my-project --quickstart</span><br><span class="line"></span><br><span class="line"># npx</span><br><span class="line">$ npx create-strapi-app my-project --quickstart</span><br></pre></td></tr></table></figure>
+<p>执行 <code>npm run develop</code> 命令启动项目，默认打开浏览器，注册一个管理员账号，登录/内容类型生成器/创建一个新的content type，创建文章列表及文章详情内容,这里就不在叙述，具体使用参考：<a href="https://blog.csdn.net/zimeng303/article/details/113249507" target="_blank" rel="noopener">Strapi使用</a></p>
+<ul>
+<li><p>将Strapi后台管理系统的数据集成到Gridsome项目中</p>
+<ul>
+<li>安装@gridsome/source-strapi</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @gridsome/source-strapi --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 <a href="https://github.com/Eline302/blog-with-gridsome/blob/master/gridsome.config.js" target="_blank" rel="noopener">blog-with-gridsome/gridsome.config.js</a> 文件中，配置插件 <code>@gridsome/source-strapi</code> 信息</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        &#123;</span><br><span class="line">            use: <span class="string">'@gridsome/source-filesystem'</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">                typeName: <span class="string">'BlogPost'</span>,</span><br><span class="line">                <span class="comment">// 抓取文件的路径，即抓取哪些文件</span></span><br><span class="line">                path: <span class="string">'./content/blog/**/*.md'</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            use: <span class="string">'@gridsome/source-strapi'</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">                apiURL: <span class="string">'http://localhost:1337'</span>, <span class="comment">// 接口地址</span></span><br><span class="line">                queryLimit: <span class="number">1000</span>, <span class="comment">// Defaults to 100</span></span><br><span class="line">                contentTypes: [<span class="string">'post'</span>], <span class="comment">// 查询的数据类型</span></span><br><span class="line">                <span class="comment">// singleTypes: ['impressum'], // 单个节点</span></span><br><span class="line">                <span class="comment">// Possibility to login with a Strapi user,</span></span><br><span class="line">                <span class="comment">// when content types are not publicly available (optional).</span></span><br><span class="line">                <span class="comment">// loginData: &#123; // 登录信息</span></span><br><span class="line">                <span class="comment">//   identifier: '',</span></span><br><span class="line">                <span class="comment">//   password: ''</span></span><br><span class="line">                <span class="comment">// &#125;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>执行 <code>npm run develop</code> 重新启动项目，访问 <code>http://localhost:8080/___explore</code>，如下图，说明数据集成成功</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs4.png" alt="gridsome"></p>
+<blockquote>
+<p>注意：<br>1、在项目中配置好<code>@gridsome/source-strapi</code>，启动项目之前，必须在strapi后管添加用户、分配相应的权限、并登录成功之后，gridsome集成strapi的数据才能成功，否则会报403。<br>2、在strapi后管添加数据后，由于是预渲染，gridsome必须重启才能拿到最新的数据。</p>
+</blockquote>
+<h4 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h4><h5 id="设计数据模型"><a href="#设计数据模型" class="headerlink" title="设计数据模型"></a>设计数据模型</h5><ul>
+<li>计文章的字段，如图所示：</li>
+</ul>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs5.png" alt="post"></p>
+<ul>
+<li>设计标签时，需创建一个 引用 字段，用于表示 标签和文章的关系</li>
+</ul>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs6.png" alt="post"></p>
+<ul>
+<li>标签字段列表，如图所示：</li>
+</ul>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs7.png" alt="post"></p>
+<h5 id="页面实现"><a href="#页面实现" class="headerlink" title="页面实现"></a>页面实现</h5><ul>
+<li><p>展示文章列表和分页</p>
+<blockquote>
+<p>1、使用<code>&lt;page-query&gt;</code>获取GraphQL 数据层获取数据，进行页面数据动态渲染<br>  2、使用Gridsome自带的分页插件<a href="https://gridsome.org/docs/pagination/" target="_blank" rel="noopener">pagination</a>处理分页,插件会自动在页面路由中获取当前的页码</p>
+</blockquote>
+<p>  <code>pages/index.vue</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;Layout&gt;</span><br><span class="line">        &lt;!-- Main Content --&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;col-lg-8 col-md-10 mx-auto&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;post-preview&quot; v-for=&quot;edge in $page.posts.edges&quot; :key=&quot;edge.node.id&quot;&gt;</span><br><span class="line">                        &lt;a href=&quot;post.html&quot;&gt;</span><br><span class="line">                            &lt;h2 class=&quot;post-title&quot;&gt;</span><br><span class="line">                                &#123;&#123; edge.node.title &#125;&#125;</span><br><span class="line">                            &lt;/h2&gt;</span><br><span class="line">                        &lt;/a&gt;</span><br><span class="line">                        &lt;p class=&quot;post-meta&quot;&gt;</span><br><span class="line">                            Posted by</span><br><span class="line">                            &lt;a href=&quot;#&quot;&gt;Start Bootstrap&lt;/a&gt;</span><br><span class="line">                            on &#123;&#123; edge.node.create_at &#125;&#125;</span><br><span class="line">                        &lt;/p&gt;</span><br><span class="line">                        &lt;p&gt;</span><br><span class="line">                            &lt;span v-for=&quot;tag in edge.node.tags&quot; :key=&quot;tag.id&quot;&gt;</span><br><span class="line">                                &lt;g-link :to=&quot;&apos;/tags/&apos; + tag.id&quot;&gt;</span><br><span class="line">                                    &#123;&#123; tag.title &#125;&#125;</span><br><span class="line">                                &lt;/g-link&gt;</span><br><span class="line">                            &lt;/span&gt;</span><br><span class="line">                        &lt;/p&gt;</span><br><span class="line"></span><br><span class="line">                        &lt;hr /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;!-- Pager --&gt;</span><br><span class="line">                    &lt;Pager :info=&quot;$page.posts.pageInfo&quot; /&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/Layout&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;page-query&gt;</span><br><span class="line">query ($page: Int) &#123;</span><br><span class="line">    posts: allStrapiPosts (perPage: 1, page: $page) @paginate &#123;</span><br><span class="line">        pageInfo &#123;</span><br><span class="line">            totalPages</span><br><span class="line">            currentPage</span><br><span class="line">        &#125;</span><br><span class="line">        edges &#123;</span><br><span class="line">            node &#123;</span><br><span class="line">                id</span><br><span class="line">                title  </span><br><span class="line">                created_at</span><br><span class="line">                tags &#123;</span><br><span class="line">                    id</span><br><span class="line">                    title</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/page-query&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">// 引入分页组件</span><br><span class="line">import &#123; Pager &#125; from &apos;gridsome&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">components: &#123;</span><br><span class="line">    Pager</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>展示文章详情</p>
+</li>
+</ul>
+<ol>
+<li><p>在 <code>gridsome.config.js</code> 中，配置模板</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  siteName: <span class="string">'Gridsome'</span>,</span><br><span class="line">  ...</span><br><span class="line">  templates: &#123;</span><br><span class="line">      <span class="comment">//StrapiPost是由@gridsome/source-strapi插件options的typeName + contentTypes</span></span><br><span class="line">      StrapiPost: [</span><br><span class="line">          &#123;</span><br><span class="line">              path: <span class="string">'/post/:id'</span>, <span class="comment">//模板路径</span></span><br><span class="line">              component: <span class="string">'./src/templates/Post.vue'</span> <span class="comment">//模板组件</span></span><br><span class="line">          &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>src/pages/Index.vue</code>使用<code>&lt;g-link&gt;</code>实现点击文章标题时，跳转到文章详情页</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;g-link :to=<span class="string">"'/post/' + edge.node.id"</span>&gt;</span><br><span class="line">&lt;h2 <span class="class"><span class="keyword">class</span></span>=<span class="string">"post-title"</span>&gt;&#123;&#123;edge.node.title&#125;&#125;&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">&lt;/g</span>-link&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p><code>src/templates/Post.vue</code> 使用<code>&lt;page-query&gt;</code>获取文章详情并展示，由于文章的内容有可能是<code>markdown</code>格式的，所以在显示时需要先使用<code>markdown-it</code>插件将<code>.md</code>格式的字符串转换为<code>html</code>字符串</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Layout</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Page Header --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"masthead"</span> <span class="attr">:style</span>=<span class="string">"&#123;backgroundImage: `url(http://localhost:1337$&#123;$page.post.cover.url&#125;)`&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"overlay"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-8 col-md-10 mx-auto"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-heading"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;$page.post.title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"meta"</span>&gt;</span>Posted by</span><br><span class="line">                        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>eline<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                        &#123;&#123;$page.post.created_at&#125;&#125;</span><br><span class="line">                        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Post Content --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-8 col-md-10 mx-auto"</span> <span class="attr">v-html</span>=<span class="string">"mdToHtml($page.post.content)"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Layout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">page-query</span>&gt;</span></span><br><span class="line">query($id: ID!)&#123;</span><br><span class="line">post:strapiPost(id:$id)&#123;</span><br><span class="line">    id</span><br><span class="line">    title</span><br><span class="line">    content</span><br><span class="line">    created_at</span><br><span class="line">    cover&#123;</span><br><span class="line">        name</span><br><span class="line">        url</span><br><span class="line">    &#125;</span><br><span class="line">    tags&#123;</span><br><span class="line">        id</span><br><span class="line">        title</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">page-query</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> MarkdownIt <span class="keyword">from</span> <span class="string">'markdown-it'</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> md = <span class="keyword">new</span> MarkdownIt();</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">name:<span class="string">'PostPage'</span>,</span></span><br><span class="line"><span class="undefined">metaInfo: &#123;</span></span><br><span class="line"><span class="javascript">    title: <span class="string">'Hello, world!'</span></span></span><br><span class="line"><span class="undefined">&#125;,</span></span><br><span class="line"><span class="undefined">methods:&#123;</span></span><br><span class="line"><span class="undefined">    mdToHtml(markdown)&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> md.render(markdown);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>设置网站的基本信息</p>
+<p>主要设置网站的标题、副标题以及封面</p>
+<ol>
+<li><p>在 strapi 中新增一个 Single Type(单一类型)，名称为 General，并添加三个字段，如图所示：</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs8.png" alt="post"></p>
+</li>
+<li><p>在 gridsome.config.js 的 plugins 选项中，进行配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">        plugins: [</span><br><span class="line">            &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                    ...</span><br><span class="line">                    singleTypes: [<span class="string">'General'</span>], <span class="comment">// 单个节点</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>src/pages/index.vue</code> 中，读取 GraphQL 数据层 的数据，并在视图中渲染,代码详见<a href="https://github.com/Eline302/blog-with-gridsome/blob/master/src/pages/Index.vue" target="_blank" rel="noopener">src/pages/index.vue</a></p>
+</li>
+</ol>
+</li>
+<li><p>联系我页面,文章标签页面</p>
+</li>
+</ul>
+<p>这里就不在叙述，代码详见<a href="https://github.com/Eline302/blog-with-gridsome" target="_blank" rel="noopener">blog-with-gridsome</a></p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><h5 id="部署-Strapi"><a href="#部署-Strapi" class="headerlink" title="部署 Strapi"></a>部署 Strapi</h5><h6 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h6><ul>
+<li>支持 Node 的服务器，本次部署在<a href="https://passport.ucloud.cn/#login" target="_blank" rel="noopener">ucloud</a>服务器中</li>
+<li>数据库: 建议 MySQL 或者 MongoDB,本次项目中使用的是MySQL</li>
+<li>项目代码<a href="https://github.com/Eline302/blog-backend" target="_blank" rel="noopener">blog-backend</a></li>
+<li>修改<code>config/database.js</code>，将原来的 <code>sqlite</code> 的配置，修改为 <code>mysql</code> 的配置</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">&#123; env &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">    defaultConnection: <span class="string">'default'</span>,</span><br><span class="line">    connections: &#123;</span><br><span class="line">        <span class="keyword">default</span>: &#123;</span><br><span class="line">            connector: <span class="string">'bookshelf'</span>,</span><br><span class="line">            settings: &#123;</span><br><span class="line">                client: <span class="string">'mysql'</span>,</span><br><span class="line">                host: env(<span class="string">'DATABASE_HOST'</span>, <span class="string">'localhost'</span>),</span><br><span class="line">                port: env.int(<span class="string">'DATABASE_PORT'</span>, <span class="number">3306</span>),</span><br><span class="line">                <span class="comment">// 你的数据库名称</span></span><br><span class="line">                database: env(<span class="string">'DATABASE_NAME'</span>, <span class="string">'blog'</span>),</span><br><span class="line">                <span class="comment">// 你的服务器中的数据库的用户名和密码</span></span><br><span class="line">                username: env(<span class="string">'DATABASE_USERNAME'</span>, <span class="string">'远端服务器数据库用户名'</span>),</span><br><span class="line">                password: env(<span class="string">'DATABASE_PASSWORD'</span>, <span class="string">'远端服务器数据库密码'</span>),</span><br><span class="line">            &#125;,</span><br><span class="line">            options: &#123;&#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>项目中需要安装mysql，此项目安装的版本是2.18.1</p>
+</blockquote>
+<h6 id="ucloud服务其中安装Mysql"><a href="#ucloud服务其中安装Mysql" class="headerlink" title="ucloud服务其中安装Mysql"></a>ucloud服务其中安装Mysql</h6><ul>
+<li>检测系统是否自带安装 MySQL</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rpm -qa | grep mysql</span><br></pre></td></tr></table></figure>
+<p>如有，类似mysql-libs-5.1.52-1.el6_0.1.x86_64那可以选择进行卸载:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mysql-libs<span class="number">-5.1</span><span class="number">.52</span><span class="number">-1.</span>el6_0<span class="number">.1</span>.x86_64　　<span class="comment">// 普通删除模式</span></span><br><span class="line">rpm -e --nodeps mysql-libs<span class="number">-5.1</span><span class="number">.52</span><span class="number">-1.</span>el6_0<span class="number">.1</span>.x86_64　　<span class="comment">// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装yum源</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下载</span><br><span class="line">$ wget https:<span class="comment">//dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</span></span><br><span class="line"></span><br><span class="line"># 安装mysql的yum源</span><br><span class="line">$ sudo yum install mysql57-community-release-el7<span class="number">-11.</span>noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>检查是否安装成功</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist enabled | grep <span class="string">"mysql.*-community.*"</span></span><br></pre></td></tr></table></figure>
+<p>如下图所示表示安装成功：</p>
+<p> <img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs9.png" alt="mysql"></p>
+<ul>
+<li>安装MySQL</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install -y mysql-community-server</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动MySQL服务</li>
+</ul>
+<blockquote>
+<p>因为只有启动了MySQL服务，才会产生/var/log/mysqld.log文件，初始root密码在这个文件目录下<br>启动mysql服务（在CentOS7下，启动和关闭服务的命令是systemctl start|stop）</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 启动Mysql</span><br><span class="line">$ service mysqld stop</span><br><span class="line"># 查看mysql状态</span><br><span class="line">$ systemctl status mysqld</span><br><span class="line"># 关闭Mysql</span><br><span class="line">$ service mysqld stop</span><br><span class="line"># 重启</span><br><span class="line">$ service mysqld restart</span><br></pre></td></tr></table></figure>
+<p>Mysql启动成功后如下图所示：<br> <img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs10.png" alt="mysql"></p>
+<ul>
+<li>查看mysql的初始密码<br>首次使用时候查看初始密码并登录Mysql修改密码</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看初始密码</span><br><span class="line">$ sudo cat /<span class="keyword">var</span>/log/mysqld.log | grep password</span><br><span class="line"># 使用初始密码登录Mysql</span><br><span class="line">$ mysql -u root -p</span><br><span class="line"># 设置密码（设置的密码必须符合长度，且必须含有数字，小写或大写字母，特殊字符）</span><br><span class="line">mysql&gt; <span class="keyword">set</span> password=password("新密码");</span><br><span class="line"># 刷新权限</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开启远程访问，创建数据库设置访问权限</li>
+</ul>
+<ol>
+<li>查看用户表select host,user from user;看到当前host是localhost只允许本地访问，所以需要创建一个可以远程访问数据的的user，这里为blog，具体步骤如下：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 进入数据库</span><br><span class="line">$ mysql -u root -p</span><br><span class="line"># 切换到 mysql库</span><br><span class="line">mysql&gt; use mysql;</span><br><span class="line"># 查看用户表</span><br><span class="line">mysql&gt; select host,user <span class="keyword">from</span> user;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs11.png" alt="mysql"></p>
+<ol start="2">
+<li>创建用户</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 更新user用户表,创建blog用户</span><br><span class="line">mysql&gt; update user <span class="keyword">set</span> `host` = '%'  where `user` = 'blog'  LIMIT 1;</span><br><span class="line"># 强制刷新</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>创建项目中使用的数据库名称都为blog</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 创建数据库</span><br><span class="line">mysql&gt; create database blog</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>root用户新建了一个数据库blog并设置密码，并赋权限给用户blog</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on blog.* to blog identified by <span class="string">'123456Blog+'</span>;</span><br></pre></td></tr></table></figure>
+<p>执行脚本时候报错</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Err] <span class="number">1044</span> - Access denied <span class="keyword">for</span> user <span class="string">'root'</span>@<span class="string">'%'</span> to database <span class="string">'blog'</span></span><br></pre></td></tr></table></figure>
+<p>报错可以看出blog没有权限，查询用户表看blog用户权限</p>
+<p>查看用户表</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select Host,User,Grant_priv,Super_priv <span class="keyword">from</span> mysql.user;</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs12.png" alt="mysql"></p>
+<p>可以看到现在这两个权限都是N, 权限设置为Y，然后重启mysql,在此grant脚本时候就正常了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update mysql.user <span class="keyword">set</span> Grant_priv='Y',Super_priv='Y' where user = 'blog' and host = '%';</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看数据库端口号</li>
+</ul>
+<p>查看端口监听状态，默认是3306</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show global variables like <span class="string">'port'</span>;</span><br></pre></td></tr></table></figure>
+<h6 id="代码上传到服务器中并启动项目"><a href="#代码上传到服务器中并启动项目" class="headerlink" title="代码上传到服务器中并启动项目"></a>代码上传到服务器中并启动项目</h6><ol>
+<li>登录服务，将<code>blog-backend</code>代码上传到服务器中，并安装相关依赖,构建打包</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 登录服务</span><br><span class="line">$ ssh root@106.75.181.60  # ssh root@公网IP</span><br><span class="line"># 上传代码</span><br><span class="line">$ git clone https:<span class="comment">//github.com/Eline302/blog-backend.git </span></span><br><span class="line"># 进入项目安装依赖</span><br><span class="line">$ cd blog-backend</span><br><span class="line">$ npm i</span><br><span class="line"># 对项目进行打包构建</span><br><span class="line">$ npm run build</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>启动项目</li>
+</ol>
+<p>Strapi 默认端口号是1337，需要在ucloud服务器中开放1337端口号</p>
+<p>具体步骤详见<a href="https://eline302.github.io/2021/03/16/NuxtJS%E9%A1%B9%E7%9B%AE%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" target="_blank" rel="noopener">NuxtJS项目本地部署和自动化部署</a>中的UCloud服务器防火墙设置部分</p>
+<p>启动项目推荐使用pm2,使用<code>npm run start</code>直接启动项目，会占用命令行应用，当退出时，则服务也会停止。因此，不建议使用。<br>pm2详解见<a href="https://eline302.github.io/2021/03/16/NuxtJS%E9%A1%B9%E7%9B%AE%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" target="_blank" rel="noopener">NuxtJS项目本地部署和自动化部署</a>中的使用PM2启动Node服务部分</p>
+<p>设置服务名称并启动服务</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 服务启动的name设置为strapi</span><br><span class="line">$ pm2 start --name strapi run develop</span><br><span class="line"># 启动 strapi 服务</span><br><span class="line">$ pm2 start npm --name strapi -- start</span><br></pre></td></tr></table></figure>
+<p>启动成功如下图所示：</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs13.png" alt="mysql"></p>
+<p>登录 <code>http://106.75.181.60:1337</code> 服务器IP + 端口号(1337)，将项目中所需的数据进行配置，如图所示：</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs14.png" alt="mysql"></p>
+<p><strong>角色和权限，必须要进行配置，否则无法调用接口</strong></p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs15.png" alt="mysql"></p>
+<h5 id="本地服务联通远程-Strapi"><a href="#本地服务联通远程-Strapi" class="headerlink" title="本地服务联通远程 Strapi"></a>本地服务联通远程 Strapi</h5><p>参考网址：<a href="https://gridsome.org/docs/environment-variables/" target="_blank" rel="noopener">Environment variables</a></p>
+<p>具体实现</p>
+<ol>
+<li>创建 <code>.env.development</code> 和 <code>.env.production</code> 环境文件，配置 <code>GRIDSOME_API_URL</code>，代码如下：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRIDSOME_API_URL=http:<span class="comment">//123.57.28.48:1337</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>将 <code>gridsome.config.js</code> 中配置的 apiURL ，修改为环境变量 <code>GRIDSOME_API_URL</code></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apiURL: process.env.GRIDSOME_API_URL, <span class="comment">// 接口地址</span></span><br></pre></td></tr></table></figure>
+<h5 id="Vercel-–-部署-Gridsome-应用"><a href="#Vercel-–-部署-Gridsome-应用" class="headerlink" title="Vercel – 部署 Gridsome 应用"></a>Vercel – 部署 Gridsome 应用</h5><p>使用 Vercel 进行静态应用项目的部署。</p>
+<h6 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h6><ul>
+<li><p>登录 <a href="https://vercel.com/login" target="_blank" rel="noopener">Vercel</a>，可以使用第三方账户，也可以自行注册（在此使用 GitHub 账户登录）</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs16.png" alt="mysql"></p>
+<p> 这里我使用的是gitHub登录，集成到github中</p>
+</li>
+<li><p>登录以后，新建项目,可以导入 Git 仓库中静态应用项目，或者克隆其他模板（在此导入 GitHub 中已存在的仓库）</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs17.png" alt="mysql"></p>
+</li>
+<li><p>这里使用Import Git Repository方式导入项目，点击 Continue with GitHub，选择 GitHub 仓库，进行导入</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs18.png" alt="mysql"></p>
+</li>
+<li><p>点击仓库名称右侧的 import 按钮，展示基本配置，点击 Deploy ，开始安装依赖，构建发布</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs19.png" alt="mysql"></p>
+</li>
+<li><p>构建成功后点击 Visit，即可访问生成的静态站点</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs20.png" alt="mysql"></p>
+</li>
+</ul>
+<h6 id="配置自动构建"><a href="#配置自动构建" class="headerlink" title="配置自动构建"></a>配置自动构建</h6><p>当数据改变时，需要告诉 Vercel，触发自动构建。</p>
+<ul>
+<li><p>在 Vercel 中，找到构建的应用项目，然后点击进入</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs21.png" alt="mysql"></p>
+</li>
+<li><p>点击 Settings ，然后点击 Git，找到 Deploy Hooks，创建部署钩子，生成链接地址</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs22.png" alt="mysql"></p>
+</li>
+<li><p>然后，进入 Strapi 内容管理平台，添加 Webhooks</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs23.png" alt="mysql"></p>
+</li>
+<li><p>填入名称、请求地址（指的是在 Vercel 中生成的地址），并点击保存</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs24.png" alt="mysql"></p>
+</li>
+<li><p>在 Strapi 中，添加数据或者是Github中更新代码，都会在Vercel中自动构建，在 Vercel 的应用项目中，点击 Deployments既可以查看正在构建的项目</p>
+<p><img src="/2021/05/20/Vue静态站点生成-Gridsome综合案例/gs25.png" alt="mysql"></p>
+<blockquote>
+<p>注意：Vercel 页面可能会有延时，可以刷新 Vercel 页面。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>静态站点项目前端代码：<a href="https://github.com/Eline302/blog-with-gridsome" target="_blank" rel="noopener">blog-with-gridsome</a><br>静态站点项目后端代码：<a href="https://github.com/Eline302/blog-backend" target="_blank" rel="noopener">blog-backend</a><br>应用访问地址：<a href="https://blog-with-gridsome-six.vercel.app/" target="_blank" rel="noopener">https://blog-with-gridsome-six.vercel.app/</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://uclub.ucloud.cn/article/275.html" target="_blank" rel="noopener">linux安装mysql</a><br><a href="https://gitee.com/lagoufed/fed-e-questions/tree/master/part3" target="_blank" rel="noopener">部署中常见问题解决</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GraphQL/" rel="tag"># GraphQL</a>
+          
+            <a href="/tags/Strapi/" rel="tag"># Strapi</a>
+          
+            <a href="/tags/Vercel/" rel="tag"># Vercel</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/19/Vue静态站点生成 -- GridSome基础/" rel="next" title="Vue静态站点生成 -- GridSome基础">
+                <i class="fa fa-chevron-left"></i> Vue静态站点生成 -- GridSome基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="Eline">
+            
+              <p class="site-author-name" itemprop="name">Eline</p>
+              <p class="site-description motion-element" itemprop="description">Web前端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Eline302" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#案例介绍"><span class="nav-number">1.</span> <span class="nav-text">案例介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例实现"><span class="nav-number">2.</span> <span class="nav-text">案例实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目"><span class="nav-number">2.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础配置"><span class="nav-number">2.2.</span> <span class="nav-text">基础配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公共模板"><span class="nav-number">2.3.</span> <span class="nav-text">公共模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首页模板"><span class="nav-number">2.4.</span> <span class="nav-text">首页模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理页面数据"><span class="nav-number">2.5.</span> <span class="nav-text">处理页面数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用本地md文件管理文章详情"><span class="nav-number">2.5.1.</span> <span class="nav-text">使用本地md文件管理文章详情</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strapi-处理来自后台管理系统的数据"><span class="nav-number">2.5.2.</span> <span class="nav-text">Strapi - 处理来自后台管理系统的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Strapi简介"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">Strapi简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Strapi使用"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">Strapi使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现"><span class="nav-number">2.5.3.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#设计数据模型"><span class="nav-number">2.5.3.1.</span> <span class="nav-text">设计数据模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#页面实现"><span class="nav-number">2.5.3.2.</span> <span class="nav-text">页面实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署"><span class="nav-number">2.5.4.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#部署-Strapi"><span class="nav-number">2.5.4.1.</span> <span class="nav-text">部署 Strapi</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#准备工作"><span class="nav-number">2.5.4.1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ucloud服务其中安装Mysql"><span class="nav-number">2.5.4.1.2.</span> <span class="nav-text">ucloud服务其中安装Mysql</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码上传到服务器中并启动项目"><span class="nav-number">2.5.4.1.3.</span> <span class="nav-text">代码上传到服务器中并启动项目</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#本地服务联通远程-Strapi"><span class="nav-number">2.5.4.2.</span> <span class="nav-text">本地服务联通远程 Strapi</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vercel-–-部署-Gridsome-应用"><span class="nav-number">2.5.4.3.</span> <span class="nav-text">Vercel – 部署 Gridsome 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#基本使用"><span class="nav-number">2.5.4.3.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#配置自动构建"><span class="nav-number">2.5.4.3.2.</span> <span class="nav-text">配置自动构建</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">3.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eline</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
