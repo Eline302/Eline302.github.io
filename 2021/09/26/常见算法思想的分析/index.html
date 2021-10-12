@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="递归算法,分治算法,贪心算法,回溯算法,动态规划,枚举算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="算法思想是解决问题的核心，万丈高楼起于平地，在算法中也是如此，本章主要学习 6 中常见的算法分别为：递归算法、分治算法、贪心算法、回溯算法、动态规划、枚举算法，95% 的算法都是基于这 6 种算法思想，接下来介绍一下这 6 种算法思想，帮助我们理解及解决各种算法问题。  递归算法算法策略递归算法是一种直接或者间接调用自身函数或者方法的算法。 递归算法的实质是把问题分解成规模缩小的同类问题的子问题">
+<meta name="keywords" content="递归算法,分治算法,贪心算法,回溯算法,动态规划,枚举算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见算法思想的分析">
+<meta property="og:url" content="http://yoursite.com/2021/09/26/常见算法思想的分析/index.html">
+<meta property="og:site_name" content="Eline blog">
+<meta property="og:description" content="算法思想是解决问题的核心，万丈高楼起于平地，在算法中也是如此，本章主要学习 6 中常见的算法分别为：递归算法、分治算法、贪心算法、回溯算法、动态规划、枚举算法，95% 的算法都是基于这 6 种算法思想，接下来介绍一下这 6 种算法思想，帮助我们理解及解决各种算法问题。  递归算法算法策略递归算法是一种直接或者间接调用自身函数或者方法的算法。 递归算法的实质是把问题分解成规模缩小的同类问题的子问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec1.png">
+<meta property="og:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec2.png">
+<meta property="og:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec3.png">
+<meta property="og:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec4.png">
+<meta property="og:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec5.png">
+<meta property="og:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec6.png">
+<meta property="og:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec7.png">
+<meta property="og:updated_time" content="2021-09-28T06:29:20.148Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见算法思想的分析">
+<meta name="twitter:description" content="算法思想是解决问题的核心，万丈高楼起于平地，在算法中也是如此，本章主要学习 6 中常见的算法分别为：递归算法、分治算法、贪心算法、回溯算法、动态规划、枚举算法，95% 的算法都是基于这 6 种算法思想，接下来介绍一下这 6 种算法思想，帮助我们理解及解决各种算法问题。  递归算法算法策略递归算法是一种直接或者间接调用自身函数或者方法的算法。 递归算法的实质是把问题分解成规模缩小的同类问题的子问题">
+<meta name="twitter:image" content="http://yoursite.com/2021/09/26/常见算法思想的分析/rec1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/09/26/常见算法思想的分析/">
+
+
+
+
+
+  <title>常见算法思想的分析 | Eline blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eline blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/26/常见算法思想的分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eline">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eline blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常见算法思想的分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-26T14:54:39+08:00">
+                2021-09-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-09-28T14:29:20+08:00">
+                2021-09-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>算法思想是解决问题的核心，万丈高楼起于平地，在算法中也是如此，本章主要学习 6 中常见的算法分别为：递归算法、分治算法、贪心算法、回溯算法、动态规划、枚举算法，95% 的算法都是基于这 6 种算法思想，接下来介绍一下这 6 种算法思想，帮助我们理解及解决各种算法问题。</p>
+</blockquote>
+<h1 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h1><h2 id="算法策略"><a href="#算法策略" class="headerlink" title="算法策略"></a>算法策略</h2><p>递归算法是一种直接或者间接调用自身函数或者方法的算法。</p>
+<p>递归算法的实质是把问题分解成规模缩小的同类问题的子问题，然后递归调用方法来表示问题的解。递归算法对解决一大类问题很有效，它可以使算法简洁和易于理解。</p>
+<p><strong>优缺点：</strong></p>
+<ul>
+<li>优点<ul>
+<li>实现简单易上手。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>递归算法对常用的算法如普通循环等，运行效率较低；</li>
+<li>在递归调用的过程当中系统为每一层的返回点、局部量等开辟了栈来存储，递归太深，容易发生栈溢出。</li>
+</ul>
+</li>
+</ul>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><p>递归算法一般用于解决三类问题：</p>
+<ul>
+<li>数据的定义是按递归定义的。（斐波那契数列）</li>
+<li>问题解法按递归算法实现。（回溯）</li>
+<li>数据的结构形式是按递归定义的。（树的遍历，图的搜索）</li>
+</ul>
+<p><strong>递归的解题策略：</strong></p>
+<ul>
+<li>第一步：明确你这个函数的输入输出，先不管函数里面的代码什么，而是要先明白，你这个函数的输入是什么，输出为何什么，功能是什么，要完成什么样的一件事。</li>
+<li>第二步：寻找递归结束条件，我们需要找出什么时候递归结束，之后直接把结果返回。</li>
+<li>第三步：明确递归关系式，怎么通过各种递归调用来组合解决当前问题。</li>
+</ul>
+<h2 id="使用递归算法求解的一些经典问题"><a href="#使用递归算法求解的一些经典问题" class="headerlink" title="使用递归算法求解的一些经典问题"></a>使用递归算法求解的一些经典问题</h2><ul>
+<li>斐波那契数列</li>
+<li>汉诺塔问题</li>
+<li>树的遍历及相关操作</li>
+</ul>
+<h3 id="DOM-树为例"><a href="#DOM-树为例" class="headerlink" title="DOM 树为例"></a>DOM 树为例</h3><p>下面以以 DOM 为例，实现一个 <code>document.getElementById</code> 功能</p>
+<p>由于 DOM 是一棵树，而树的定义本身就是用的递归定义，所以用递归的方法处理树，会非常地简单自然。</p>
+<h4 id="第一步：明确你这个函数的输入输出"><a href="#第一步：明确你这个函数的输入输出" class="headerlink" title="第一步：明确你这个函数的输入输出"></a>第一步：明确你这个函数的输入输出</h4><p>从 DOM 根节点一层层往下递归，判断当前节点的 id 是否是我们要寻找的 <code>id=&#39;d-cal&#39;</code></p>
+<p>输入：DOM 根节点 document ，我们要寻找的 <code>id=&#39;d-cal&#39;</code></p>
+<p>输出：返回满足 <code>id=&#39;sisteran&#39;</code> 的子结点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElementById</span>(<span class="params">node, id</span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="第二步：寻找递归结束条件"><a href="#第二步：寻找递归结束条件" class="headerlink" title="第二步：寻找递归结束条件"></a>第二步：寻找递归结束条件</h4><p>从 document 开始往下找，对所有子结点递归查找他们的子结点，一层一层地往下查找：</p>
+<ul>
+<li>如果当前结点的 id 符合查找条件，则返回当前结点</li>
+<li>如果已经到了叶子结点了还没有找到，则返回 null</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElementById</span>(<span class="params">node, id</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 当前结点不存在，已经到了叶子结点了还没有找到，返回 null</span></span><br><span class="line">  <span class="keyword">if</span> (!node) <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  <span class="comment">// 当前结点的 id 符合查找条件，返回当前结点</span></span><br><span class="line">  <span class="keyword">if</span> (node.id === id) <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="第三步：明确递归关系式"><a href="#第三步：明确递归关系式" class="headerlink" title="第三步：明确递归关系式"></a>第三步：明确递归关系式</h4><p>当前结点的 id 不符合查找条件，递归查找它的每一个子结点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElementById</span>(<span class="params">node, id</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 当前结点不存在，已经到了叶子结点了还没有找到，返回 null</span></span><br><span class="line">  <span class="keyword">if</span> (!node) <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  <span class="comment">// 当前结点的 id 符合查找条件，返回当前结点</span></span><br><span class="line">  <span class="keyword">if</span> (node.id === id) <span class="keyword">return</span> node</span><br><span class="line">  <span class="comment">// 前结点的 id 不符合查找条件，继续查找它的每一个子结点</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; node.childNodes.length; i++) &#123;</span><br><span class="line">    <span class="comment">// 递归查找它的每一个子结点</span></span><br><span class="line">    <span class="keyword">var</span> found = getElementById(node.childNodes[i], id)</span><br><span class="line">    <span class="keyword">if</span> (found) <span class="keyword">return</span> found</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就这样，我们的一个 <code>document.getElementById</code> 功能已经实现了,</p>
+<p>最后在控制台验证一下，执行结果如下图所示：</p>
+<p><img src="/2021/09/26/常见算法思想的分析/rec1.png" alt="递归算法"></p>
+<p>使用递归的优点是代码简单易懂，缺点是效率比不上非递归的实现。Chrome 浏览器的查 DOM 是使用非递归实现。非递归要怎么实现呢？</p>
+<p>如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getByElementId</span>(<span class="params">node, id</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//遍历所有的Node</span></span><br><span class="line">  <span class="keyword">while</span> (node) &#123;</span><br><span class="line">    <span class="keyword">if</span> (node.id === id) <span class="keyword">return</span> node</span><br><span class="line">    node = nextElement(node)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还是依次遍历所有的 DOM 结点，只是这一次改成一个 while 循环，函数 nextElement 负责找到下一个结点。所以关键在于这个 nextElement 如何实现非递归查找结点功能：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 深度遍历</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nextElement</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 先判断是否有子结点</span></span><br><span class="line">  <span class="keyword">if</span> (node.children.length) &#123;</span><br><span class="line">    <span class="comment">// 有则返回第一个子结点</span></span><br><span class="line">    <span class="keyword">return</span> node.children[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 再判断是否有相邻结点</span></span><br><span class="line">  <span class="keyword">if</span> (node.nextElementSibling) &#123;</span><br><span class="line">    <span class="comment">// 有则返回它的下一个相邻结点</span></span><br><span class="line">    <span class="keyword">return</span> node.nextElementSibling</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 否则，往上返回它的父结点的下一个相邻元素，相当于上面递归实现里面的for循环的i加1</span></span><br><span class="line">  <span class="keyword">while</span> (node.parentNode) &#123;</span><br><span class="line">    <span class="keyword">if</span> (node.parentNode.nextElementSibling) &#123;</span><br><span class="line">      <span class="keyword">return</span> node.parentNode.nextElementSibling</span><br><span class="line">    &#125;</span><br><span class="line">    node = node.parentNode</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在控制台里面运行这段代码，同样也可以正确地输出结果。不管是非递归还是递归，它们都是深度优先遍历，这个过程如下图所示:</p>
+<p><img src="/2021/09/26/常见算法思想的分析/rec2.png" alt="递归算法"></p>
+<p>实际上 getElementById 浏览器是用的一个哈希 map 存储的，根据 id 直接映射到 DOM 结点，而 getElementsByClassName 就是用的这样的非递归查找。</p>
+<p><a href="https://juejin.cn/post/6844903485968744461" target="_blank" rel="noopener">我接触过的前端数据结构与算法</a></p>
+<h1 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h1><h2 id="算法策略-1"><a href="#算法策略-1" class="headerlink" title="算法策略"></a>算法策略</h2><p>在计算机科学中，分治算法是一个很重要的算法，快速排序、归并排序等都是基于分治策略进行实现的，所以，建议理解掌握它。</p>
+<p>分治，顾名思义，就是 分而治之 ，将一个复杂的问题，分成两个或多个相似的子问题，在把子问题分成更小的子问题，直到更小的子问题可以简单求解，求解子问题，则原问题的解则为阿子问题解的合并。</p>
+<h2 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h2><p>当出现满足以下条件的问题，可以尝试只用分治策略进行求解：</p>
+<ul>
+<li>原始问题可以分成多个相似的子问题</li>
+<li>子问题可以很简单的求解</li>
+<li>原始问题的解是子问题解的合并</li>
+<li>各个子问题是相互独立的，不包含相同的子问题</li>
+</ul>
+<p><strong>分治的解题策略：</strong></p>
+<ul>
+<li>第一步：分解，将原问题分解为若干个规模较小，相互独立，与原问题形式相同的子问题</li>
+<li>第二步：解决，解决各个子问题</li>
+<li>第三步：合并，将各个子问题的解合并为原问题的解</li>
+</ul>
+<h2 id="使用分治法求解的一些经典问题"><a href="#使用分治法求解的一些经典问题" class="headerlink" title="使用分治法求解的一些经典问题"></a>使用分治法求解的一些经典问题</h2><ul>
+<li>二分查找</li>
+<li>归并排序</li>
+<li>快速排序</li>
+<li>汉诺塔问题</li>
+<li>React 时间分片</li>
+</ul>
+<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>也称折半查找算法，它是一种简单易懂的快速查找算法。例如我随机写 0-100 之间的一个数字，让你猜我写的是什么？你每猜一次，我就会告诉你猜的大了还是小了，直到猜中为止。</p>
+<h4 id="第一步：分解"><a href="#第一步：分解" class="headerlink" title="第一步：分解"></a>第一步：分解</h4><p>每次猜拳都把上一次的结果分出大的一组和小的一组，两组相互独立</p>
+<ul>
+<li>选择数组中的中间数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">items, item</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// low、mid、high将数组分成两组</span></span><br><span class="line">  <span class="keyword">var</span> low = <span class="number">0</span>,</span><br><span class="line">    high = items.length - <span class="number">1</span>,</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor((low + high) / <span class="number">2</span>),</span><br><span class="line">    elem = items[mid]</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="第二步：解决子问题"><a href="#第二步：解决子问题" class="headerlink" title="第二步：解决子问题"></a>第二步：解决子问题</h4><p>查找数与中间数对比</p>
+<ul>
+<li>比中间数低，则去中间数左边的子数组中寻找；</li>
+<li>比中间数高，则去中间数右边的子数组中寻找；</li>
+<li>相等则返回查找成功</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">  <span class="comment">// 比中间数高</span></span><br><span class="line">  <span class="keyword">if</span> (elem &lt; item) &#123;</span><br><span class="line">    low = mid + <span class="number">1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (elem &gt; item) &#123;</span><br><span class="line">    <span class="comment">// 比中间数低</span></span><br><span class="line">    high = mid - <span class="number">1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 相等</span></span><br><span class="line">    <span class="keyword">return</span> mid</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="第三步：合并"><a href="#第三步：合并" class="headerlink" title="第三步：合并"></a>第三步：合并</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">items, item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> low = <span class="number">0</span>,</span><br><span class="line">    high = items.length - <span class="number">1</span>,</span><br><span class="line">    mid,</span><br><span class="line">    elem</span><br><span class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor((low + high) / <span class="number">2</span>)</span><br><span class="line">    elem = items[mid]</span><br><span class="line">    <span class="keyword">if</span> (elem &lt; item) &#123;</span><br><span class="line">      low = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (elem &gt; item) &#123;</span><br><span class="line">      high = mid - <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，二分法只能应用于数组有序的情况，如果数组无序，二分查找就不能起作用了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">items, item</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 快排</span></span><br><span class="line">  quickSort(items)</span><br><span class="line">  <span class="keyword">var</span> low = <span class="number">0</span>,</span><br><span class="line">    high = items.length - <span class="number">1</span>,</span><br><span class="line">    mid,</span><br><span class="line">    elem</span><br><span class="line">  <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    mid = <span class="built_in">Math</span>.floor((low + high) / <span class="number">2</span>)</span><br><span class="line">    elem = items[mid]</span><br><span class="line">    <span class="keyword">if</span> (elem &lt; item) &#123;</span><br><span class="line">      low = mid + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (elem &gt; item) &#123;</span><br><span class="line">      high = mid - <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line">binarySearch(arr, <span class="number">3</span>)</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">binarySearch(arr, <span class="number">5</span>)</span><br><span class="line"><span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="算法策略-2"><a href="#算法策略-2" class="headerlink" title="算法策略"></a>算法策略</h2><p>贪心算法，故名思义，总是做出当前的最优选择，即期望通过局部的最优选择获得整体的最优选择。</p>
+<p>某种意义上说，贪心算法是很贪婪、很目光短浅的，它不从整体考虑，仅仅只关注当前的最大利益，所以说它做出的选择仅仅是某种意义上的局部最优，但是贪心算法在很多问题上还是能够拿到最优解或较优解，所以它的存在还是有意义的。</p>
+<h2 id="适用场景-2"><a href="#适用场景-2" class="headerlink" title="适用场景"></a>适用场景</h2><p>在日常生活中，我们使用到贪心算法的时候还是挺多的，例如：</p>
+<p>从 100 章面值不等的钞票中，抽出 10 张，怎样才能获得最多的价值？</p>
+<p>我们只需要每次都选择剩下的钞票中最大的面值，最后一定拿到的就是最优解，这就是使用的贪心算法，并且最后得到了整体最优解。</p>
+<p>但是，我们任然需要明确的是，期望通过局部的最优选择获得整体的最优选择，仅仅是期望而已，也可能最终得到的结果并不一定不能是整体最优解。</p>
+<p>例如：求取 A 到 G 最短路径：</p>
+<p><img src="/2021/09/26/常见算法思想的分析/rec3.png" alt="递归算法"></p>
+<p>根据贪心算法总是选择当前最优选择，所以它首先选择的路径是 AB，然后 BE、EG，所得到的路径总长为 1 + 5 + 4 = 10，然而这并不是最短路径，最短路径为 A-&gt;C-&gt;G : 2 + 2 = 4，所以说，贪心算法得到得并不一定是最优解。</p>
+<p>那么一般在什么时候可以尝试选择使用贪心算法喃？</p>
+<p>当满足一下条件时，可以使用：</p>
+<ul>
+<li>原问题复杂度过高</li>
+<li>求全局最优解的数学模型难以建立或计算量过大</li>
+<li><p>没有太大必要一定要求出全局最优解，“比较优”就可以</p>
+<p>如果使用贪心算法求最优解，可以按照以下<strong> 步骤求解</strong> ：</p>
+</li>
+<li><p>首先，我们需要明确什么是最优解（期望）</p>
+</li>
+<li>然后，把问题分成多个步骤，每一步都需要满足：<ul>
+<li>可行性：每一步都满足问题的约束</li>
+<li>局部最优：每一步都做出一个局部最优的选择</li>
+</ul>
+</li>
+<li>不可取消：选择一旦做出，在后面遇到任何情况都不可取消</li>
+<li>最后，叠加所有步骤的最优解，就是全局最优解</li>
+</ul>
+<h2 id="经典案例：活动选择问题"><a href="#经典案例：活动选择问题" class="headerlink" title="经典案例：活动选择问题"></a>经典案例：活动选择问题</h2><p>使用贪心算法求解的经典问题有：</p>
+<ul>
+<li>最小生成树算法</li>
+<li>单源最短路径的 Dijkstra 算法</li>
+<li>Huffman 压缩编码</li>
+<li>背包问题</li>
+<li>活动选择问题等<br>其中活动选择问题是最简单的，这里详细介绍这个。</li>
+</ul>
+<p>活动选择问题是《算法导论》上的例子，也是一个非常经典的问题。有 n 个活动（a1,a2,…,an）需要使用同一个资源（例如教室），资源在某个时刻只能供一个活动使用。每个活动 ai 都有一个开始时间 si 和结束时间 fi 。一旦被选择后，活动 ai 就占据半开时间区间 [si,fi) 。如果 [si,fi) 和 [sj,fj) 互不重叠，ai 和 aj 两个活动就可以被安排在这一天。</p>
+<p>该问题就是要安排这些活动，使得尽量多的活动能不冲突的举行。例如下图所示的活动集合 S，其中各项活动按照结束时间单调递增排序。</p>
+<p><img src="/2021/09/26/常见算法思想的分析/rec4.png" alt="递归算法"></p>
+<p>共有 7 个活动，它们在 18 个小时内需要占用的时间如上图，如何选择活动，能让这间教室利用率最高喃（能够举行更多的活动）？</p>
+<p>贪心算法对这种问题的解决很简单的，它开始时刻开始选择，每次选择开始时间与与已选择活动不冲突的，结束时间又比较靠前的活动，这样会让剩下的时间区间更长。</p>
+<p><img src="/2021/09/26/常见算法思想的分析/rec5.png" alt="递归算法"></p>
+<ul>
+<li>首先 a1 活动的结束时间最早，选择 a1 活动</li>
+<li>a1 结束后，a2 有时间冲突，不可选择，a3、a4 都可选择，但 a4 结束时间最早，选择 a4</li>
+<li>依次选择时间没有冲突的，又结束时间最早的活动<br>最终选择活动为 a1，a4，a5，a7。为最优解。</li>
+</ul>
+<h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><h2 id="算法策略-3"><a href="#算法策略-3" class="headerlink" title="算法策略"></a>算法策略</h2><p>回溯算法是一种搜索法，试探法，它会在每一步做出选择，一旦发现这个选择无法得到期望结果，就回溯回去，重新做出选择。深度优先搜索利用的就是回溯算法思想。</p>
+<h2 id="适用场景-3"><a href="#适用场景-3" class="headerlink" title="适用场景"></a>适用场景</h2><p>回溯算法很简单，它就是不断的尝试，直到拿到解。它的这种算法思想，使它通常用于解决广度的搜索问题，即从一组可能的解中，选择一个满足要求的解。</p>
+<h2 id="使用回溯算法的经典案例"><a href="#使用回溯算法的经典案例" class="headerlink" title="使用回溯算法的经典案例"></a>使用回溯算法的经典案例</h2><ul>
+<li>深度优先搜索</li>
+<li>0-1 背包问题</li>
+<li>正则表达式匹配</li>
+<li>八皇后</li>
+<li>数独</li>
+<li>全排列<br>这里以正则表达式匹配为例，介绍一下</li>
+</ul>
+<p>正则表达式匹配</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string = <span class="string">'abbc'</span></span><br><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/ab&#123;1,3&#125;c/</span></span><br><span class="line"><span class="built_in">console</span>.log(string.match(regex))</span><br><span class="line"><span class="comment">// ["abbc", index: 0, input: "abbc", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2021/09/26/常见算法思想的分析/rec6.png" alt="递归算法"></p>
+<p>在第 5 步匹配失败，此时 <code>b{1,3}</code> 已经匹配到了两个 <code>b</code> 正在尝试第三个 <code>b</code> ，结果发现接下来是 <code>c</code> 。此时就需要回溯到上一步， <code>b{1,3}</code> 匹配完毕（匹配到了 <code>bb</code> ），然后再匹配 <code>c</code> ，匹配到了 <code>c</code> 匹配结束。</p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="算法策略-4"><a href="#算法策略-4" class="headerlink" title="算法策略"></a>算法策略</h2><p>动态规划也是将复杂问题分解成小问题求解的策略，与分治算法不同的是，分治算法要求各子问题是相互独立的，而动态规划各子问题是相互关联的。</p>
+<p>所以，动态规划适用于子问题重叠的情况，即不同的子问题具有公共的子子问题，在这种情况下，分治策略会做出很多不必要的工作，它会反复求解那些公共子子问题，而动态规划会对每个子子问题求解一次，然后保存在表格中，如果遇到一致的问题，从表格中获取既可，所以它无需求解每一个子子问题，避免了大量的不必要操作。</p>
+<h2 id="适用场景-4"><a href="#适用场景-4" class="headerlink" title="适用场景"></a>适用场景</h2><p>动态规划适用于求解最优解问题，比如，从面额不定的 100 个硬币中任意选取多个凑成 10 元，求怎样选取硬币才可以使最后选取的硬币数最少又刚好凑够了 10 元。这就是一个典型的动态规划问题。它可以分成一个个子问题（每次选取硬币），每个子问题又有公共的子子问题（选取硬币），子问题之间相互关联（已选取的硬币总金额不能超过 10 元），边界条件就是最终选取的硬币总金额为 10 元。</p>
+<p>针对上例，也许你也可以说，我们可以使用回溯算法，不断的去试探，但回溯算法是使用与求解广度的解（满足要求的解），如果是用回溯算法，我们需要尝试去找所有满足条件的解，然后找到最优解，时间复杂度为 O(2^n^) ，这性能是相当差的。大多数适用于动态规划的问题，都可以使用回溯算法，只是使用回溯算法的时间复杂度比较高而已。</p>
+<p>最后，总结一下，我们使用动态规划求解问题时，需要遵循以下几个重要步骤：</p>
+<ul>
+<li>定义子问题</li>
+<li>实现需要反复执行解决的子子问题部分</li>
+<li>识别并求解出边界条件</li>
+</ul>
+<h2 id="使用动态规划求解的一些经典问题"><a href="#使用动态规划求解的一些经典问题" class="headerlink" title="使用动态规划求解的一些经典问题"></a>使用动态规划求解的一些经典问题</h2><p>爬楼梯问题：假设你正在爬楼梯。需要 n 阶你才能到达楼顶。每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？<br>背包问题：给出一些资源（有总量及价值），给一个背包（有总容量），往背包里装资源，目标是在背包不超过总容量的情况下，装入更多的价值<br>硬币找零：给出面额不定的一定数量的零钱，以及需要找零的钱数，找出有多少种找零方案<br>图的全源最短路径：一个图中包含 u、v 顶点，找出从顶点 u 到顶点 v 的最短路径<br>最长公共子序列：找出一组序列的最长公共子序列（可由另一序列删除元素但不改变剩下元素的顺序实现）<br>这里以最长公共子序列为例。</p>
+<h3 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h3><p>这里以动态规划经典问题爬楼梯问题为例，介绍求解动态规划问题的步骤。</p>
+<h4 id="第一步：定义子问题"><a href="#第一步：定义子问题" class="headerlink" title="第一步：定义子问题"></a>第一步：定义子问题</h4><p>如果用 <code>dp[n]</code> 表示第 <code>n</code> 级台阶的方案数，并且由题目知：最后一步可能迈 2 个台阶，也可迈 1 个台阶，即第 <code>n</code> 级台阶的方案数等于第 <code>n-1</code> 级台阶的方案数加上第 <code>n-2</code> 级台阶的方案数</p>
+<h4 id="第二步：实现需要反复执行解决的子子问题部分"><a href="#第二步：实现需要反复执行解决的子子问题部分" class="headerlink" title="第二步：实现需要反复执行解决的子子问题部分"></a>第二步：实现需要反复执行解决的子子问题部分</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[n] = dp[n−<span class="number">1</span>] + dp[n−<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="第三步：识别并求解出边界条件"><a href="#第三步：识别并求解出边界条件" class="headerlink" title="第三步：识别并求解出边界条件"></a>第三步：识别并求解出边界条件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第 0 级 1 种方案</span></span><br><span class="line">dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"><span class="comment">// 第 1 级也是 1 种方案</span></span><br><span class="line">dp[<span class="number">1</span>] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="最后一步：把尾码翻译成代码，处理一些边界情况"><a href="#最后一步：把尾码翻译成代码，处理一些边界情况" class="headerlink" title="最后一步：把尾码翻译成代码，处理一些边界情况"></a>最后一步：把尾码翻译成代码，处理一些边界情况</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dp = [<span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dp[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(n)</li>
+</ul>
+<p><strong>优化空间复杂度：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> climbStairs = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">1</span>,</span><br><span class="line">    n1 = <span class="number">1</span>,</span><br><span class="line">    n2 = <span class="number">1</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    res = n1 + n2</span><br><span class="line">    n1 = n2</span><br><span class="line">    n2 = res</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>空间复杂度：O(1)</p>
+<h1 id="枚举算法"><a href="#枚举算法" class="headerlink" title="枚举算法"></a>枚举算法</h1><p>枚举算法本质上就是搜索算法</p>
+<h2 id="算法策略-5"><a href="#算法策略-5" class="headerlink" title="算法策略"></a>算法策略</h2><p>枚举算法的思想是：将问题的所有可能的答案一一列举，然后根据条件判断此答案是否合适，保留合适的，丢弃不合适的。</p>
+<p><strong>优缺点：</strong></p>
+<ul>
+<li>优点：算法简单，在局部地方使用枚举法，效果十分的好</li>
+<li>缺点：运算量过大，当问题的规模变大的时候，循环的阶数越大，执行速度越慢</li>
+</ul>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>确定枚举对象、枚举范围和判定条件。<br>逐一列举可能的解，验证每个解是否是问题的解。</p>
+<p>枚举算法步骤：</p>
+<ul>
+<li>确定解题的可能范围，不能遗漏任何一个真正解，同时避免重复。</li>
+<li>判定是否是真正解的方法。</li>
+<li>为了提高解决问题的效率，使可能解的范围将至最小</li>
+</ul>
+<p>枚举算法的流程图如下所示：</p>
+<p><img src="/2021/09/26/常见算法思想的分析/rec7.png" alt="递归算法"></p>
+<h3 id="百钱买百鸡问题"><a href="#百钱买百鸡问题" class="headerlink" title="百钱买百鸡问题"></a>百钱买百鸡问题</h3><p>有一个人有一百块钱，打算买一百只鸡。到市场一看，公鸡一只 3 元,母鸡一只 5 元,小鸡 3 只 1 元,试求用 100 元买 100 只鸡,各为多少才合适?</p>
+<p>根据题意我们可以得到方程组：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x 公鸡，y 母鸡 z 小鸡</span></span><br><span class="line"><span class="number">3</span>X + <span class="number">5</span>Y + Z/<span class="number">3</span> = <span class="number">100</span></span><br><span class="line">X + Y + Z = <span class="number">100</span></span><br><span class="line">(<span class="number">100</span> &gt; X,Y,Z &gt; <span class="number">0</span>, Z%<span class="number">3</span> == <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>根据这两个公式，我们可以写出最为简单的代码，一一列举所有解进行枚举</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x, y, z</span><br><span class="line"><span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; <span class="number">100</span>; x++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; <span class="number">100</span>; y++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (z = <span class="number">0</span>; z &lt; <span class="number">100</span>; ) &#123;</span><br><span class="line">      <span class="keyword">if</span> (x + y + z == <span class="number">100</span> &amp;&amp; <span class="number">3</span> * x + <span class="number">5</span> * y + z / <span class="number">3</span> == <span class="number">100</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`公鸡：<span class="subst">$&#123;x&#125;</span>只，母鸡：<span class="subst">$&#123;y&#125;</span>只，小鸡：<span class="subst">$&#123;z&#125;</span>只`</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      z += <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而我们可以根据已知条件来进行优化代码，减少枚举的次数：</p>
+<p>三种鸡的和是固定的，我们只要枚举二种鸡（x,y），第三种鸡就可以根据约束条件求得<code>z = 100 - x - y</code>，这样就缩小了枚举范围。<br>另外我们根据方程特点，可以消去一个未知数，得到下面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>X + <span class="number">7</span>Y = <span class="number">100</span></span><br><span class="line">X + Y + Z = <span class="number">100</span></span><br><span class="line">(X,Y,Z &gt; <span class="number">0</span>, Z%<span class="number">3</span> == <span class="number">0</span>) =&gt;&gt; <span class="number">0</span> &lt;= x &lt; = <span class="number">25</span></span><br></pre></td></tr></table></figure>
+<p>因此代码可以优化为下面这样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (x = <span class="number">0</span>; x &lt;= <span class="number">25</span>; x++) &#123;</span><br><span class="line">  y = <span class="number">100</span> - <span class="number">4</span> * x</span><br><span class="line">  <span class="keyword">if</span> (y % <span class="number">7</span> == <span class="number">0</span> &amp;&amp; y &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">    y /= <span class="number">7</span></span><br><span class="line">    z = <span class="number">100</span> - x - y</span><br><span class="line">    <span class="keyword">if</span> (z % <span class="number">3</span> == <span class="number">0</span> &amp;&amp; <span class="number">3</span> * x + <span class="number">5</span> * y + z / <span class="number">3</span> == <span class="number">100</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`公鸡：<span class="subst">$&#123;x&#125;</span>只，母鸡：<span class="subst">$&#123;y&#125;</span>只，小鸡：<span class="subst">$&#123;z&#125;</span>只`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下:</p>
+<p>公鸡：4 只，母鸡：12 只，小鸡：84 只<br>公鸡：11 只，母鸡：8 只，小鸡：81 只<br>公鸡：18 只，母鸡：4 只，小鸡：78 只<br>公鸡：25 只，母鸡：0 只，小鸡：75 只</p>
+<p>采用枚举的方法进行问题求解，需要注意 3 个问题：</p>
+<ul>
+<li>简单数学模型，数学模型中变量数量尽量少，它们之间相互独立。这样问题解的搜索空间的维度就小，反应到程序代码中，循环嵌套的层次就会少。我们上面从 3 维优化到一维。</li>
+<li>减少搜索的空间。利用已有知识，缩小数学模型中各个变量的取值范围，避免不必要的计算。反应到程序代码中，循环体被执行的次数少</li>
+<li>采用合适的搜索顺序。对搜索空间的遍历顺序要与数学模型中的条件表达式一致。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/递归算法/" rel="tag"># 递归算法</a>
+          
+            <a href="/tags/分治算法/" rel="tag"># 分治算法</a>
+          
+            <a href="/tags/贪心算法/" rel="tag"># 贪心算法</a>
+          
+            <a href="/tags/回溯算法/" rel="tag"># 回溯算法</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+            <a href="/tags/枚举算法/" rel="tag"># 枚举算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/26/Vue3.0 的优化/" rel="next" title="Vue3.0 的优化">
+                <i class="fa fa-chevron-left"></i> Vue3.0 的优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="Eline">
+            
+              <p class="site-author-name" itemprop="name">Eline</p>
+              <p class="site-description motion-element" itemprop="description">Web前端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Eline302" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归算法"><span class="nav-number">1.</span> <span class="nav-text">递归算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法策略"><span class="nav-number">1.1.</span> <span class="nav-text">算法策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场景"><span class="nav-number">1.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用递归算法求解的一些经典问题"><span class="nav-number">1.3.</span> <span class="nav-text">使用递归算法求解的一些经典问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-树为例"><span class="nav-number">1.3.1.</span> <span class="nav-text">DOM 树为例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步：明确你这个函数的输入输出"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">第一步：明确你这个函数的输入输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步：寻找递归结束条件"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">第二步：寻找递归结束条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步：明确递归关系式"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">第三步：明确递归关系式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分治算法"><span class="nav-number">2.</span> <span class="nav-text">分治算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法策略-1"><span class="nav-number">2.1.</span> <span class="nav-text">算法策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场景-1"><span class="nav-number">2.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用分治法求解的一些经典问题"><span class="nav-number">2.3.</span> <span class="nav-text">使用分治法求解的一些经典问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分查找"><span class="nav-number">2.3.1.</span> <span class="nav-text">二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步：分解"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">第一步：分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步：解决子问题"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">第二步：解决子问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步：合并"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">第三步：合并</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心算法"><span class="nav-number">3.</span> <span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法策略-2"><span class="nav-number">3.1.</span> <span class="nav-text">算法策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场景-2"><span class="nav-number">3.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典案例：活动选择问题"><span class="nav-number">3.3.</span> <span class="nav-text">经典案例：活动选择问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回溯算法"><span class="nav-number">4.</span> <span class="nav-text">回溯算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法策略-3"><span class="nav-number">4.1.</span> <span class="nav-text">算法策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场景-3"><span class="nav-number">4.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用回溯算法的经典案例"><span class="nav-number">4.3.</span> <span class="nav-text">使用回溯算法的经典案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划"><span class="nav-number">5.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法策略-4"><span class="nav-number">5.1.</span> <span class="nav-text">算法策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场景-4"><span class="nav-number">5.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用动态规划求解的一些经典问题"><span class="nav-number">5.3.</span> <span class="nav-text">使用动态规划求解的一些经典问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#爬楼梯问题"><span class="nav-number">5.3.1.</span> <span class="nav-text">爬楼梯问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步：定义子问题"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">第一步：定义子问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步：实现需要反复执行解决的子子问题部分"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">第二步：实现需要反复执行解决的子子问题部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步：识别并求解出边界条件"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">第三步：识别并求解出边界条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后一步：把尾码翻译成代码，处理一些边界情况"><span class="nav-number">5.3.1.4.</span> <span class="nav-text">最后一步：把尾码翻译成代码，处理一些边界情况</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举算法"><span class="nav-number">6.</span> <span class="nav-text">枚举算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法策略-5"><span class="nav-number">6.1.</span> <span class="nav-text">算法策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">6.2.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#百钱买百鸡问题"><span class="nav-number">6.2.1.</span> <span class="nav-text">百钱买百鸡问题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eline</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
