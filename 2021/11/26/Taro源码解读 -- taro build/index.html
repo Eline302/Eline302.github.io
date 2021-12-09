@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Taro,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="近期小程序项目都使用 Taro 编写，出于好奇，准备研读一下 Taro（3.3.16）的源码，本章将会学习了解下 taro build 的运行机制，以及不同平台的编译差别。  taro-cli了解过 taro-cli 的实现原理后就会知道，内部使用 Kernel + 注册插件 + 生命周期钩子函数 的实现方式，灵活的实现了各个不同的命令组合， Taro 项目的初始化流程图：  使用 taro 开">
+<meta name="keywords" content="Taro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Taro源码解读 -- taro build">
+<meta property="og:url" content="http://yoursite.com/2021/11/26/Taro源码解读 -- taro build/index.html">
+<meta property="og:site_name" content="Eline blog">
+<meta property="og:description" content="近期小程序项目都使用 Taro 编写，出于好奇，准备研读一下 Taro（3.3.16）的源码，本章将会学习了解下 taro build 的运行机制，以及不同平台的编译差别。  taro-cli了解过 taro-cli 的实现原理后就会知道，内部使用 Kernel + 注册插件 + 生命周期钩子函数 的实现方式，灵活的实现了各个不同的命令组合， Taro 项目的初始化流程图：  使用 taro 开">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro8.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro1.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro2.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro3.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro4.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro5.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro6.png">
+<meta property="og:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro7.png">
+<meta property="og:updated_time" content="2021-12-09T10:03:34.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Taro源码解读 -- taro build">
+<meta name="twitter:description" content="近期小程序项目都使用 Taro 编写，出于好奇，准备研读一下 Taro（3.3.16）的源码，本章将会学习了解下 taro build 的运行机制，以及不同平台的编译差别。  taro-cli了解过 taro-cli 的实现原理后就会知道，内部使用 Kernel + 注册插件 + 生命周期钩子函数 的实现方式，灵活的实现了各个不同的命令组合， Taro 项目的初始化流程图：  使用 taro 开">
+<meta name="twitter:image" content="http://yoursite.com/2021/11/26/Taro源码解读%20--%20taro%20build/taro8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/11/26/Taro源码解读 -- taro build/">
+
+
+
+
+
+  <title>Taro源码解读 -- taro build | Eline blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eline blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/11/26/Taro源码解读 -- taro build/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eline">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eline blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Taro源码解读 -- taro build</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-26T10:15:03+08:00">
+                2021-11-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-12-09T18:03:34+08:00">
+                2021-12-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Taro/" itemprop="url" rel="index">
+                    <span itemprop="name">Taro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>近期小程序项目都使用 Taro 编写，出于好奇，准备研读一下 <a href="https://github.com/NervJS/taro" target="_blank" rel="noopener">Taro（3.3.16）的源码</a>，本章将会学习了解下 <code>taro build</code> 的运行机制，以及不同平台的编译差别。</p>
+</blockquote>
+<h2 id="taro-cli"><a href="#taro-cli" class="headerlink" title="taro-cli"></a>taro-cli</h2><p>了解过 <code>taro-cli</code> 的实现原理后就会知道，内部使用 <strong>Kernel + 注册插件 + 生命周期钩子函数</strong> 的实现方式，灵活的实现了各个不同的命令组合，</p>
+<p>Taro 项目的初始化流程图：</p>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro8.png" alt="Taro"></p>
+<p>使用 taro 开发时的不同平台构建命令，比如微信小程序的构建命令 <code>taro build --type weapp</code>，其核心也是使用 <strong>Kernel + 钩子的运行机制</strong> 实现，以及最终到达 <code>webpack</code> 构建阶段，只不过调用的是 <code>build</code> 钩子和平台专属编译 <code>Plugin</code>，感兴趣的话可以查看这部分代码，这里就不在叙述了，下面我们具体看下 <code>taro build</code> 的源码部分</p>
+<h2 id="taro-build"><a href="#taro-build" class="headerlink" title="taro build"></a>taro build</h2><p>在一个 Taro 项目中 package.json 的 scripts 部分如下所示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "build:weapp": "taro build --type weapp",</span><br><span class="line">  "build:swan": "taro build --type swan",</span><br><span class="line">  "build:alipay": "taro build --type alipay",</span><br><span class="line">  "build:tt": "taro build --type tt",</span><br><span class="line">  "build:h5": "taro build --type h5",</span><br><span class="line">  "build:rn": "taro build --type rn",</span><br><span class="line">  "build:qq": "taro build --type qq",</span><br><span class="line">  "build:jd": "taro build --type jd",</span><br><span class="line">  "build:quickapp": "taro build --type quickapp",</span><br><span class="line">  "dev:weapp": "npm run build:weapp -- --watch",</span><br><span class="line">  "dev:swan": "npm run build:swan -- --watch",</span><br><span class="line">  "dev:alipay": "npm run build:alipay -- --watch",</span><br><span class="line">  "dev:tt": "npm run build:tt -- --watch",</span><br><span class="line">  "dev:h5": "npm run build:h5 -- --watch",</span><br><span class="line">  "dev:rn": "npm run build:rn -- --watch",</span><br><span class="line">  "dev:qq": "npm run build:qq -- --watch",</span><br><span class="line">  "dev:jd": "npm run build:jd -- --watch",</span><br><span class="line">  "dev:quickapp": "npm run build:quickapp -- --watch"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 Taro 的 build 命令可以把 Taro 代码编译成不同端的代码，然后在对应的开发工具中查看效果。</p>
+<p>Taro 编译分为 dev 和 build 模式：</p>
+<ul>
+<li>dev 模式（增加 –watch 参数） 将会监听文件修改。</li>
+<li>build 模式（去掉 –watch 参数） 将不会监听文件修改，并会对代码进行压缩打包。</li>
+<li>dev 模式生成的文件较大，设置环境变量 NODE_ENV 为 production 可以开启压缩，方便预览，但编译速度会下降。</li>
+</ul>
+<p>可以看出，taro build 命令主要的参数是 type，在 dev 模式下，会增加一个额外的 watch 参数，基于这个印象，我们来看看运行 taro build 后会发生什么？</p>
+<h2 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h2><p>首先，CLI 实例将会对命令行参数进行解析，然后进入到 build 操作</p>
+<ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-cli/src/cli.ts" target="_blank" rel="noopener"><code>taro/packages/taro-cli/src/cli.ts</code></a></li>
+</ul>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro1.png" alt="Taro"></p>
+<p>在上图的第 62 行运行的 build 函数，实际上是运行了 <code>kernel.run()</code> 函数如下图</p>
+<ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-cli/src/commands/customCommand.ts" target="_blank" rel="noopener"><code>taro/packages/taro-cli/src/commands/customCommand.ts</code></a></li>
+</ul>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro2.png" alt="Taro"></p>
+<p><code>kernel.run()</code> 函数具体做什么呢？</p>
+<h3 id="kernel-run"><a href="#kernel-run" class="headerlink" title="kernel.run"></a>kernel.run</h3><blockquote>
+<p>这一段是 Kernel 的核心内容，理解了这段就理解了 <code>taro-cli</code> 的工作模式</p>
+</blockquote>
+<p>我们来具体分析下 <code>kernel.run()</code> 方法中主要做了什么，代码如下所示：</p>
+<ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-service/src/Kernel.ts" target="_blank" rel="noopener"><code>taro/packages/taro-service/src/Kernel.ts</code></a></li>
+</ul>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro3.png" alt="Taro"></p>
+<ul>
+<li>第 282~294 行：初始化一些参数</li>
+<li>第 295 行：初始化项目配置、初始化项目路径信息、初始化项目插件；这一步是非常关键的准备工作，在执行完成后，所有的编译插件、平台编译插件都将被加载到 <code>Kernel</code> 实例上，供后续的编译程序使用。在装载完成后，将会触发 <code>Kernel</code> 的第一个钩子 - <code>onReady</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* init内部的代码 */</span></span><br><span class="line">  <span class="keyword">async</span> init () &#123;</span><br><span class="line">    <span class="keyword">this</span>.debugger(<span class="string">'init'</span>)</span><br><span class="line">    <span class="keyword">this</span>.initConfig()</span><br><span class="line">    <span class="keyword">this</span>.initPaths()</span><br><span class="line">    <span class="keyword">this</span>.initPresetsAndPlugins()</span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">this</span>.applyPlugins(<span class="string">'onReady'</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第 295 行：执行 <code>Kernel</code> 第二个钩子 - <code>onStart</code></li>
+<li>第 297~303 行：这里的 <code>opts.platform</code> 其实就是运行 <code>taro build</code> 时传入的 <code>type</code> 参数，比如 weapp、qq、h5…。然后根据平台获取对应的编译配置</li>
+<li>第 322 行：运行第三个钩子，也就是 <code>kernel.run()</code> 函数传入的钩子 - <code>build</code> 钩子</li>
+</ul>
+<h3 id="build-钩子"><a href="#build-钩子" class="headerlink" title="build 钩子"></a>build 钩子</h3><ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-cli/src/presets/commands/build.ts" target="_blank" rel="noopener"><code>taro/packages/taro-cli/src/presets/commands/build.ts</code></a></li>
+</ul>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro4.png" alt="Taro"></p>
+<p>从上图代码可以看出，build 钩子有我们比较熟悉的参数，比如 –type、–watch，还有一些比较少用到的，这里就不作展开了。</p>
+<p>这里我们重点关注 fn 函数，当钩子被触发时，就是执行了 fn 函数</p>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro5.png" alt="Taro"></p>
+<p>从上图代码可以看出，fn 的实现并不复杂，我们来分析一下其中几行关键代码：</p>
+<ul>
+<li>第 50 行：检查项目相关配置，这里检查的配置文件其实就是项目中的 <code>config/index.js</code> 配置文件。</li>
+<li><p>第 79 行：构建开始，触发 <code>onBuildStart</code> 钩子。这个钩子在文档中也有介绍，可以通过插件对代码编译过程进行拓展（如下图）。</p>
+<blockquote>
+<p>来自 Taro 文档中的内容 <a href="https://nervjs.github.io/taro/docs/plugin#%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E6%89%A9%E5%B1%95" target="_blank" rel="noopener">编译过程扩展 ​</a><br>同时你也可以通过插件对代码编译过程进行拓展。<br>正如前面所述，针对编译过程，有 <code>onBuildStart</code>、<code>onBuildFinish</code> 两个钩子来分别表示编译开始，编译结束，而除此之外也有更多 API 来对编译过程进行修改，如下：</p>
+<ul>
+<li><code>ctx.onBuildStart(() =&gt; void)</code>，编译开始，接收一个回调函数</li>
+<li><code>ctx.modifyWebpackChain(args: { chain: any }) =&gt; void)</code>，编译中修改 <code>webpack</code> 配置，在这个钩子中，你可以对 webpackChain 作出想要的调整，等同于配置 <code>webpackChain</code></li>
+<li><code>ctx.modifyBuildAssets(args: { assets: any }) =&gt; void)</code>，修改编译后的结果</li>
+<li><code>ctx.modifyBuildTempFileContent(args: { tempFiles: any }) =&gt; void)</code>，修改编译过程中的中间文件，例如修改 <code>app</code> 或页面的 <code>config</code> 配置</li>
+<li><code>ctx.onBuildFinish(() =&gt; void)</code>，编译结束，接收一个回调函数</li>
+</ul>
+</blockquote>
+</li>
+<li><p>第 80 行：触发对应的平台钩子，小程序项目中的话，此处应为 <code>weapp</code> 钩子</p>
+</li>
+</ul>
+<h3 id="weapp-钩子"><a href="#weapp-钩子" class="headerlink" title="weapp 钩子"></a>weapp 钩子</h3><p>Taro 的钩子机制实现的非常精妙，同时也使我们的源码阅读变得更加方便，那么我们只需要找到对应的 weapp 文件即可，这里我们直接关注 <code>fn</code> 函数</p>
+<ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-weapp/src/index.ts" target="_blank" rel="noopener"><code>taro/packages/taro-weapp/src/index.ts</code></a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Weapp <span class="keyword">from</span> <span class="string">'./program'</span></span><br><span class="line"><span class="keyword">import</span> type &#123; IPluginContext &#125; <span class="keyword">from</span> <span class="string">'@tarojs/service'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 让其它平台插件可以继承此平台</span></span><br><span class="line"><span class="keyword">export</span> &#123; Weapp &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> interface IOptions &#123;</span><br><span class="line">  enablekeyboardAccessory?: boolean;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (ctx: IPluginContext, <span class="attr">options</span>: IOptions) =&gt; &#123;</span><br><span class="line">  ctx.registerPlatform(&#123;</span><br><span class="line">    name: <span class="string">'weapp'</span>,</span><br><span class="line">    useConfigName: <span class="string">'mini'</span>,</span><br><span class="line">    <span class="keyword">async</span> fn(&#123; config &#125;) &#123;</span><br><span class="line">      <span class="keyword">const</span> program = <span class="keyword">new</span> Weapp(ctx, config, options || &#123;&#125;)</span><br><span class="line">      <span class="keyword">await</span> program.start()</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>IPluginContext</code> 定义了一个类型接口，包含获取当前所有挂载的插件和当前所有挂载的平台以及一些配置项，注册和编译的相关方法</li>
+</ul>
+<p>我们具体看下 <code>Weapp</code> 对象内部实现的代码</p>
+<ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-weapp/src/program.ts" target="_blank" rel="noopener"><code>taro/packages/taro-weapp/src/program.ts</code></a></li>
+</ul>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro6.png" alt="Taro"></p>
+<p>从代码中可以看到 Weapp 类中定义了一些配置参数，路径和内部的方法，继承自 <code>TaroPlatformBase</code> 类,代码如下所示</p>
+<ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-service/src/platform-plugin-base.ts" target="_blank" rel="noopener"><code>taro/packages/taro-service/src/platform-plugin-base.ts</code></a></li>
+</ul>
+<p>这个类实现关键的方法如下：</p>
+<p>调用 <code>start()</code> 方法开始执行编译操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 调用 mini-runner 开启编译</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="keyword">async</span> start () &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="keyword">this</span>.setup()</span><br><span class="line">  <span class="keyword">await</span> <span class="keyword">this</span>.build()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>首选需要清空之前编译的 dist 文件夹，输出编译提示，根据项目配置生成微信小程序的 <code>project.config.json</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line"><span class="comment">// 清空 dist 文件夹</span></span><br><span class="line">  private <span class="keyword">async</span> setup () &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">this</span>.setupTransaction.perform(<span class="keyword">this</span>.setupImpl, <span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>.ctx.onSetupClose?.(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  private setupImpl () &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; needClearOutput &#125; = <span class="keyword">this</span>.config</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> needClearOutput === <span class="string">'undefined'</span> || !!needClearOutput) &#123;</span><br><span class="line">      <span class="keyword">this</span>.emptyOutputDir()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.printDevelopmentTip(<span class="keyword">this</span>.platform)</span><br><span class="line">    <span class="keyword">const</span> &#123; printLog, processTypeEnum &#125; = <span class="keyword">this</span>.ctx.helper</span><br><span class="line">    printLog(processTypeEnum.START, <span class="string">'开发者工具-项目目录'</span>, <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.ctx.paths.outputPath&#125;</span>`</span>)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.projectConfigJson) &#123;</span><br><span class="line">      <span class="comment">// 生成 project.config.json</span></span><br><span class="line">      <span class="keyword">this</span>.generateProjectConfig(<span class="keyword">this</span>.projectConfigJson)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  protected emptyOutputDir () &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; outputPath &#125; = <span class="keyword">this</span>.ctx.paths</span><br><span class="line">    <span class="keyword">this</span>.helper.emptyDirectory(outputPath)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 输出编译提示</span></span><br><span class="line">  protected printDevelopmentTip (platform: string) &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span> || process.env.NODE_ENV === <span class="string">'test'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; isWindows, chalk &#125; = <span class="keyword">this</span>.helper</span><br><span class="line">    <span class="keyword">let</span> exampleCommand</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isWindows) &#123;</span><br><span class="line">      exampleCommand = <span class="string">`$ set NODE_ENV=production &amp;&amp; taro build --type <span class="subst">$&#123;platform&#125;</span> --watch`</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      exampleCommand = <span class="string">`$ NODE_ENV=production taro build --type <span class="subst">$&#123;platform&#125;</span> --watch`</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(chalk.yellowBright(<span class="string">`Tips: 预览模式生成的文件较大，设置 NODE_ENV 为 production 可以开启压缩。</span></span><br><span class="line"><span class="string">    Example:</span></span><br><span class="line"><span class="string">    <span class="subst">$&#123;exampleCommand&#125;</span></span></span><br><span class="line"><span class="string">    `</span>))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 生成 project.config.json</span></span><br><span class="line"><span class="comment">   * @param src 项目源码中配置文件的名称</span></span><br><span class="line"><span class="comment">   * @param dist 编译后配置文件的名称，默认为 'project.config.json'</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  protected generateProjectConfig (src: string, dist = <span class="string">'project.config.json'</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.config.isBuildNativeComp) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">this</span>.ctx.generateProjectConfig(&#123;</span><br><span class="line">      srcConfigName: src,</span><br><span class="line">      distConfigName: dist</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在准备 miniRunner 配置参数，其实就是微信小程序对应的编译参数,加载 miniRunner 包，并运行 miniRunner，生成新的 dist 文件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 准备 mini-runner 参数</span></span><br><span class="line"><span class="comment"> * @param extraOptions 需要额外合入 Options 的配置项</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">protected getOptions (extraOptions = &#123;&#125;) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; ctx, config, globalObject, fileType, template &#125; = <span class="keyword">this</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    ...config,</span><br><span class="line">    nodeModulesPath: ctx.paths.nodeModulesPath,</span><br><span class="line">    buildAdapter: config.platform,</span><br><span class="line">    globalObject,</span><br><span class="line">    fileType,</span><br><span class="line">    template,</span><br><span class="line">    ...extraOptions</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 调用 mini-runner 开始编译</span></span><br><span class="line"><span class="comment"> * @param extraOptions 需要额外传入 @tarojs/mini-runner 的配置项</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">private <span class="keyword">async</span> build (extraOptions = &#123;&#125;) &#123;</span><br><span class="line">  <span class="keyword">this</span>.ctx.onBuildInit?.(<span class="keyword">this</span>)</span><br><span class="line">  <span class="keyword">await</span> <span class="keyword">this</span>.buildTransaction.perform(<span class="keyword">this</span>.buildImpl, <span class="keyword">this</span>, extraOptions)</span><br><span class="line">&#125;</span><br><span class="line">private <span class="keyword">async</span> buildImpl (extraOptions) &#123;</span><br><span class="line">  <span class="keyword">const</span> runner = <span class="keyword">await</span> <span class="keyword">this</span>.getRunner()</span><br><span class="line">  <span class="keyword">const</span> options = <span class="keyword">this</span>.getOptions(<span class="built_in">Object</span>.assign(&#123;</span><br><span class="line">    runtimePath: <span class="keyword">this</span>.runtimePath,</span><br><span class="line">    taroComponentsPath: <span class="keyword">this</span>.taroComponentsPath</span><br><span class="line">  &#125;, extraOptions))</span><br><span class="line">  <span class="keyword">await</span> runner(options)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * build with webpack</span></span><br><span class="line"><span class="comment"> * 返回当前项目内的 @tarojs/mini-runner 包</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">protected <span class="keyword">async</span> getRunner () &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; appPath &#125; = <span class="keyword">this</span>.ctx.paths</span><br><span class="line">  <span class="keyword">const</span> &#123; npm &#125; = <span class="keyword">this</span>.helper</span><br><span class="line">  <span class="keyword">const</span> runner = <span class="keyword">await</span> npm.getNpmPkg(<span class="string">'@tarojs/mini-runner'</span>, appPath)</span><br><span class="line">  <span class="keyword">return</span> runner.bind(<span class="literal">null</span>, appPath)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="miniRunner-小窥"><a href="#miniRunner-小窥" class="headerlink" title="miniRunner 小窥"></a>miniRunner 小窥</h3><p>在最后，<code>taro build</code> 从 <code>kernel.run</code> 走到了 <code>miniRunner</code>，那 <code>miniRunner</code> 是什么呢？</p>
+<p>其实 <code>miniRunner</code> 就是 webpack 编译程序</p>
+<ul>
+<li><a href="https://github.com/NervJS/taro/blob/next/packages/taro-mini-runner/src/index.ts" target="_blank" rel="noopener"><code>taro/packages/taro-mini-runner/src/index.ts</code></a></li>
+</ul>
+<p><img src="/2021/11/26/Taro源码解读 -- taro build/taro7.png" alt="Taro"></p>
+<p>在收集好对应配置后，最后进入到了 webpack 编译代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">  <span class="keyword">if</span> (newConfig.isWatch) &#123;</span><br><span class="line">    bindDevLogger(compiler)</span><br><span class="line">    compiler.watch(&#123;</span><br><span class="line">      aggregateTimeout: <span class="number">300</span>,</span><br><span class="line">      poll: <span class="literal">undefined</span></span><br><span class="line">    &#125;, callback)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    bindProdLogger(compiler)</span><br><span class="line">    compiler.run(callback)</span><br><span class="line">  &#125;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>经过编译后，我们对应平台的小程序代码就被编译出来了</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>在本章 taro build 中，我们更加能体会到 <strong>Kernel + 钩子机制</strong> 的精妙之处。这种实现解耦了模块，使得模块之间得以分治。<br>最后的 miniRunner 可以说是 taro build 中编译过程的最后一步。这部分的实现应该不算 Taro 源码解读的部分，更像是 webpack 的使用解读，后面在详细介绍 miniRunner 具体所做的工作以及它是如何将 React、Vue 代码编译成小程序端代码的，这里就不在多说了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.cn/post/6844903633557913608#heading-17" target="_blank" rel="noopener">Taro 技术揭秘：taro-cli</a><br><a href="https://github.com/NervJS/taro" target="_blank" rel="noopener">NervJS/taro</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Taro/" rel="tag"># Taro</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/09/26/常见算法思想的分析/" rel="next" title="常见算法思想的分析">
+                <i class="fa fa-chevron-left"></i> 常见算法思想的分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="Eline">
+            
+              <p class="site-author-name" itemprop="name">Eline</p>
+              <p class="site-description motion-element" itemprop="description">Web前端开发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Eline302" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#taro-cli"><span class="nav-number">1.</span> <span class="nav-text">taro-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#taro-build"><span class="nav-number">2.</span> <span class="nav-text">taro build</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kernel"><span class="nav-number">3.</span> <span class="nav-text">Kernel</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kernel-run"><span class="nav-number">3.1.</span> <span class="nav-text">kernel.run</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#build-钩子"><span class="nav-number">3.2.</span> <span class="nav-text">build 钩子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weapp-钩子"><span class="nav-number">3.3.</span> <span class="nav-text">weapp 钩子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#miniRunner-小窥"><span class="nav-number">3.4.</span> <span class="nav-text">miniRunner 小窥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eline</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
